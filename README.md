@@ -9,4 +9,21 @@
 
 [![Build Status](https://travis-ci.org/tim-tang/hearthstone.png?branch=master)](https://travis-ci.org/tim-tang/hearthstone) [![Dependency Status](https://gemnasium.com/tim-tang/hearthstone.png)](https://gemnasium.com/tim-tang/hearthstone)
 
-//TODO:
+---
+
+### Preparation
+
+- Install NodeJS
+
+    ```
+    $ brew install node
+    ```
+
+- Go to <HEARTHSTONE-HOME>/
+
+    ```
+    $ npm install
+    ```
+
+//TOBE CONTINUED!
+    

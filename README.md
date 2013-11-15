@@ -6,4 +6,7 @@
      \___|_  /  \___  >(____  / |__|    |__|  |___|  //_______  / |__|   \____/ |___|  / \___  >
            \/       \/      \/                     \/         \/                     \/      \/ 
 
+
+[![Dependency Status](https://gemnasium.com/tim-tang/hearthstone.png)](https://gemnasium.com/tim-tang/hearthstone)
+
 //TODO:

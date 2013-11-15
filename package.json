@@ -1,0 +1,43 @@
+{
+  "name": "hearthstone-server",
+  "description": "Hearthstone server side, provider RSETful APIs/.",
+  "author": "tim.tang <tang.jilong@gmail.com>",
+  "version": "0.0.1",
+  "private": true,
+  "maintainers": [
+    {
+      "name": "Tim Tang",
+      "url": "http://timtang.me"
+    },
+    {
+      "name": "Evan Huang",
+      "email": "xiemotongye@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hearthstone-org/hearthstone.git"
+  },
+  "main": "app.js",
+  "dependencies": {
+    "express": "latest",
+    "riak": "latest",
+    "eventproxy": "latest",
+    "underscore": "latest"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*",
+    "grunt": "*",
+    "grunt-contrib-clean": "*",
+    "grunt-contrib-jshint": "*",
+    "grunt-contrib-uglify": "*",
+    "grunt-contrib-watch": "*",
+    "grunt-recess": "*"
+  },
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=1.3.11"
+  },
+  "license": "GPL v3"
+}

@@ -20,10 +20,10 @@
   },
   "main": "app.js",
   "dependencies": {
-    "express": "latest",
-    "riak": "latest",
-    "eventproxy": "latest",
-    "underscore": "latest"
+    "express": ">=3.4.4",
+    "riak": ">=1.0.3",
+    "eventproxy": ">=0.2.6",
+    "underscore": ">=1.5.2"
   },
   "devDependencies": {
     "mocha": "*",

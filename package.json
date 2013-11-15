@@ -30,6 +30,7 @@
     "should": "*",
     "grunt": "*",
     "blanket": "*",
+    "travis-cov": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",

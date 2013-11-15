@@ -29,6 +29,7 @@
     "mocha": "*",
     "should": "*",
     "grunt": "*",
+    "blanket": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
     "grunt-contrib-uglify": "*",

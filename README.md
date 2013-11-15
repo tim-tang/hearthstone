@@ -27,3 +27,7 @@
 
 //TOBE CONTINUED!
     
+
+### Issue
+
+[Hearthstone Issue](https://github.com/tim-tang/hearthstone/issues)

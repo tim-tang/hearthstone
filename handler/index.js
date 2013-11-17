@@ -4,6 +4,4 @@
  * @author tim.tang
  */
 
-var userHandler = require('./userHandler');
-
-exports.UserHandler= userHandler;
+exports.UserHandler= require('./userHandler');

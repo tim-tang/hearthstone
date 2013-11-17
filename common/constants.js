@@ -33,3 +33,7 @@ define('ROUTER_METHOD_POST', 'POST');
 define('ROUTER_METHOD_GET', 'GET');
 define('ROUTER_METHOD_DELETE', 'DELETE');
 define('ROUTER_METHOD_PUT', 'PUT');
+define('REST_PARAM_DEVICE_TOKEN', 'deviceToken');
+
+// ------- Constants For Hearthstone ---------------//
+define('HS_USER_BUCKET', 'user-bucket');

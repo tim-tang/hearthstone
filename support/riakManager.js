@@ -4,9 +4,9 @@
  * @Author tim.tang
  */
 
-var riak= require('riak-js'),
+var riak = require('riak-js'),
     fs = require('fs'),
-    path = require('path'),
+    path = require('path');
 
 var RiakManager = function(){
     this.riakClient = makeRiakClient();
@@ -18,8 +18,7 @@ function makeRiakClient(){
     return riakClient;
 }
 
-var riakManager = new RiakManager(),
-    riakClient = riakManager.riakClient;
+var riakManager = new RiakManager();
 
 /* Pulbic Riak Manager APIs */
-module.exports = riakManager;
+module.exports= riakManager;

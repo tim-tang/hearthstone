@@ -13,7 +13,7 @@ var RiakManager = function(){
 };
 
 function makeRiakClient(){
-    var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/riak-conf.json'), 'UTF-8'));
+    var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/riak-conf.json'), 'UTF-8'));
     riakClient = riak.getClient(riakConf);
     return riakClient;
 }

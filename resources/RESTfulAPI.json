@@ -1,0 +1,10 @@
+{
+  "routers": [
+    {
+      "url": "/user/:deviceToken",
+      "method": "POST",
+      "api": "saveUser"
+    }
+  ]
+}
+

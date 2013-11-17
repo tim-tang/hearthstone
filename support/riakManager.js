@@ -6,17 +6,13 @@
 
 var riak = require('riak-js'),
     fs = require('fs'),
-    path = require('path');
+    path = require('path'),
+    riakClient;
 
-var RiakManager = function() {
-        this.riakClient = makeRiakClient();
+var RiakManager = function RiakManager() {
+        var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/riak-conf.json'), 'UTF-8'));
+        this.riakClient = riak.getClient(riakConf);
     };
-
-function makeRiakClient() {
-    var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/riak-conf.json'), 'UTF-8'));
-    riakClient = riak.getClient(riakConf);
-    return riakClient;
-}
 
 var riakManager = new RiakManager();
 

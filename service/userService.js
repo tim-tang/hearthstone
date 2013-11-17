@@ -4,7 +4,7 @@
  * @author tim.tang
  */
 
-var riak = require('../support/riakManager'),
+var riak = require('../support/riakManager').riakClient,
     constants = require('../common/constants'),
     _ = require('underscore');
 
@@ -12,7 +12,7 @@ var UserService = function UserService(){};
 
 _.extend(UserService.prototype, {
 
-    saveUser: function(user, onResult){
+    save: function(key, user,onResult){
         riak.save(constants.HS_USER_BUCKET, key, user);
         onResult(true);
     }

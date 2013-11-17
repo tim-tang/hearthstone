@@ -10,8 +10,9 @@ var _ = require('underscore'),
     application_root = path.resolve(__dirname, '..'),
     constants = require('../common/constants'),
     handlers= require('../handler'),
-    express = require('express');
-
+    express = require('express'),
+    app = express(),
+    restAPI;
 
 /**
  * Express router constructor.
@@ -20,17 +21,6 @@ var RESTfulServer= function RESTfulServer() {
     restAPI= JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/RESTfulAPI.json'), 'UTF-8'));
 };
 
-_.extend(RESTfulServer.prototype, {
-
-    startup: function() {
-        doConf();
-        registerAPI(restAPI.routers);
-        var port = process.env.PORT || constants.EXPRESS_PORT;
-        app.listen(port, function() {
-            console.log('Hearthstone server listening on port::%s', port);
-        });
-    }
-});
 
 /**
  * Do Express server configuration.
@@ -100,8 +90,19 @@ function registerAPI(routers) {
     });
 }
 
-var restfulServer = new RESTfulServer(),
-    app = express();
+_.extend(RESTfulServer.prototype, {
+
+    startup: function() {
+        doConf();
+        registerAPI(restAPI.routers);
+        var port = process.env.PORT || constants.EXPRESS_PORT;
+        app.listen(port, function() {
+            console.log('Hearthstone server listening on port::%s', port);
+        });
+    }
+});
+
+var restfulServer = new RESTfulServer();
 
 restfulServer.startup();
 

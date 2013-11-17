@@ -5,7 +5,7 @@
  */
 
 var constants = require('../common/constants'),
-    _ = require('underscore');
+    _ = require('underscore'),
     userService = require('../service').UserService;
 
 var UserHandler = function UserHandler() {
@@ -18,11 +18,13 @@ _.extend(UserHandler.prototype, {
     saveUser: function(req, res){
         var user = req.body || null;
         var deviceToken = req.params[constants.REST_PARAM_DEVICE_TOKEN] || null;
-        userSerivce.save(user, function(reply){
+        userService.save(user.email, user, function(reply){
            if(reply){
                 console.log('Save user success.');
+                res.send(reply);
            }else{
                 console.log('Save user failure.');
+                res.end();
                 //TODO:
            }
         });

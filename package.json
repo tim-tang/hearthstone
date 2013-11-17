@@ -16,7 +16,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@github.com:hearthstone-org/hearthstone.git"
+    "url": "git@github.com:tim-tang/hearthstone.git"
   },
   "main": "app.js",
   "dependencies": {
@@ -33,9 +33,7 @@
     "travis-cov": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-contrib-uglify": "*",
-    "grunt-contrib-watch": "*",
-    "grunt-recess": "*"
+    "grunt-mocha-test": "*"
   },
   "engines": {
     "node": ">=0.10.0",

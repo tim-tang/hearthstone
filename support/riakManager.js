@@ -8,11 +8,11 @@ var riak = require('riak-js'),
     fs = require('fs'),
     path = require('path');
 
-var RiakManager = function(){
-    this.riakClient = makeRiakClient();
-};
+var RiakManager = function() {
+        this.riakClient = makeRiakClient();
+    };
 
-function makeRiakClient(){
+function makeRiakClient() {
     var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/riak-conf.json'), 'UTF-8'));
     riakClient = riak.getClient(riakConf);
     return riakClient;
@@ -21,4 +21,4 @@ function makeRiakClient(){
 var riakManager = new RiakManager();
 
 /* Pulbic Riak Manager APIs */
-module.exports= riakManager;
+module.exports = riakManager;

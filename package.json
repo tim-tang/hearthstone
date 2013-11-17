@@ -21,7 +21,7 @@
   "main": "app.js",
   "dependencies": {
     "express": ">=3.4.4",
-    "riak": ">=1.0.3",
+    "riak-js": ">=0.10.2",
     "eventproxy": ">=0.2.6",
     "underscore": ">=1.5.2"
   },

@@ -14,7 +14,5 @@ branches:
     - master
 deploy:
   provider: heroku
-  api_key: c073b681-3e57-41bc-b3e2-8bf270ff80a3
-  app:
-    master: hearthstone
-    production: hearthstone-srv 
+  api_key: c073b681-3e57-41bc-b3e2-8bf270ff80a3 
+  app: hearthstone-srv 

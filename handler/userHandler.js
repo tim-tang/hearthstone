@@ -39,7 +39,7 @@ _.extend(UserHandler.prototype, {
         });
     },
 
-    getUser: function(req, res) {
+    getUser: function(req, res, next) {
         var userKey = req.params['userKey'] || null;
         userService.get(userKey, function(err, reply) {
             if (err) return next(err);

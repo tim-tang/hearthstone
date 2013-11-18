@@ -7,6 +7,7 @@ module.exports = function(grunt) {
             test: {
                 options: {
                     reporter: 'spec',
+                    colors: true,
                     require: 'coverage/blanket'
                 },
                 src: ['test/**/*-test.js']

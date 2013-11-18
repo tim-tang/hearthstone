@@ -1,4 +1,4 @@
 require('blanket')({
   // Only files that match the pattern will be instrumented
-  pattern: '/handler/'
+  pattern: ['/handler/', '/service/', '/support/']
 });

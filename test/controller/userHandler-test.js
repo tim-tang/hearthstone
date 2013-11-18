@@ -18,7 +18,7 @@ describe('User API', function() {
     it('GET /health should return 200', function(done) {
         var options = testHelper.options('GET', '/health');
         testHelper.doRequest(options, null, function(reply) {
-            reply.should.equal('I am alive!');
+            reply.should.equal('I am alive, Ping success!');
             done();
         });
     });

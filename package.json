@@ -42,7 +42,7 @@
   "scripts": {
     "test": "grunt",
     "travis-cov": {
-      "threshold": 80
+      "threshold": 60
     }
   },
   "license": "GPL v3"

@@ -1,8 +1,6 @@
 language: node_js
 node_js:
   - "0.10"
-before_script:
-  - npm install -g grunt-cli
 notifications:
   email: 
     - evan.huang@xplusz.com
@@ -18,6 +16,7 @@ before_script:
   - "ulimit -n 2048"
   - "riak version"
   - "cat /etc/riak/app.config"
+  - npm install -g grunt-cli
 branches:
   only:
     - master

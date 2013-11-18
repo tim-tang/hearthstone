@@ -34,9 +34,7 @@
 
 ### Running Node build|test|jslint|clean
 
-    ```
     $ grunt 
-    ```
 
 ### Issue
 

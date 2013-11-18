@@ -11,7 +11,15 @@ var riak = require('riak-js'),
 
 var RiakManager = function RiakManager() {
         var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/riak-conf.json'), 'UTF-8'));
-        this.riakClient = riak.getClient(riakConf.production);
+        var envConf;
+        if (process.env.NODE_ENV) {
+            console.log('Riak use %s environment.', process.env.NODE_ENV);
+            envConf = riakConf.production;
+        }else{
+            console.log('Riak use development environment.');
+            envConf = riakConf.development;
+        }
+        this.riakClient = riak.getClient(envConf);
     };
 
 var riakManager = new RiakManager();

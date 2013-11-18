@@ -20,12 +20,12 @@ var UserHandler = function UserHandler() {
 _.extend(UserHandler.prototype, {
 
     health: function(req, res) {
-        userService.ping(function(reply){
+        userService.ping(function(reply) {
             res.send(reply);
         });
     },
 
-    saveUser: function(req, res) {
+    saveUser: function(req, res, next) {
         var user = req.body || null;
         var deviceToken = req.params[constants.REST_PARAM_DEVICE_TOKEN] || null;
         userService.save(user.email, user, function(reply) {
@@ -34,17 +34,19 @@ _.extend(UserHandler.prototype, {
                 res.send(reply);
             } else {
                 console.log('Save user failure.');
-                res.end();
+                return next('save user failed.');
             }
         });
     },
 
     getUser: function(req, res, next) {
-        var userKey = req.params['userKey'] || null;
-        userService.get(userKey, function(err, reply) {
-            if (err) return next(err);
-                res.send(reply);
-        });
+       var userKey = req.params['userKey'] || null;
+       userService.get(userKey, function(err, reply) {
+            if (err) {
+                return next(err);
+            }
+            res.send(reply);
+       });
     }
 });
 

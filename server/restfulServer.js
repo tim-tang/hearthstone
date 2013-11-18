@@ -18,7 +18,7 @@ var _ = require('underscore'),
  * Express router constructor.
  */
 var RESTfulServer= function RESTfulServer() {
-    restAPI= JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/RESTfulAPI.json'), 'UTF-8'));
+    restAPI= JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/api-router.json'), 'UTF-8'));
 };
 
 
@@ -54,9 +54,9 @@ function registerAPI(routers) {
                 switch (router.method) {
 
                 case constants.ROUTER_METHOD_POST:
-                    app.post(router.url, function(req, res) {
+                    app.post(router.url, function(req, res, next) {
                         res.contentType(constants.CONTENT_TYPE);
-                        handler[router.api](req, res);
+                        handler[router.api](req, res, next);
                     });
                     break;
 
@@ -68,9 +68,9 @@ function registerAPI(routers) {
                     break;
 
                 case constants.ROUTER_METHOD_GET:
-                    app.get(router.url, function(req, res) {
+                    app.get(router.url, function(req, res, next) {
                         res.contentType(constants.CONTENT_TYPE);
-                        handler[router.api](req, res);
+                        handler[router.api](req, res, next);
                     });
                     break;
 

@@ -28,7 +28,7 @@ describe('User API', function() {
         var options = testHelper.options('POST', '/user/123');
         var payload = {
             username: 'tim.tang',
-            email: 'tang.jilong@gmail.com',
+            email: '123456',
             password: 'pass'
         };
         testHelper.doRequest(options, payload, function(reply) {
@@ -37,12 +37,12 @@ describe('User API', function() {
         });
     });
 
-   // it('GET /user/:userKey should return 200', function(done) {
-   //     var options = testHelper.options('GET', '/user/tang.jilong@gmail.com');
-   //     testHelper.doRequest(options, null, function(reply) {
-   //         var result = JSON.parse(reply);
-   //         result.should.have.property('username', 'tim.tang');
-   //         done();
-   //     });
-   // });
+    it('GET /user/:userKey should return 200', function(done) {
+        var options = testHelper.options('GET', '/user/123456');
+        testHelper.doRequest(options, null, function(reply) {
+            var result = JSON.parse(reply);
+            result.should.have.property('username', 'tim.tang');
+            done();
+        });
+    });
 });

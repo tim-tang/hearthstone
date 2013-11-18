@@ -18,7 +18,11 @@
     ```
     $ brew install node
     ```
+- Install Riak 
 
+    ```
+    $ brew install riak
+    ```
 
 - Install Node dependency, go to <HEARTHSTONE-HOME>/
 

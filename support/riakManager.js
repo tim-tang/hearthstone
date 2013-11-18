@@ -10,7 +10,7 @@ var riak = require('riak-js'),
     riakClient;
 
 var RiakManager = function RiakManager() {
-        var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../resources/riak-conf.json'), 'UTF-8'));
+        var riakConf = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/riak-conf.json'), 'UTF-8'));
         var envConf;
         if (process.env.NODE_ENV) {
             console.log('Riak use %s environment.', process.env.NODE_ENV);

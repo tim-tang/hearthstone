@@ -24,11 +24,18 @@ _.extend(UserService.prototype, {
     },
 
     get: function(key, onResult) {
-        riak.get(constants.HS_USER_BUCKET, key, function(err, reply, meta) {
+        riak.get(constants.HS_USER_BUCKET, key, function(err, reply){
             //not handle meta data.
             onResult(err, reply);
         });
+    },
+
+    remove: function(key, onResult) {
+        riak.remove(constants.HS_USER_BUCKET, key, function(err, reply, meta){
+            onResult(err, reply);
+        });
     }
+
 });
 
 

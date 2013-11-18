@@ -14,12 +14,12 @@ _.extend(TestHelper.prototype, {
     /**
      * Fetch http options.
      */
-    options: function(url) {
+    options: function(method, url) {
         var options = {
             hostname: constants.EXPRESS_HOST,
             port : constants.EXPRESS_PORT,
             path : url,
-            method : 'POST',
+            method : method,
             headers : {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'

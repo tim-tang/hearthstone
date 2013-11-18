@@ -1,7 +1,7 @@
 {
   "routers": [
     {
-      "url": "/",
+      "url": "/health",
       "method": "GET",
       "api": "health"
     },

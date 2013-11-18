@@ -19,12 +19,12 @@ function define(key, value) {
 
 // ------- Constants For Express App Server -------------//
 define('EXPRESS_PORT', 5000);
-define('EXPRESS_HOST', 'localhost');
+define('EXPRESS_HOST', '127.0.0.1');
 define('EXPRESS_ENV_DEV', 'dev');
 define('EXPRESS_PUBLIC', 'public');
 define('CONTENT_TYPE', 'application/json');
 
-define('HEROKU_PORT', 11237);
+define('HEROKU_PORT', 80);
 define('HEROKU_HOST', 'hearthstone-srv.herokuapp.com');
 define('HEROKU_ENV_DEV', 'production');
 

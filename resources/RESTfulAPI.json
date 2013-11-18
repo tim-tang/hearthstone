@@ -9,6 +9,11 @@
       "url": "/user/:deviceToken",
       "method": "POST",
       "api": "saveUser"
+    },
+    {
+      "url": "/user/:userKey",
+      "method": "GET",
+      "api": "getUser"
     }
   ]
 }

@@ -23,6 +23,7 @@ describe('User API', function() {
         });
     });
 
+
     it('POST /user/:deviceToken should return 200', function(done) {
         var options = testHelper.options('POST', '/user/123');
         var payload = {
@@ -32,6 +33,15 @@ describe('User API', function() {
         };
         testHelper.doRequest(options, payload, function(reply) {
             reply.should.be.ok;
+            done();
+        });
+    });
+
+    it('GET /user/:userKey should return 200', function(done) {
+        var options = testHelper.options('GET', '/user/tang.jilong@gmail.com');
+        testHelper.doRequest(options, null, function(reply) {
+            var result = JSON.parse(reply);
+            result.should.have.property('username', 'tim.tang');
             done();
         });
     });

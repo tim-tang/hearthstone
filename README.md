@@ -19,14 +19,24 @@
     $ brew install node
     ```
 
-- Go to <HEARTHSTONE-HOME>/
+
+- Install Node dependency, go to <HEARTHSTONE-HOME>/
 
     ```
     $ npm install
     ```
 
-//TOBE CONTINUED!
-    
+- Install grunt-cli
+
+    ```
+    $ npm install -g grunt-cli
+    ```
+
+### Running Node build|test|jslint|clean
+
+    ```
+    $ grunt 
+    ```
 
 ### Issue
 

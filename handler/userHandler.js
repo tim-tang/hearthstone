@@ -15,6 +15,10 @@ var UserHandler = function UserHandler() {
 
 _.extend(UserHandler.prototype, {
 
+    health: function(req, res){
+        res.send("I am alive!");
+    },
+
     saveUser: function(req, res){
         var user = req.body || null;
         var deviceToken = req.params[constants.REST_PARAM_DEVICE_TOKEN] || null;

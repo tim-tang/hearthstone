@@ -27,6 +27,7 @@ var RESTfulServer= function RESTfulServer() {
  *
  */
 function doConf() {
+    app.use(express.favicon());
     app.use(express.logger(constants.EXPRESS_ENV_DEV));
     app.use(express.bodyParser());
     app.use(express.methodOverride());

@@ -1,6 +1,11 @@
 {
   "routers": [
     {
+      "url": "/",
+      "method": "GET",
+      "api": "health"
+    },
+    {
       "url": "/user/:deviceToken",
       "method": "POST",
       "api": "saveUser"

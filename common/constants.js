@@ -24,6 +24,10 @@ define('EXPRESS_ENV_DEV', 'dev');
 define('EXPRESS_PUBLIC', 'public');
 define('CONTENT_TYPE', 'application/json');
 
+define('HEROKU_PORT', 5000);
+define('HEROKU_HOST', 'hearthstone-srv.herokuapp.com');
+define('HEROKU_ENV_DEV', 'production');
+
 // ------- Constants For App Server Deployment -------------//
 define('NODE_ENV_PRODUCTION', 'production');
 define('NODE_ENV_DEVELOPMENT', 'development');

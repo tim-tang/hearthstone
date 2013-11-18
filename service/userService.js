@@ -12,6 +12,12 @@ var UserService = function UserService() {};
 
 _.extend(UserService.prototype, {
 
+    ping: function(onResult){
+        riak.ping(function(){
+            onResult('I am alive, Ping success!');
+        });
+    },
+
     save: function(key, user, onResult) {
         riak.save(constants.HS_USER_BUCKET, key, user);
         onResult(true);

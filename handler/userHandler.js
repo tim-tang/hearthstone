@@ -20,7 +20,9 @@ var UserHandler = function UserHandler() {
 _.extend(UserHandler.prototype, {
 
     health: function(req, res) {
-        res.send("I am alive!");
+        userService.ping(function(reply){
+            res.send(reply);
+        });
     },
 
     saveUser: function(req, res) {

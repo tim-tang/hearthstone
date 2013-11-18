@@ -24,7 +24,7 @@
     $ brew install riak
     ```
 
-- Install Node dependency, go to <HEARTHSTONE-HOME>/
+- Install Node dependency, go to (HEARTHSTONE-HOME)/
 
     ```
     $ npm install

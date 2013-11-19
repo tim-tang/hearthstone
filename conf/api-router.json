@@ -6,14 +6,19 @@
       "api": "health"
     },
     {
-      "url": "/user/:deviceToken",
+      "url": "/user/signup",
       "method": "POST",
-      "api": "saveUser"
+      "api": "signup"
     },
     {
-      "url": "/user/:userKey",
+      "url": "/user/login",
+      "method": "POST",
+      "api": "login"
+    },
+    {
+      "url": "/user/:name",
       "method": "GET",
-      "api": "getUser"
+      "api": "showinfo"
     }
   ]
 }

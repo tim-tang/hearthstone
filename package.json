@@ -21,7 +21,8 @@
   "main": "app.js",
   "dependencies": {
     "express": ">=3.4.4",
-    "riak-js": ">=0.10.2",
+    "mongoose": ">=3.6.13",
+    "validator": ">=2.0.0",
     "eventproxy": ">=0.2.6",
     "underscore": ">=1.5.2"
   },

@@ -3,8 +3,8 @@
  *
  * @author tim.tang
  */
-
-var riak = require('../support/riakManager').riakClient,
+var model = require('../model'),
+    User = model.User,
     constants = require('../common/constants'),
     _ = require('underscore');
 
@@ -12,30 +12,33 @@ var UserService = function UserService() {};
 
 _.extend(UserService.prototype, {
 
-    ping: function(onResult){
-        riak.ping(function(){
-            onResult('I am alive, Ping success!');
-        });
+    save: function(name, pass, email, avatar, deviceToken, callback) {
+        var user = new User();
+        user.name = name;
+        user.pass= pass;
+        user.email = email;
+        user.avatar = avatar;
+        user.deviceToken = deviceToken;
+        user.save(callback);
     },
 
-    save: function(key, user, onResult) {
-        riak.save(constants.HS_USER_BUCKET, key, user);
-        onResult(true);
+    getUserById: function(id, callback) {
+        User.findOne({
+            _id: id
+        }, callback);
     },
 
-    get: function(key, onResult) {
-        riak.get(constants.HS_USER_BUCKET, key, function(err, reply){
-            //not handle meta data.
-            onResult(err, reply);
-        });
+    getUserByName: function(name, callback) {
+        User.findOne({
+            name: name
+        }, callback);
     },
 
-    remove: function(key, onResult) {
-        riak.remove(constants.HS_USER_BUCKET, key, function(err, reply, meta){
-            onResult(err, reply);
-        });
+    getUserByEmail: function(email, callback) {
+        User.findOne({
+            email: email
+        }, callback);
     }
-
 });
 
 

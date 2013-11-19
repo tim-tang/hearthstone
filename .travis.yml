@@ -6,16 +6,8 @@ notifications:
     - evan.huang@xplusz.com
     - tang.jilong@gmail.com
 services:
-  - riak 
+  - mongodb
 before_script:
-  - "curl http://apt.basho.com/gpg/basho.apt.key | sudo apt-key add -"
-  - 'sudo bash -c "echo deb http://apt.basho.com $(lsb_release -sc) main > /etc/apt/sources.list.d/basho.list"'
-  - "sudo apt-get update"
-  - "yes n | sudo apt-get install riak"
-  - "sudo service riak restart"
-  - "ulimit -n 2048"
-  - "riak version"
-  - "cat /etc/riak/app.config"
   - npm install -g grunt-cli
 branches:
   only:

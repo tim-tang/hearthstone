@@ -18,18 +18,20 @@ describe('User API', function() {
     it('GET /health should return 200', function(done) {
         var options = testHelper.options('GET', '/health');
         testHelper.doRequest(options, null, function(reply) {
-            reply.should.equal('I am alive, Ping success!');
+            reply.should.equal('I am alive!');
             done();
         });
     });
 
 
-    it('POST /user/:deviceToken should return 200', function(done) {
-        var options = testHelper.options('POST', '/user/123');
+    it('POST /user/signup should return 200', function(done) {
+        var options = testHelper.options('POST', '/user/signup');
         var payload = {
-            username: 'tim.tang',
-            email: '123456',
-            password: 'pass'
+            name: 'tim.tang',
+            pass: '123456',
+            email: 'tang.jilong@gmail.com',
+            avatar: 'http://www.timtang.me',
+            deviceToken: 'abc123'
         };
         testHelper.doRequest(options, payload, function(reply) {
             reply.should.be.ok;
@@ -37,11 +39,11 @@ describe('User API', function() {
         });
     });
 
-    it('GET /user/:userKey should return 200', function(done) {
-        var options = testHelper.options('GET', '/user/123456');
+    it('GET /user/:name should return 200', function(done) {
+        var options = testHelper.options('GET', '/user/tim.tang');
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
-            result.should.have.property('username', 'tim.tang');
+            result.should.have.property('name', 'tim.tang');
             done();
         });
     });

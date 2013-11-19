@@ -19,9 +19,6 @@ describe('User API', function() {
         done();
     });
 
-    // after(function() {
-    //     app.shutdown();
-    // });
     it('GET /health should return 200', function(done) {
         var options = testHelper.options('GET', '/health');
         testHelper.doRequest(options, null, function(reply) {

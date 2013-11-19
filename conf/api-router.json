@@ -23,7 +23,8 @@
     {
       "url": "/user/info/:name",
       "method": "GET",
-      "api": "showinfo"
+      "api": "showinfo",
+      "middleware": "userRequired"
     }
   ]
 }

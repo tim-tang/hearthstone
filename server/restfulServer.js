@@ -10,7 +10,9 @@ var _ = require('underscore'),
     application_root = path.resolve(__dirname, '..'),
     constants = require('../common/constants'),
     handlers = require('../handler'),
+    config = require('../conf/hearthstone-conf').config,
     express = require('express'),
+    auth = require('../middleware/authenticator'),
     app = express(),
     restAPI;
 
@@ -31,8 +33,13 @@ function doConf() {
     app.use(express.logger(constants.EXPRESS_ENV_DEV));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.use(express.cookieParser());
+    app.use(express.session({
+        secret: config.session_secret
+    }));
     app.use(app.router);
     app.use(express.static(path.join(application_root, constants.EXPRESS_PUBLIC)));
+    app.use(require('../handler/userHandler').authenticate);
     app.use(express.errorHandler({
         dumpExceptions: true,
         showStack: true
@@ -51,10 +58,14 @@ function registerAPI(routers) {
         _.each(handlers, function(handler) {
             if (_.isFunction(handler[router.api]) && _.isString(router.url)) {
                 console.log('Registering API-[%s] URL-[%s] METHOD-[%s]', router.api, router.url, router.method);
+                var middlewares = [];
+                if(router.middleware || _.isFunction(auth[router.middleware])){
+                    middlewares.push(auth[router.middleware]);
+                }
                 switch (router.method) {
 
                 case constants.ROUTER_METHOD_POST:
-                    app.post(router.url, function(req, res, next) {
+                    app.post(router.url, middlewares, function(req, res, next) {
                         res.contentType(constants.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
@@ -68,7 +79,7 @@ function registerAPI(routers) {
                     break;
 
                 case constants.ROUTER_METHOD_GET:
-                    app.get(router.url, function(req, res, next) {
+                    app.get(router.url, middlewares, function(req, res, next) {
                         res.contentType(constants.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });

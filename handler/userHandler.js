@@ -13,6 +13,7 @@ var constants = require('../common/constants'),
     sanitize = require('validator').sanitize,
     check = require('validator').check,
     hsHelper = require('../common/hearthstoneHelper'),
+    config = require('../conf/hearthstone-conf').config,
     userService = require('../service').UserService;
 
 var UserHandler = function UserHandler() {};
@@ -22,6 +23,22 @@ _.extend(UserHandler.prototype, {
 
     health: function(req, res) {
         res.send('I am alive!');
+    },
+
+    authenticate: function(req, res, next) {
+        var cookie = req.cookies[config.auth_cookie_name];
+        var auth_token = hsHelper.decrypt(cookie, config.session_secret);
+        var auth = auth_token.split('\t');
+        var userId = auth[0];
+        userService.getUserById(userId, function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            if (user) {
+                req.session.user = user;
+                return next();
+            }
+        });
     },
 
     signup: function(req, res, next) {
@@ -126,7 +143,7 @@ _.extend(UserHandler.prototype, {
     },
 
     logout: function(req, res, next) {
-        //req.session.destroy();
+        req.session.destroy();
         hsHelper.clearCookie(res);
         res.send({
             success: true,
@@ -138,6 +155,7 @@ _.extend(UserHandler.prototype, {
     showinfo: function(req, res, next) {
         var name = req.params['name'];
         name = sanitize(name).trim();
+        console.log("###### %s", req.cookies.token);
         userService.getUserByName(name, function(err, user) {
             if (err) {
                 return next(err);

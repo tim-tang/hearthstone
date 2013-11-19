@@ -15,12 +15,14 @@ _.extend(TestHelper.prototype, {
      * Fetch http options.
      */
     options: function(method, url) {
+        var cookie = 'token=123456'
         var options = {
             hostname: constants.EXPRESS_HOST,
             port: constants.EXPRESS_PORT,
             path: url,
             method: method,
             headers: {
+                'Cookie': cookie,
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }

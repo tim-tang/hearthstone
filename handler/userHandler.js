@@ -27,7 +27,7 @@ _.extend(UserHandler.prototype, {
 
     authenticate: function(req, res, next) {
         var cookie = req.cookies[config.auth_cookie_name];
-        if (_.isEmpty(cookie)){
+        if (_.isEmpty(cookie)) {
             return next();
         }
         var authToken = hsHelper.decrypt(cookie, config.session_secret);

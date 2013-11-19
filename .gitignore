@@ -9,6 +9,7 @@ lib-cov
 *.html
 .DS_Store
 *.swp
+*.swo
 
 pids
 logs

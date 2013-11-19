@@ -18,11 +18,10 @@ _.extend(TestHelper.prototype, {
      */
     options: function(user, method, url) {
         var authToken = '';
-        if(user){
+        if (user) {
             authToken = hsHelper.genAuthToken(user);
         }
-        var cookie = config.auth_cookie_name + '='+ authToken;
-
+        var cookie = config.auth_cookie_name + '=' + authToken;
         var options = {
             hostname: constants.EXPRESS_HOST,
             port: constants.EXPRESS_PORT,

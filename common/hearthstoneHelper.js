@@ -21,7 +21,7 @@ _.extend(HearthstoneHelper.prototype, {
         });
     },
 
-    genAuthToken: function(user){
+    genAuthToken: function(user) {
         return this.encrypt(user._id + '\t' + user.name + '\t' + user.pass + '\t' + user.email, config.session_secret);
     },
 

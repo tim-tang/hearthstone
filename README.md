@@ -21,7 +21,7 @@
 - Install Riak 
 
     ```
-    $ brew install riak
+    $ brew install mongodb
     ```
 
 - Install Node dependency, go to (HEARTHSTONE-HOME)/

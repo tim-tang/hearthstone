@@ -24,7 +24,7 @@
     $ brew install mongodb
     ```
 
-- Install Node dependency, go to (HEARTHSTONE-HOME)/
+- Install Node dependency, go to {HEARTHSTONE-HOME}/
 
     ```
     $ npm install
@@ -39,6 +39,19 @@
 ### Running Node build|test|jslint|clean
 
     $ grunt 
+
+### API doc generator
+
+- Install apiary cli
+
+    ```
+    $ sudo gem install apiaryio
+    ```
+- Prewiew api doc, go to {HEARTHSTONE-HOME}/
+
+    ```
+    $ apiary preview
+    ```
 
 ### Issue
 

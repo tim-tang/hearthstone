@@ -50,7 +50,8 @@ _.extend(UserHandler.prototype, {
             check(name, 'User name must be 0-9,a-z,A-Z').isAlphanumeric();
         } catch (e) {
             res.send({
-                error: e.message,
+                success: false,
+                msg: e.message,
                 name: name,
                 email: email
             });
@@ -64,7 +65,8 @@ _.extend(UserHandler.prototype, {
             }
             if (user) {
                 res.send({
-                    error: 'User Name has been used',
+                    success:false,
+                    msg: 'User Name has been used.',
                     name: name,
                     email: email
                 });
@@ -75,10 +77,11 @@ _.extend(UserHandler.prototype, {
         var email = sanitize(req.body.email).trim();
         email = email.toLowerCase();
         try {
-            check(email, 'Invalid email address').isEmail();
+            check(email, 'Invalid email address.').isEmail();
         } catch (e) {
             res.send({
-                error: e.message,
+                success: false,
+                msg: e.message,
                 name: name,
                 email: email
             });
@@ -89,7 +92,8 @@ _.extend(UserHandler.prototype, {
         var pass = sanitize(req.body.pass).trim();
         if (name === '' || pass === '' || email === '') {
             res.send({
-                error: 'Lack user info.',
+                success: false,
+                msg: 'Incomplete user info.',
                 name: name,
                 email: email
             });
@@ -97,8 +101,11 @@ _.extend(UserHandler.prototype, {
         }
 
         pass = hsHelper.md5(pass);
-        // generate avatar url
-        var avatar = 'http://www.gravatar.com/avatar/' + hsHelper.md5(email.toLowerCase()) + '?size=48';
+        var avatar = sanitize(req.body.avatar).trim();
+        if (_.isEmpty(avatar)){
+            // generate avatar url
+            avatar = 'http://www.gravatar.com/avatar/' + hsHelper.md5(email.toLowerCase()) + '?size=48';
+        }
 
         var deviceToken = sanitize(req.body.deviceToken).trim();
         userService.save(name, pass, email, avatar, deviceToken, function(err) {
@@ -117,7 +124,8 @@ _.extend(UserHandler.prototype, {
         var pass = sanitize(req.body.pass).trim();
         if (_.isEmpty(name) || _.isEmpty(pass)) {
             return res.send({
-                error: 'Invalid username or password!',
+                success: false,
+                msg: 'Invalid username or password!',
                 name: name,
                 pass: pass
             });
@@ -129,7 +137,8 @@ _.extend(UserHandler.prototype, {
             }
             if (!user) {
                 return res.send({
-                    error: 'User not exists',
+                    success: false,
+                    msg: 'User not exists!',
                     name: name,
                     pass: pass
                 });
@@ -137,7 +146,10 @@ _.extend(UserHandler.prototype, {
             pass = hsHelper.md5(pass);
             if (!_.isEqual(pass, user.pass)) {
                 return res.send({
-                    error: 'Bad password!'
+                    success: false,
+                    msg: 'Bad password!',
+                    name: name,
+                    pass: pass
                 });
             }
             hsHelper.popSession(user, res);
@@ -150,7 +162,7 @@ _.extend(UserHandler.prototype, {
         hsHelper.clearCookie(res);
         res.send({
             success: true,
-            msg: 'Logout sucess!'
+            msg: 'Logout success!'
         });
     },
 

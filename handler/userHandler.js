@@ -11,6 +11,8 @@
 var constants = require('../common/constants'),
     _ = require('underscore'),
     sanitize = require('validator').sanitize,
+    check = require('validator').check,
+    hsHelper = require('../common/hearthstoneHelper'),
     userService = require('../service').UserService;
 
 var UserHandler = function UserHandler() {
@@ -25,11 +27,11 @@ _.extend(UserHandler.prototype, {
     },
 
     //TODO
-    //- crypt password.
     //- check user name existence.
     signup: function(req, res, next) {
         var name = sanitize(req.body.name).trim();
         var pass = sanitize(req.body.pass).trim();
+        pass = hsHelper.md5(pass);
         var email = sanitize(req.body.email).trim();
         email = email.toLowerCase();
         var avatar = sanitize(req.body.avart).trim();

@@ -29,7 +29,7 @@ describe('User API', function() {
         var payload = {
             name: 'tim.tang',
             pass: '123456',
-            email: 'tang.jilong@gmail.com',
+            email: 'tang.jilong2@gmail.com',
             avatar: 'http://www.timtang.me',
             deviceToken: 'abc123'
         };

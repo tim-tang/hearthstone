@@ -1,9 +1,10 @@
 var mongoose = require('mongoose'),
-    config = require('../conf/hearthstone-conf').config;
+    config = require('../conf/hearthstone-conf').config,
+    mongoUrl = process.env.MONGOHQ_URL || config.mongo;
 
-mongoose.connect(config.mongo, function (err) {
+mongoose.connect(mongoUrl, function (err) {
     if (err) {
-        console.error('[Mongodb] - connect to %s error: %s', config.db, err.message);
+        console.error('[Mongodb] - connect to %s error: %s', mongoUrl, err.message);
         process.exit(1);
     }
 });

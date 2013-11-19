@@ -26,35 +26,113 @@ _.extend(UserHandler.prototype, {
         res.send('I am alive!');
     },
 
-    //TODO
-    //- check user name existence.
     signup: function(req, res, next) {
         var name = sanitize(req.body.name).trim();
-        var pass = sanitize(req.body.pass).trim();
-        pass = hsHelper.md5(pass);
-        var email = sanitize(req.body.email).trim();
-        email = email.toLowerCase();
-        var avatar = sanitize(req.body.avart).trim();
-        var deviceToken = sanitize(req.body.deviceToken).trim();
+        try {
+            check(name, 'User name must be 0-9,a-z,A-Z').isAlphanumeric();
+        } catch (e) {
+            res.send({
+                error: e.message,
+                name: name,
+                email: email
+            });
+            return;
+        }
 
-        userService.save(name, pass, email, avatar, deviceToken, function(err) {
-            if (err) {
-                console.log('Save user failure.');
-                return next(err);
-            }
-            res.send('Create user success!');
-        });
-    },
-
-    //TODO: authenticate user.
-    login: function(req, res, next) {
-        var name = sanitize(req.body.name).trim().toLowerCase();
-        var pass = sanitize(req.body.pass).trim();
+        //check email exists or not.
         userService.getUserByName(name, function(err, user) {
             if (err) {
                 return next(err);
             }
+            if (user) {
+                res.send({
+                    error: 'User Name has been used',
+                    name: name,
+                    email: email
+                });
+                return;
+            }
+        });
+
+        var email = sanitize(req.body.email).trim();
+        email = email.toLowerCase();
+        try {
+            check(email, 'Invalid email address').isEmail();
+        } catch (e) {
+            res.send({
+                error: e.message,
+                name: name,
+                email: email
+            });
+            return;
+        }
+
+
+        var pass = sanitize(req.body.pass).trim();
+        if (name === '' || pass === '' || email === '') {
+            res.send({
+                error: 'Lack user info.',
+                name: name,
+                email: email
+            });
+            return;
+        }
+
+        pass = hsHelper.md5(pass);
+        // generate avatar url
+        var avatar = 'http://www.gravatar.com/avatar/' + hsHelper.md5(email.toLowerCase()) + '?size=48';
+
+        var deviceToken = sanitize(req.body.deviceToken).trim();
+        userService.save(name, pass, email, avatar, deviceToken, function(err) {
+            if (err) {
+                return next(err);
+            }
+            res.send({
+                success: true,
+                msg: 'Signup sucess!'
+            });
+        });
+    },
+
+    login: function(req, res, next) {
+        var name = sanitize(req.body.name).trim();
+        var pass = sanitize(req.body.pass).trim();
+        if (_.isEmpty(name) || _.isEmpty(pass)) {
+            return res.send({
+                error: 'Invalid username or password!',
+                name: name,
+                pass: pass
+            });
+        }
+
+        userService.getUserByName(name, function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.send({
+                    error: 'User not exists',
+                    name: name,
+                    pass: pass
+                });
+            }
+            pass = hsHelper.md5(pass);
+            if (!_.isEqual(pass, user.pass)) {
+                return res.send({
+                    error: 'Bad password!'
+                });
+            }
+            hsHelper.popSession(user, res);
             res.send(user);
+        });
+    },
+
+    logout: function(req, res, next) {
+        //req.session.destroy();
+        hsHelper.clearCookie(res);
+        res.send({
+            success: true,
+            msg: 'Logout sucess!'
         });
     },
 

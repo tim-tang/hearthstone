@@ -4,6 +4,7 @@
  * @author tim.tang
  */
 var crypto = require('crypto'),
+    config = require('../conf/hearthstone-conf').config,
     _ = require('underscore');
 
 
@@ -11,10 +12,19 @@ var HearthstoneHelper = function HearthstoneHelper() {};
 
 _.extend(HearthstoneHelper.prototype, {
 
-    //create_session: function(user, res){
-    //    var auth_token = encrypt(user._id + '\t' + user.name + '\t' + user.pass + '\t' + user.email, config.session_secret);
-    //    res.cookie(config.auth_cookie_name, auth_token, {path: '/', maxAge: 1000 * 60 * 60 * 24 * 30}); //cookie valid in 30 days.
-    //},
+    popSession: function(user, res) {
+        var auth_token = this.encrypt(user._id + '\t' + user.name + '\t' + user.pass + '\t' + user.email, config.session_secret);
+        //cookie valid in 30 days.
+        res.cookie(config.auth_cookie_name, auth_token, {
+            path: '/',
+            maxAge: 1000 * 60 * 60 * 24 * 30
+        });     },
+
+    clearCookie: function(res) {
+        res.clearCookie(config.auth_cookie_name, {
+            path: '/'
+        });
+    },
 
     encrypt: function(str, secret) {
         var cipher = crypto.createCipher('aes192', secret);

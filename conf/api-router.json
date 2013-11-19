@@ -16,6 +16,11 @@
       "api": "login"
     },
     {
+      "url": "/user/logout",
+      "method": "GET",
+      "api": "logout"
+    },
+    {
       "url": "/user/:name",
       "method": "GET",
       "api": "showinfo"

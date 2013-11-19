@@ -6,6 +6,9 @@
 
 var should = require('should'),
     testHelper = require('../helper/testHelper'),
+    hsHelper = require('../../common/hearthstoneHelper'),
+    randomName = hsHelper.randomString(8),
+    randomEmail = randomName + '@gmail.com',
     app;
 
 
@@ -31,9 +34,9 @@ describe('User API', function() {
     it('POST /user/signup should return 200', function(done) {
         var options = testHelper.options('POST', '/user/signup');
         var payload = {
-            name: 'timtang',
+            name: randomName,
             pass: '345',
-            email: 'tang.jilong4@gmail.com',
+            email: randomEmail,
             avatar: '',
             deviceToken: 'abc123'
         };
@@ -47,21 +50,21 @@ describe('User API', function() {
     it('POST /user/login should return 200', function(done) {
         var options = testHelper.options('POST', '/user/login');
         var payload = {
-            name: 'timtang',
+            name: randomName,
             pass: '345'
         };
         testHelper.doRequest(options, payload, function(reply) {
             var result = JSON.parse(reply);
-            result.should.have.property('name', 'timtang');
+            result.should.have.property('deviceToken', 'abc123');
             done();
         });
     });
 
     it('GET /user/:name should return 200', function(done) {
-        var options = testHelper.options('GET', '/user/info/timtang');
+        var options = testHelper.options('GET', '/user/info/'+randomName);
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
-            result.should.have.property('name', 'timtang');
+            result.should.have.property('deviceToken', 'abc123');
             done();
         });
     });

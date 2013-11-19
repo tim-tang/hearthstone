@@ -58,7 +58,7 @@ describe('User API', function() {
     });
 
     it('GET /user/:name should return 200', function(done) {
-        var options = testHelper.options('GET', '/user/timtang');
+        var options = testHelper.options('GET', '/user/info/timtang');
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
             result.should.have.property('name', 'timtang');

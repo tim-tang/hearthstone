@@ -17,10 +17,10 @@ _.extend(TestHelper.prototype, {
     options: function(method, url) {
         var options = {
             hostname: constants.EXPRESS_HOST,
-            port : constants.EXPRESS_PORT,
-            path : url,
-            method : method,
-            headers : {
+            port: constants.EXPRESS_PORT,
+            path: url,
+            method: method,
+            headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
             }

@@ -15,9 +15,7 @@ var constants = require('../common/constants'),
     hsHelper = require('../common/hearthstoneHelper'),
     userService = require('../service').UserService;
 
-var UserHandler = function UserHandler() {
-        console.log('User Handler initialized.');
-    };
+var UserHandler = function UserHandler() {};
 
 
 _.extend(UserHandler.prototype, {

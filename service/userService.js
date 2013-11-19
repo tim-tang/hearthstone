@@ -15,7 +15,7 @@ _.extend(UserService.prototype, {
     save: function(name, pass, email, avatar, deviceToken, callback) {
         var user = new User();
         user.name = name;
-        user.pass= pass;
+        user.pass = pass;
         user.email = email;
         user.avatar = avatar;
         user.deviceToken = deviceToken;

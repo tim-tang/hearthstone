@@ -18,7 +18,8 @@ _.extend(HearthstoneHelper.prototype, {
         res.cookie(config.auth_cookie_name, auth_token, {
             path: '/',
             maxAge: 1000 * 60 * 60 * 24 * 30
-        });     },
+        });
+    },
 
     clearCookie: function(res) {
         res.clearCookie(config.auth_cookie_name, {

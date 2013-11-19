@@ -9,7 +9,7 @@ var _ = require('underscore'),
     path = require('path'),
     application_root = path.resolve(__dirname, '..'),
     constants = require('../common/constants'),
-    handlers= require('../handler'),
+    handlers = require('../handler'),
     express = require('express'),
     app = express(),
     restAPI;
@@ -17,9 +17,9 @@ var _ = require('underscore'),
 /**
  * Express router constructor.
  */
-var RESTfulServer= function RESTfulServer() {
-    restAPI= JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/api-router.json'), 'UTF-8'));
-};
+var RESTfulServer = function RESTfulServer() {
+        restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/api-router.json'), 'UTF-8'));
+    };
 
 
 /**
@@ -48,7 +48,7 @@ function doConf() {
  */
 function registerAPI(routers) {
     _.each(routers, function(router) {
-        _.each(handlers, function(handler){
+        _.each(handlers, function(handler) {
             if (_.isFunction(handler[router.api]) && _.isString(router.url)) {
                 console.log('Registering API-[%s] URL-[%s] METHOD-[%s]', router.api, router.url, router.method);
                 switch (router.method) {

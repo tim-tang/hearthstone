@@ -13,12 +13,16 @@ var HearthstoneHelper = function HearthstoneHelper() {};
 _.extend(HearthstoneHelper.prototype, {
 
     popSession: function(user, res) {
-        var auth_token = this.encrypt(user._id + '\t' + user.name + '\t' + user.pass + '\t' + user.email, config.session_secret);
         //cookie valid in 30 days.
-        res.cookie(config.auth_cookie_name, auth_token, {
+        var authToken = this.genAuthToken(user);
+        res.cookie(config.auth_cookie_name, authToken, {
             path: '/',
             maxAge: 1000 * 60 * 60 * 24 * 30
         });
+    },
+
+    genAuthToken: function(user){
+        return this.encrypt(user._id + '\t' + user.name + '\t' + user.pass + '\t' + user.email, config.session_secret);
     },
 
     clearCookie: function(res) {

@@ -13,6 +13,7 @@ var _ = require('underscore'),
     config = require('../conf/hearthstone-conf').config,
     express = require('express'),
     auth = require('../middleware/authenticator'),
+    userHandler = require('../handler/userHandler'),
     app = express(),
     restAPI;
 
@@ -37,9 +38,9 @@ function doConf() {
     app.use(express.session({
         secret: config.session_secret
     }));
+    app.use(userHandler.authenticate);
     app.use(app.router);
     app.use(express.static(path.join(application_root, constants.EXPRESS_PUBLIC)));
-    app.use(require('../handler/userHandler').authenticate);
     app.use(express.errorHandler({
         dumpExceptions: true,
         showStack: true

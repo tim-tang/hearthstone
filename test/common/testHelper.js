@@ -5,6 +5,8 @@
  */
 var _ = require('underscore'),
     constants = require('../../common/constants'),
+    hsHelper = require('../../common/hearthstoneHelper'),
+    config = require('../../conf/hearthstone-conf').config,
     http = require('http');
 
 var TestHelper = function() {};
@@ -14,8 +16,13 @@ _.extend(TestHelper.prototype, {
     /**
      * Fetch http options.
      */
-    options: function(method, url) {
-        var cookie = 'token=123456'
+    options: function(user, method, url) {
+        var authToken = '';
+        if(user){
+            authToken = hsHelper.genAuthToken(user);
+        }
+        var cookie = config.auth_cookie_name + '='+ authToken;
+
         var options = {
             hostname: constants.EXPRESS_HOST,
             port: constants.EXPRESS_PORT,

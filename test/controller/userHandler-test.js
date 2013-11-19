@@ -5,10 +5,11 @@
  */
 
 var should = require('should'),
-    testHelper = require('../helper/testHelper'),
+    testHelper = require('../common/testHelper'),
     hsHelper = require('../../common/hearthstoneHelper'),
     randomName = hsHelper.randomString(8),
     randomEmail = randomName + '@gmail.com',
+    logonUser,
     app;
 
 
@@ -20,7 +21,7 @@ describe('User API', function() {
     });
 
     it('GET /health should return 200', function(done) {
-        var options = testHelper.options('GET', '/health');
+        var options = testHelper.options(null, 'GET', '/health');
         testHelper.doRequest(options, null, function(reply) {
             reply.should.equal('I am alive!');
             done();
@@ -29,7 +30,6 @@ describe('User API', function() {
 
 
     it('POST /user/signup should return 200', function(done) {
-        var options = testHelper.options('POST', '/user/signup');
         var payload = {
             name: randomName,
             pass: '345',
@@ -37,6 +37,7 @@ describe('User API', function() {
             avatar: '',
             deviceToken: 'abc123'
         };
+        var options = testHelper.options(null, 'POST', '/user/signup');
         testHelper.doRequest(options, payload, function(reply) {
             var result = JSON.parse(reply);
             result.should.have.property('success', true);
@@ -45,20 +46,21 @@ describe('User API', function() {
     });
 
     it('POST /user/login should return 200', function(done) {
-        var options = testHelper.options('POST', '/user/login');
+        var options = testHelper.options(null, 'POST', '/user/login');
         var payload = {
             name: randomName,
             pass: '345'
         };
         testHelper.doRequest(options, payload, function(reply) {
             var result = JSON.parse(reply);
+            logonUser = result;
             result.should.have.property('deviceToken', 'abc123');
             done();
         });
     });
 
     it('GET /user/:name should return 200', function(done) {
-        var options = testHelper.options('GET', '/user/info/'+randomName);
+        var options = testHelper.options(logonUser, 'GET', '/user/info/'+randomName);
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
             result.should.have.property('deviceToken', 'abc123');
@@ -67,7 +69,7 @@ describe('User API', function() {
     });
 
     it('GET /user/logout should resturn 200', function(done) {
-        var options = testHelper.options('GET', '/user/logout');
+        var options = testHelper.options(null, 'GET', '/user/logout');
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
             result.should.have.property('success', true);

@@ -33,6 +33,12 @@
       "middleware": "userRequired"
     },
     {
+      "url": "/user/favorites/:userId",
+      "method": "Get",
+      "api": "showFavorites",
+      "middleware": "userRequired"
+    },
+    {
       "url": "/card/sync/:version",
       "method": "GET",
       "api": "syncCards"

@@ -10,7 +10,8 @@ var constants = require('../common/constants'),
     check = require('validator').check,
     hsHelper = require('../common/hearthstoneHelper'),
     config = require('../conf/hearthstone-conf').config,
-    userService = require('../service').UserService;
+    userService = require('../service').UserService,
+    cardService = require('../service').CardService;
 
 var UserHandler = function UserHandler() {};
 
@@ -176,9 +177,9 @@ _.extend(UserHandler.prototype, {
     favorite: function(req, res, next) {
         var cardId = sanitize(req.body.cardId).trim();
         var userId = sanitize(req.body.userId).trim();
-        userService.favorite(userId, cardId, function(err){
-            if(err){
-               return res.send({
+        userService.favorite(userId, cardId, function(err) {
+            if (err) {
+                return res.send({
                     success: false,
                     msg: err.message
                 });
@@ -186,6 +187,30 @@ _.extend(UserHandler.prototype, {
             res.send({
                 success: true,
                 msg: 'Favorite card success!'
+            });
+        });
+    },
+
+    showFavorites: function(req, res, next) {
+        var userId = sanitize(req.param['userId']).trim();
+        userService.getUserById(userId, function(err, user) {
+            if (err) {
+                return next(err);
+            }
+            if (!user) {
+                return res.send({
+                    success: false,
+                    msg: 'User not exists!'
+                });
+            }
+            cardService.getCardsByIds(user.favorites, function(err, cards) {
+                if (err) {
+                    return next(err);
+                }
+                res.send({
+                    success: true,
+                    cards: cards
+                });
             });
         });
     }

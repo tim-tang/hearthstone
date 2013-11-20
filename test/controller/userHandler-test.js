@@ -13,7 +13,7 @@ var should = require('should'),
     app;
 
 
-describe('User API', function() {
+describe('User APIs', function() {
 
     before(function(done) {
         app = require('../../server/restfulServer');
@@ -23,7 +23,8 @@ describe('User API', function() {
     it('GET /health should return 200', function(done) {
         var options = testHelper.options(null, 'GET', '/health');
         testHelper.doRequest(options, null, function(reply) {
-            reply.should.equal('I am alive!');
+            var result = JSON.parse(reply);
+            result.should.have.property('msg', 'I am alive!');
             done();
         });
     });

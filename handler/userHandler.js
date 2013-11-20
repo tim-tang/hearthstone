@@ -19,7 +19,10 @@ var UserHandler = function UserHandler() {};
 _.extend(UserHandler.prototype, {
 
     health: function(req, res) {
-        res.send('I am alive!');
+        res.send({
+            success: true,
+            msg: 'I am alive!'
+        });
     },
 
     authenticate: function(req, res, next) {

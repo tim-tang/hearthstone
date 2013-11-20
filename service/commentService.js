@@ -39,7 +39,9 @@ _.extend(CommentService.prototype, {
         comment.user_id = userId;
         comment.card_id = cardId;
         comment.content = content;
-        Comment.save(comment, callback);
+        comment.save(function(err){
+            callback(err, comment);
+        });
     }
 });
 

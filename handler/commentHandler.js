@@ -32,7 +32,7 @@ _.extend(CommentHandler.prototype, {
 
     star: function(req, res, next) {
         var commentId = sanitize(req.body.commentId).trim();
-        var star = sanitize(req.boody.star).trim();
+        var star = sanitize(req.body.star).trim();
         commentService.star(commentId, star, function(err) {
             if (err) {
                 return res.send({
@@ -51,16 +51,16 @@ _.extend(CommentHandler.prototype, {
         var userId = sanitize(req.body.userId).trim();
         var cardId = sanitize(req.body.cardId).trim();
         var content = sanitize(req.body.content).trim();
-        commentService.saveComment(userId, cardId, content, function(err) {
+        commentService.saveComment(userId, cardId, content, function(err, comment) {
             if (err) {
                 return res.send({
                     success: false,
-                    msg: 'Create comment failure.'
+                    msg: err.message
                 });
             }
             res.send({
                 success: true,
-                msg: 'Create comment success'
+                comment: comment
             });
         });
     }

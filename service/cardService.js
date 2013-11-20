@@ -37,7 +37,7 @@ _.extend(CardService.prototype, {
     },
 
     saveCard: function(card, callback) {
-        Card.save(card, callback);
+        card.save(callback);
     },
 
     inactiveCard: function(cardId, callback) {

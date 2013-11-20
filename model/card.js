@@ -48,7 +48,8 @@ var CardSchema = new Schema({
         default: true
     },
     version: {
-        type: Number
+        type: Number,
+        default: 0
     },
     update_at: {
         type: Date,

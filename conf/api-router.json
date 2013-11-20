@@ -39,7 +39,7 @@
       "middleware": "userRequired"
     },
     {
-      "url": "/user/favorites/:userId",
+      "url": "/user/favorite/:userId",
       "method": "GET",
       "api": "showFavorites",
       "middleware": "userRequired"

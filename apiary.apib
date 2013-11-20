@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://www.google.com
+HOST: http://hearthstone-srv.herokuapp.com/
 
 # User APIs
 
@@ -123,8 +123,62 @@ User login with username/passwod.
             pass: '123'
         }
 
+## User update [/user/update]
+Update user name (Auth token required! ).
+
+### Update [PUT]
++ Request (application/json)
+
+        {
+            _id: "528c8fa4460ba8061b000002",
+            name: "new username"
+        }
+
++ Response Success (application/json)
+
+    + Body
+
+        { 
+            success: true,
+            msg: "Update user success!"
+        }
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: "Update user failure."
+        }
+
+## User favorite [/user/favorite]
+Update user name. (Auth token required!)
+
+### Update [PUT]
++ Request (application/json)
+
+        {
+            cardId: "528c8fa4460ba8061b000002",
+            userId: "528c8fa4460ba8061b000002"  # This can be empty for guest.
+        }
+
++ Response Success (application/json)
+
+    + Body
+
+        { 
+            success: true,
+            msg: "Favorite card success!"
+        }
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: "Favorite card failure."
+        }
+
 ## Show User Info [/user/info/{name}]
-Display user Information.
+Display user Information. (Auth token required!)
 
 ### Retrieve a User [GET]
 + Parameters
@@ -151,6 +205,36 @@ Display user Information.
             update_at: '2013-11-19T11:10:28.621Z' 
         }
 
+## Show Favorite Cards [/user/favorite/{userId}]
+Display user favorite cards.(Auth token required!)
+
+### Show User Favorite cards [GET]
++ Parameters
+    + userId (required, string, `528c8fa4460ba8061b000002`) ... String `userId` of the User to perform action with. Has example value.
+
++ Request (application/json)
+
+    + Header
+
+        Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a 
+
++ Response 200 (application/json)
+
+    + Body
+    
+        {
+            success: true,
+            cards: [CARD_JSON_OBJECT]
+        }
+
++ Response Failure (application/json)
+
+    + Body
+
+        {
+            success: false,
+            msg: 'User not exists'
+        }
 
 ## Logout User [/user/logout]
 User logout
@@ -168,3 +252,87 @@ User logout
             success: true,
             msg: 'Logout success!'
         }
+
+# Comment APIs
+
+# Group Comment
+Comment related resources of the **Comment API**
+
+
+## Create Comment [/comment/create]
+Create a comment on card.
+
+### Create Comment[POST]
++ Request (application/json)
+
+        {
+            userId: "528c8fa4460ba8061b000002",
+            cardId: "528c8fa4460ba8061b000002"
+        }
+
++ Response Success (application/json)
+
+        {
+            success: true,
+            comment: COMMENT_JSON_OBJECT
+        }
+
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: 'Create comment failure!'
+        }
+
+## Get Card Comments [/comment/show/{cardId}]
+Get Card related comments.
+
+### Show User Favorite cards [GET]
++ Parameters
+    + cardId(required, string, `528c8fa4460ba8061b000002`) ... String `cardId` of the User to perform action with. Has example value.
+
+### Card Comments [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            success: true,
+            comments:[COMMENT_JSON_OBJECT]
+        }
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: 'Get comments failure!'
+        }
+
+## Star Comment[/comment/star]
+Star user comment. 
+
+### Star [PUT]
++ Request (application/json)
+
+        {
+            commentId: "528c8fa4460ba8061b000002",
+            star:  5
+        }
+
++ Response Success (application/json)
+
+    + Body
+
+        { 
+            success: true,
+            msg: "Star comment success!"
+        }
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: "Star comment failure."
+        }
+

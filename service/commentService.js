@@ -13,6 +13,12 @@ var CommentService = function CommentSerice() {};
 
 _.extend(CommentService.prototype, {
 
+    getCommentsByCardId: function(cardId, callback) {
+        Comment.find({
+            card_id: cardId
+        }, callback);
+    },
+
     star: function(id, callback) {
         Comment.findOne({
             _id: id

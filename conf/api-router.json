@@ -44,6 +44,11 @@
       "api": "syncCards"
     },
     {
+      "url": "/comment/show/:cardId",
+      "method": "GET",
+      "api": "showComments"
+    },
+    {
       "url": "/comment/star/:commentId",
       "method": "GET",
       "api": "star"

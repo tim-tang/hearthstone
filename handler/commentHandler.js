@@ -14,6 +14,22 @@ var CommentHandler = function CommentHandler() {};
 
 _.extend(CommentHandler.prototype, {
 
+    showComments: function(req, res, next) {
+        var cardId = sanitize(req.params['cardId']).trim();
+        commentService.getCommentsByCardId(cardId, function(err, comments) {
+            if (err) {
+                return res.send({
+                    success: false,
+                    msg: err.message
+                });
+            }
+            res.send({
+                success: true,
+                comments: comments
+            });
+        });
+    },
+
     star: function(req, res, next) {
         var commentId = sanitize(req.params['commentId']).trim();
         commentService.star(commentId, function(err) {

@@ -181,7 +181,7 @@ _.extend(UserHandler.prototype, {
     },
 
     updateUser: function(req, res, next) {
-        var userId = sanitize(req.body._id).trim();
+        var userId = sanitize(req.body.userId).trim();
         var name = sanitize(req.body.name).trim();
         userService.update(userId, name, function(err) {
             if (err) {

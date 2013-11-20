@@ -72,7 +72,7 @@ describe('User APIs', function() {
     it('PUT /user/update should return 200', function(done){
         var options = testHelper.options(logonUser, 'PUT', '/user/update');
         var payload = {
-            _id: logonUser._id,
+            userId: logonUser._id,
             name: randomName
         };
         testHelper.doRequest(options, payload, function(reply){

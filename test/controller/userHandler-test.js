@@ -68,6 +68,19 @@ describe('User API', function() {
         });
     });
 
+    it('PUT /user/update should return 200', function(done){
+        var options = testHelper.options(logonUser, 'PUT', '/user/update');
+        var payload = {
+            _id: logonUser._id,
+            name: randomName
+        };
+        testHelper.doRequest(options, payload, function(reply){
+            var result = JSON.parse(reply);
+            result.should.have.property('success', true);
+            done();
+        });
+    });
+
     it('GET /user/logout should resturn 200', function(done) {
         var options = testHelper.options(null, 'GET', '/user/logout');
         testHelper.doRequest(options, null, function(reply) {

@@ -37,7 +37,7 @@ _.extend(VersionService.prototype, {
                 version = versions[0];
                 version.version_no++;
             }
-            Version.save(version);
+            version.save(callback);
         });
     }
 });

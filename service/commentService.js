@@ -30,7 +30,7 @@ _.extend(CommentService.prototype, {
                 callback(new Error('Comment not exists!'));
             }
             comment.star++;
-            comment.save(comment, callback);
+            comment.save(callback);
         });
     },
 

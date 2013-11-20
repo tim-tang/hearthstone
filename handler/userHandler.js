@@ -177,6 +177,24 @@ _.extend(UserHandler.prototype, {
         });
     },
 
+    updateUser: function(req, res, next) {
+        var userId = sanitize(req.body._id).trim();
+        var name = sanitize(req.body.name).trim();
+        userService.update(userId, name, function(err) {
+            if (err) {
+                return res.send({
+                    success: false,
+                    msg: err.message
+                });
+            }
+
+            res.send({
+                success: true,
+                msg: 'Update user success!'
+            });
+        });
+    },
+
     favorite: function(req, res, next) {
         var cardId = sanitize(req.body.cardId).trim();
         var userId = sanitize(req.body.userId).trim();

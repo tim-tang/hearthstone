@@ -22,6 +22,19 @@ _.extend(UserService.prototype, {
         user.save(callback);
     },
 
+    update: function(id, name, callback) {
+        this.getUserById(id, function(err, user) {
+            if (err) {
+                return callback(err);
+            }
+            if (!user) {
+                return callback(new Error('User not exists!'));
+            }
+            user.name = name;
+            user.save(callback);
+        });
+    },
+
     getUserById: function(id, callback) {
         User.findOne({
             _id: id
@@ -49,7 +62,7 @@ _.extend(UserService.prototype, {
                 callback(new Error('User not exists!'));
             }
             user.favorites.push(cardId);
-            User.save(user, callback);
+            user.save(callback);
         });
     }
 });

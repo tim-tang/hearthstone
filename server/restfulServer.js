@@ -73,9 +73,9 @@ function registerAPI(routers) {
                     break;
 
                 case constants.ROUTER_METHOD_PUT:
-                    app.put(router.url, function(req, res) {
+                    app.put(router.url, function(req, res, next) {
                         res.contentType(constants.CONTENT_TYPE);
-                        handler[router.api](req, res);
+                        handler[router.api](req, res, next);
                     });
                     break;
 
@@ -87,9 +87,9 @@ function registerAPI(routers) {
                     break;
 
                 case constants.ROUTER_METHOD_DELETE:
-                    app.del(router.url, function(req, res) {
+                    app.del(router.url, function(req, res, next) {
                         res.contentType(constants.CONTENT_TYPE);
-                        handler[router.api](req, res);
+                        handler[router.api](req, res, next);
                     });
                     break;
 

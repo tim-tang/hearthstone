@@ -27,6 +27,12 @@
       "middleware": "userRequired"
     },
     {
+      "url": "/user/update",
+      "method": "PUT",
+      "api": "updateUser",
+      "middleware": "userRequired"
+    },
+    {
       "url": "/user/favorite",
       "method": "POST",
       "api": "favorite",

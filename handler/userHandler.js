@@ -2,10 +2,6 @@
  * Handle user api invoke.
  *
  * @author tim.tang
- *
- * TODO:
- * - defence check request params.
- * - how to build error response?
  */
 
 var constants = require('../common/constants'),
@@ -166,7 +162,6 @@ _.extend(UserHandler.prototype, {
         });
     },
 
-    //TODO: check session existence.
     showinfo: function(req, res, next) {
         var name = req.params['name'];
         name = sanitize(name).trim();

@@ -5,3 +5,4 @@
  */
 
 exports.UserHandler= require('./userHandler');
+exports.CardHandler= require('./cardHandler');

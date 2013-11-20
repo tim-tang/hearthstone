@@ -25,6 +25,11 @@
       "method": "GET",
       "api": "showinfo",
       "middleware": "userRequired"
+    },
+    {
+      "url": "/card/sync/:version",
+      "method": "GET",
+      "api": "syncCards"
     }
   ]
 }

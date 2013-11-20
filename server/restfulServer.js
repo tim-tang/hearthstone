@@ -9,10 +9,10 @@ var _ = require('underscore'),
     path = require('path'),
     application_root = path.resolve(__dirname, '..'),
     constants = require('../common/constants'),
-    handlers = require('../handler'),
     config = require('../conf/hearthstone-conf').config,
     express = require('express'),
     auth = require('../middleware/authenticator'),
+    handlers = require('../handler'),
     userHandler = require('../handler/userHandler'),
     app = express(),
     restAPI;
@@ -97,7 +97,7 @@ function registerAPI(routers) {
                     console.log('The METHOD-[%s] not supported!', router.method);
                 }
             } else {
-                console.log('Invalide API-[%s] or URL-[%s] in RESTfulAPI.json!', router.api, router.url);
+               // console.log('Invalid API-[%s] or URL-[%s] in api-router.json!', router.api, router.url);
             }
         });
     });

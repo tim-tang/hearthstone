@@ -65,7 +65,7 @@ _.extend(UserHandler.prototype, {
             }
             if (user) {
                 res.send({
-                    success:false,
+                    success: false,
                     msg: 'User Name has been used.',
                     name: name,
                     email: email
@@ -102,7 +102,7 @@ _.extend(UserHandler.prototype, {
 
         pass = hsHelper.md5(pass);
         var avatar = sanitize(req.body.avatar).trim();
-        if (_.isEmpty(avatar)){
+        if (_.isEmpty(avatar)) {
             // generate avatar url
             avatar = 'http://www.gravatar.com/avatar/' + hsHelper.md5(email.toLowerCase()) + '?size=48';
         }

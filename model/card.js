@@ -10,10 +10,6 @@ var mongoose = require('mongoose'),
 
 var CardSchema = new Schema({
 
-    card_id: {
-        type: ObjectId,
-        index: true
-    },
     title: {
         type: String
     },
@@ -23,9 +19,9 @@ var CardSchema = new Schema({
     content: {
         type: String
     },
-    abilities: {
-        type: String
-    },
+    abilities: [{
+        name: String
+    }],
     attack: {
         type: Number
     },
@@ -46,6 +42,10 @@ var CardSchema = new Schema({
     },
     evaluation: {
         type: String
+    },
+    is_active: {
+        type: Boolean,
+        default: true
     },
     version: {
         type: Number

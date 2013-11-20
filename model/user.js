@@ -5,7 +5,8 @@
  */
 
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+    Schema = mongoose.Schema,
+    ObjectId = Schema.ObjectId;
 
 var UserSchema = new Schema({
     name: {
@@ -25,6 +26,9 @@ var UserSchema = new Schema({
     deviceToken: {
         type: String
     },
+    favorites: [{
+        card_id: ObjectId
+    }],
     update_at: {
         type: Date,
         default: Date.now

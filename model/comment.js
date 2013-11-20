@@ -9,15 +9,14 @@ var mongoose = require('mongoose'),
     ObjectId = Schema.ObjectId;
 
 var CommentSchema = new Schema({
-    comment_id: {
+
+    user_id: {
         type: ObjectId,
         index: true
     },
-    user_id: {
-        type: ObjectId
-    },
     card_id: {
-        type: ObjectId
+        type: ObjectId,
+        index: true
     },
     star: {
         type: Number,

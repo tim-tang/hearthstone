@@ -40,7 +40,6 @@ _.extend(VersionService.prototype, {
             Version.save(version);
         });
     }
-
 });
 
 

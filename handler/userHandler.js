@@ -150,6 +150,7 @@ _.extend(UserHandler.prototype, {
                 });
             }
             hsHelper.popSession(user, res);
+            //TODO:
             res.send(user);
         });
     },

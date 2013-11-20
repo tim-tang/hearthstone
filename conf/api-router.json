@@ -34,7 +34,7 @@
     },
     {
       "url": "/user/favorites/:userId",
-      "method": "Get",
+      "method": "GET",
       "api": "showFavorites",
       "middleware": "userRequired"
     },
@@ -42,6 +42,16 @@
       "url": "/card/sync/:version",
       "method": "GET",
       "api": "syncCards"
+    },
+    {
+      "url": "/comment/star/:commentId",
+      "method": "GET",
+      "api": "star"
+    },
+    {
+      "url": "/comment/create",
+      "method": "POST",
+      "api": "createComment"
     }
   ]
 }

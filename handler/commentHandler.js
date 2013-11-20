@@ -31,8 +31,9 @@ _.extend(CommentHandler.prototype, {
     },
 
     star: function(req, res, next) {
-        var commentId = sanitize(req.params['commentId']).trim();
-        commentService.star(commentId, function(err) {
+        var commentId = sanitize(req.body.commentId).trim();
+        var star = sanitize(req.boody.star).trim();
+        commentService.star(commentId, star, function(err) {
             if (err) {
                 return res.send({
                     success: false,

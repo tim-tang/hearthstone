@@ -44,6 +44,11 @@ _.extend(CardHandler.prototype, {
                 });
             });
         });
+    },
+
+    importCards: function(req, res, next){
+        //TODO:
+
     }
 });
 

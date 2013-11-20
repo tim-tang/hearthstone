@@ -19,7 +19,7 @@ _.extend(CommentService.prototype, {
         }, callback);
     },
 
-    star: function(id, callback) {
+    star: function(id, star, callback) {
         Comment.findOne({
             _id: id
         }, function(err, comment) {
@@ -29,7 +29,7 @@ _.extend(CommentService.prototype, {
             if (!comment) {
                 callback(new Error('Comment not exists!'));
             }
-            comment.star++;
+            comment.star = star;
             comment.save(callback);
         });
     },

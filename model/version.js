@@ -13,7 +13,6 @@ var VersionSchema = new Schema({
     version_no: {
         type: Number,
         unique: true
-
     }
 });
 

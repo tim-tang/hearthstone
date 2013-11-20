@@ -38,6 +38,19 @@ _.extend(UserService.prototype, {
         User.findOne({
             email: email
         }, callback);
+    },
+
+    favorite: function(userId, cardId, callback) {
+        this.getUserById(userId, function(err, user) {
+            if (err) {
+                callback(err);
+            }
+            if (!user) {
+                callback(new Error('User not exists!'));
+            }
+            user.favorites.push(cardId);
+            User.save(user, callback);
+        });
     }
 });
 

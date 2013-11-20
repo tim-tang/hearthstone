@@ -27,6 +27,12 @@
       "middleware": "userRequired"
     },
     {
+      "url": "/user/favorite",
+      "method": "POST",
+      "api": "favorite",
+      "middleware": "userRequired"
+    },
+    {
       "url": "/card/sync/:version",
       "method": "GET",
       "api": "syncCards"

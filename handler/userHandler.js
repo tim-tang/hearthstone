@@ -171,6 +171,23 @@ _.extend(UserHandler.prototype, {
             }
             res.send(user);
         });
+    },
+
+    favorite: function(req, res, next) {
+        var cardId = sanitize(req.body.cardId).trim();
+        var userId = sanitize(req.body.userId).trim();
+        userService.favorite(userId, cardId, function(err){
+            if(err){
+               return res.send({
+                    success: false,
+                    msg: err.message
+                });
+            }
+            res.send({
+                success: true,
+                msg: 'Favorite card success!'
+            });
+        });
     }
 });
 

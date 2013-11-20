@@ -53,8 +53,8 @@ describe('User API', function() {
         };
         testHelper.doRequest(options, payload, function(reply) {
             var result = JSON.parse(reply);
-            logonUser = result;
-            result.should.have.property('deviceToken', 'abc123');
+            logonUser = result.user;
+            result.should.have.property('success', true);
             done();
         });
     });

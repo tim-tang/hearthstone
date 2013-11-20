@@ -150,8 +150,10 @@ _.extend(UserHandler.prototype, {
                 });
             }
             hsHelper.popSession(user, res);
-            //TODO:
-            res.send(user);
+            res.send({
+                success: true,
+                user: user
+            });
         });
     },
 

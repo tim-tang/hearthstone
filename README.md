@@ -52,9 +52,10 @@
     ```
     $ apiary preview  --path doc/apiary.apib  --output doc/hearthstone-api.html
     ```
+
 ### Preview API doc online
 
-- [Heathstone API](http://htmlpreview.github.io/?https://github.com/tim-tang/hearthstone/blob/master/doc/hearthstone-api.html)
+- [Heathstone API](http://htmlpreview.github.com/?https://github.com/tim-tang/hearthstone/blob/master/doc/hearthstone-api.html)
 
 ### Issue
 

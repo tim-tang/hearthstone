@@ -1,0 +1,1900 @@
+<!doctype html>
+<!--[if lt IE 7 ]> <html class="no-js ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]>    <html class="no-js ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]>    <html class="no-js ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>Hearthstone APIs—by apiary.io</title>
+    <meta name="description" content="a place where APIs are kept">
+  <meta name="author" content="apiary.io">
+
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+  <link rel="shortcut icon" href="https://apiary.a.ssl.fastly.net/assets/icons/favicon-aa8fc5808796304b.ico">
+  <link rel="apple-touch-icon-precomposed" href="https://apiary.a.ssl.fastly.net/assets/icons/apple-touch-icon-precomposed-16cb9301e5cd0912.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://apiary.a.ssl.fastly.net/assets/icons/apple-touch-icon-72x72-precomposed-88b45e069ad376bd.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://apiary.a.ssl.fastly.net/assets/icons/apple-touch-icon-114x114-precomposed-166416e5d92f4c45.png">
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://apiary.a.ssl.fastly.net/assets/icons/apple-touch-icon-144x144-precomposed-54504235b83a48b2.png">
+
+  <link rel="stylesheet" href="https://apiary.a.ssl.fastly.net/assets/css/normalize-c1a6015040ef1201.css">
+  <link rel="stylesheet" href="https://apiary.a.ssl.fastly.net/assets/css/font-awesome-b2431b0e6805305e.css" media="screen, presentation, print" />
+  <link rel="stylesheet" href="https://apiary.a.ssl.fastly.net/assets/css/docs-e71f99c0a4e6484d.css" media="screen, presentation" />
+
+
+  <link rel="stylesheet" href="https://apiary.a.ssl.fastly.net/assets/css/print-cd9108415d1c5f70.css" media="print" />
+
+  <link rel="stylesheet" href="https://apiary.a.ssl.fastly.net/assets/js/libs/prism/prism-ac8b50ad63b3f96b.css" media="screen, presentation" />
+  <script src="https://apiary.a.ssl.fastly.net/assets/js/libs/prism/prism-4c17cf9b7b332e9e.js" data-manual></script>
+
+  <script src="https://apiary.a.ssl.fastly.net/assets/js/libs/jquery-1.8.3-1deb5370ece3ab15.js"></script>
+
+</head>
+
+<body>
+
+  <div id="container">
+
+    
+
+<div id="documentationContainer">
+
+
+<script>window.docResources = {};</script>
+
+<div id="leftColumn">
+  <h1 id="apiHeadline">Hearthstone APIs</h1>
+
+  
+        <a name="user"></a>
+    <div class="chapterWrapper">
+              <hgroup class="chapter">
+          <h1>User</h1>          <div class="details"><p>User related resources of the <strong>User API</strong></p>
+</div>        </hgroup>
+      
+                                      <div class="sameResourceGroup">
+                <h2 class="nameResource">Signup</h2>        <div class="descriptionMethod"><p>Create a user.</p>
+</div>        <h3 class="nameMethod">Signup a user</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>POST</span></h1>
+            <h2>/user/signup</h2>
+            <a class="resourcePermalink" href="#post-%2Fuser%2Fsignup" name="post-%2Fuser%2Fsignup"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E1">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">{
+    name: &#34;tim&#34;,
+    pass: &#34;123&#34;,
+    email: &#34;tang.jilong@gmail.com&#34;,
+    avatar: &#34;&#34;,
+    deviceToken: &#34;abc123&#34;
+}</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request POST \
+     --data-binary "{
+    name: \&#34;tim\&#34;,
+    pass: \&#34;123\&#34;,
+    email: \&#34;tang.jilong@gmail.com\&#34;,
+    avatar: \&#34;\&#34;,
+    deviceToken: \&#34;abc123\&#34;
+}" \
+     "http://apiary.io/user/signup"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/signup") as System.Net.HttpWebRequest;
+    request.Method = "POST";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;,\n    avatar: \&#34;\&#34;,\n    deviceToken: \&#34;abc123\&#34;\n}&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://apiary.io/user/signup");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;,\n    avatar: \&#34;\&#34;,\n    deviceToken: \&#34;abc123\&#34;\n}&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://apiary.io/user/signup');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;,\n    avatar: \&#34;\&#34;,\n    deviceToken: \&#34;abc123\&#34;\n}&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/signup",
+  body: &#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;,\n    avatar: \&#34;\&#34;,\n    deviceToken: \&#34;abc123\&#34;\n}&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "POST"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps({
+    name: &#34;tim&#34;,
+    pass: &#34;123&#34;,
+    email: &#34;tang.jilong@gmail.com&#34;,
+    avatar: &#34;&#34;,
+    deviceToken: &#34;abc123&#34;
+})
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/user/signup", data=values, headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/signup");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;,\n    avatar: \&#34;\&#34;,\n    deviceToken: \&#34;abc123\&#34;\n}&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;,\n    avatar: \&#34;\&#34;,\n    deviceToken: \&#34;abc123\&#34;\n}&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.post "http://apiary.io/user/signup", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: true,
+    msg: 'Signup sucess!'
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'User name must be 0-9,a-z,A-Z',
+    name: 'tim',
+    email:'tang.jilong@gmail.com'
+}        </code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'User Name has been used.',
+    name: 'tim',
+    email:'tang.jilong@gmail.com'
+}        </code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Invalid email address.',
+    name: 'tim',
+    email:'tang.jilong@gmail.com'
+}        </code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Incomplete user info.',
+    name: 'tim',
+    email:'tang.jilong@gmail.com'
+}        </code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+                <h2 class="nameResource">User login</h2>        <div class="descriptionMethod"><p>User login with username/passwod.</p>
+</div>        <h3 class="nameMethod">Login</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>POST</span></h1>
+            <h2>/user/login</h2>
+            <a class="resourcePermalink" href="#post-%2Fuser%2Flogin" name="post-%2Fuser%2Flogin"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E2">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">{
+    name: &#34;tim&#34;,
+    pass: &#34;123&#34;,
+}</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request POST \
+     --data-binary "{
+    name: \&#34;tim\&#34;,
+    pass: \&#34;123\&#34;,
+}" \
+     "http://apiary.io/user/login"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/login") as System.Net.HttpWebRequest;
+    request.Method = "POST";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n}&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://apiary.io/user/login");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n}&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://apiary.io/user/login');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n}&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/login",
+  body: &#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n}&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "POST"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps({
+    name: &#34;tim&#34;,
+    pass: &#34;123&#34;,
+})
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/user/login", data=values, headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/login");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n}&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;{\n    name: \&#34;tim\&#34;,\n    pass: \&#34;123\&#34;,\n}&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.post "http://apiary.io/user/login", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a</code></pre>
+                    <pre class="outgoing"><code class="">{ 
+    deviceToken: 'abc123',
+    avatar: 'http://www.gravatar.com/avatar/b2c120af3dd18a08a76b30089095acfd?size=48',
+    email: 'tang.jilong@gmail.com',
+    pass: 'd81f9c1be2e08964bf9f24b15f0e4900',
+    name: 'MY4tZhE6',
+    _id: '528b47249b5d2c1e2c000001',
+    __v: 0,
+    update_at: '2013-11-19T11:10:28.621Z' 
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Invalid username or password!',
+    name: 'tim',
+    pass: '123'
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'User not exists!',
+    name: 'tim',
+    pass: '123'
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Bad password!',
+    name: 'tim',
+    pass: '123'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+                <h2 class="nameResource">User update</h2>        <div class="descriptionMethod"><p>Update user name (Auth token required! ).</p>
+</div>        <h3 class="nameMethod">Update</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>PUT</span></h1>
+            <h2>/user/update</h2>
+            <a class="resourcePermalink" href="#put-%2Fuser%2Fupdate" name="put-%2Fuser%2Fupdate"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E3">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">{
+    userId: &#34;528c8fa4460ba8061b000002&#34;,
+    name: &#34;new username&#34;,
+    avatar: &#34;http://timtang.me&#34;,
+    email: &#34;tang.jilong@gmail.com&#34;
+}</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request PUT \
+     --data-binary "{
+    userId: \&#34;528c8fa4460ba8061b000002\&#34;,
+    name: \&#34;new username\&#34;,
+    avatar: \&#34;http://timtang.me\&#34;,
+    email: \&#34;tang.jilong@gmail.com\&#34;
+}" \
+     "http://apiary.io/user/update"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/update") as System.Net.HttpWebRequest;
+    request.Method = "PUT";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    name: \&#34;new username\&#34;,\n    avatar: \&#34;http://timtang.me\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;\n}&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("PUT", "http://apiary.io/user/update");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    name: \&#34;new username\&#34;,\n    avatar: \&#34;http://timtang.me\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;\n}&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('PUT', 'http://apiary.io/user/update');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    name: \&#34;new username\&#34;,\n    avatar: \&#34;http://timtang.me\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;\n}&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/update",
+  body: &#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    name: \&#34;new username\&#34;,\n    avatar: \&#34;http://timtang.me\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;\n}&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "PUT"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps({
+    userId: &#34;528c8fa4460ba8061b000002&#34;,
+    name: &#34;new username&#34;,
+    avatar: &#34;http://timtang.me&#34;,
+    email: &#34;tang.jilong@gmail.com&#34;
+})
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/user/update", data=values, headers=headers)
+request.get_method = lambda: 'PUT'
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/update");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    name: \&#34;new username\&#34;,\n    avatar: \&#34;http://timtang.me\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;\n}&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    name: \&#34;new username\&#34;,\n    avatar: \&#34;http://timtang.me\&#34;,\n    email: \&#34;tang.jilong@gmail.com\&#34;\n}&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.put "http://apiary.io/user/update", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{ 
+    success: true,
+    msg: &#34;Update user success!&#34;
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: &#34;Update user failure.&#34;
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+                <h2 class="nameResource">User favorite</h2>        <div class="descriptionMethod"><p>Update user name. (Auth token required!)</p>
+</div>        <h3 class="nameMethod">Update</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>PUT</span></h1>
+            <h2>/user/favorite</h2>
+            <a class="resourcePermalink" href="#put-%2Fuser%2Ffavorite" name="put-%2Fuser%2Ffavorite"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E4">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">{
+    cardId: &#34;528c8fa4460ba8061b000002&#34;,
+    userId: &#34;528c8fa4460ba8061b000002&#34;  # This can be empty for guest.
+}</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request PUT \
+     --data-binary "{
+    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,
+    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.
+}" \
+     "http://apiary.io/user/favorite"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/favorite") as System.Net.HttpWebRequest;
+    request.Method = "PUT";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;{\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.\n}&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("PUT", "http://apiary.io/user/favorite");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;{\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.\n}&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('PUT', 'http://apiary.io/user/favorite');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;{\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.\n}&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/favorite",
+  body: &#34;{\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.\n}&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "PUT"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps({
+    cardId: &#34;528c8fa4460ba8061b000002&#34;,
+    userId: &#34;528c8fa4460ba8061b000002&#34;  # This can be empty for guest.
+})
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/user/favorite", data=values, headers=headers)
+request.get_method = lambda: 'PUT'
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/favorite");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;{\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.\n}&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;{\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;  # This can be empty for guest.\n}&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.put "http://apiary.io/user/favorite", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{ 
+    success: true,
+    msg: &#34;Favorite card success!&#34;
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: &#34;Favorite card failure.&#34;
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+                <h2 class="nameResource">Show User Info</h2>        <div class="descriptionMethod"><p>Display user Information. (Auth token required!)</p>
+</div>        <h3 class="nameMethod">Retrieve a User</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/user/info/{userId}</h2>
+            <a class="resourcePermalink" href="#get-%2Fuser%2Finfo%2F%7BuserId%7D" name="get-%2Fuser%2Finfo%2F%7BuserId%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                      <article class="details">
+                                          <div class="paramsTableWrap"><table class="paramsTable">
+                <caption>Parameters</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                      <tr>
+                      <td>userId</td>
+                      <td><p>String <code>userId</code> of the User to perform action with. Has example value.</p>
+</td>
+                      <td>string, required<br>example: <samp>528d9581211ad2072d000004</samp>                                              </td>
+                    </tr>
+                                  </tbody>
+              </table></div>
+                          </article>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E5">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a
+</code></pre>
+  <pre class="incoming"><code class="language-javascript"></code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; --header &#34;Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34; \
+     "http://apiary.io/user/info/{userId}"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/info/{userId}") as System.Net.HttpWebRequest;
+    request.Method = "GET";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+request.Headers.Add(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+    request.ContentLength = 0;
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://apiary.io/user/info/{userId}");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.setRequestHeader(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(null);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://apiary.io/user/info/{userId}');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.setRequestHeader(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(null);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/info/{userId}",
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Cookie&#34;: &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;},
+  method: "GET"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Cookie&#34;: &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;}
+request = Request("http://apiary.io/user/info/{userId}", headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/info/{userId}");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;, &#34;Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+
+headers  = {:content_type =&#62; &#34;application/json&#34;,:cookie =&#62; &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;}
+response = RestClient.get "http://apiary.io/user/info/{userId}", headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">{ 
+    deviceToken: 'abc123',
+    avatar: 'http://www.gravatar.com/avatar/b2c120af3dd18a08a76b30089095acfd?size=48',
+    email: 'tang.jilong@gmail.com',
+    pass: 'd81f9c1be2e08964bf9f24b15f0e4900',
+    name: 'MY4tZhE6',
+    _id: '528b47249b5d2c1e2c000001',
+    __v: 0,
+    update_at: '2013-11-19T11:10:28.621Z' 
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+                <h2 class="nameResource">Show Favorite Cards</h2>        <div class="descriptionMethod"><p>Display user favorite cards.(Auth token required!)</p>
+</div>        <h3 class="nameMethod">Show User Favorite cards</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/user/favorite/{userId}</h2>
+            <a class="resourcePermalink" href="#get-%2Fuser%2Ffavorite%2F%7BuserId%7D" name="get-%2Fuser%2Ffavorite%2F%7BuserId%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                      <article class="details">
+                                          <div class="paramsTableWrap"><table class="paramsTable">
+                <caption>Parameters</caption>
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Details</th>
+                  </tr>
+                </thead>
+                <tbody>
+                                      <tr>
+                      <td>userId</td>
+                      <td><p>String <code>userId</code> of the User to perform action with. Has example value.</p>
+</td>
+                      <td>string, required<br>example: <samp>528c8fa4460ba8061b000002</samp>                                              </td>
+                    </tr>
+                                  </tbody>
+              </table></div>
+                          </article>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E6">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a
+</code></pre>
+  <pre class="incoming"><code class="language-javascript"></code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; --header &#34;Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34; \
+     "http://apiary.io/user/favorite/{userId}"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/favorite/{userId}") as System.Net.HttpWebRequest;
+    request.Method = "GET";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+request.Headers.Add(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+    request.ContentLength = 0;
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://apiary.io/user/favorite/{userId}");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.setRequestHeader(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(null);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://apiary.io/user/favorite/{userId}');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.setRequestHeader(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(null);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/favorite/{userId}",
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Cookie&#34;: &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;},
+  method: "GET"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Cookie&#34;: &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;}
+request = Request("http://apiary.io/user/favorite/{userId}", headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/favorite/{userId}");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;, &#34;Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+
+headers  = {:content_type =&#62; &#34;application/json&#34;,:cookie =&#62; &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;}
+response = RestClient.get "http://apiary.io/user/favorite/{userId}", headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">{
+    success: true,
+    cards: [CARD_JSON_OBJECT]
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'User not exists'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                  <div class="sameResourceGroup">
+                <h2 class="nameResource">Logout User</h2>        <div class="descriptionMethod"><p>User logout</p>
+</div>        <h3 class="nameMethod">Logout</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/user/logout</h2>
+            <a class="resourcePermalink" href="#get-%2Fuser%2Flogout" name="get-%2Fuser%2Flogout"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS1E7">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a
+</code></pre>
+  <pre class="incoming"><code class="language-javascript"></code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; --header &#34;Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34; \
+     "http://apiary.io/user/logout"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/user/logout") as System.Net.HttpWebRequest;
+    request.Method = "GET";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+request.Headers.Add(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+    request.ContentLength = 0;
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://apiary.io/user/logout");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.setRequestHeader(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(null);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://apiary.io/user/logout');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.setRequestHeader(&#34;Cookie&#34;, &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(null);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/user/logout",
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Cookie&#34;: &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;},
+  method: "GET"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;, &#34;Cookie&#34;: &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;}
+request = Request("http://apiary.io/user/logout", headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/user/logout");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;, &#34;Cookie: hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+
+headers  = {:content_type =&#62; &#34;application/json&#34;,:cookie =&#62; &#34;hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a&#34;}
+response = RestClient.get "http://apiary.io/user/logout", headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">{
+    success: true,
+    msg: 'Logout success!'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          </div>
+        </section>      
+          </div>
+      <a name="comment"></a>
+    <div class="chapterWrapper">
+              <hgroup class="chapter">
+          <h1>Comment</h1>          <div class="details"><p>Comment related resources of the <strong>Comment API</strong></p>
+</div>        </hgroup>
+      
+                                      <div class="sameResourceGroup">
+                <h2 class="nameResource">Create Comment</h2>        <div class="descriptionMethod"><p>Create a comment on card.</p>
+</div>        <h3 class="nameMethod">Create Comment</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>POST</span></h1>
+            <h2>/comment/create</h2>
+            <a class="resourcePermalink" href="#post-%2Fcomment%2Fcreate" name="post-%2Fcomment%2Fcreate"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E1">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">{
+    userId: &#34;528c8fa4460ba8061b000002&#34;,
+    cardId: &#34;528c8fa4460ba8061b000002&#34;
+    star:5,
+    content:&#34;This card ...&#34;
+}</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request POST \
+     --data-binary "{
+    userId: \&#34;528c8fa4460ba8061b000002\&#34;,
+    cardId: \&#34;528c8fa4460ba8061b000002\&#34;
+    star:5,
+    content:\&#34;This card ...\&#34;
+}" \
+     "http://apiary.io/comment/create"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/comment/create") as System.Net.HttpWebRequest;
+    request.Method = "POST";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;\n    star:5,\n    content:\&#34;This card ...\&#34;\n}&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://apiary.io/comment/create");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;\n    star:5,\n    content:\&#34;This card ...\&#34;\n}&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://apiary.io/comment/create');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;\n    star:5,\n    content:\&#34;This card ...\&#34;\n}&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/comment/create",
+  body: &#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;\n    star:5,\n    content:\&#34;This card ...\&#34;\n}&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "POST"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps({
+    userId: &#34;528c8fa4460ba8061b000002&#34;,
+    cardId: &#34;528c8fa4460ba8061b000002&#34;
+    star:5,
+    content:&#34;This card ...&#34;
+})
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/comment/create", data=values, headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/comment/create");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;\n    star:5,\n    content:\&#34;This card ...\&#34;\n}&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;{\n    userId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    cardId: \&#34;528c8fa4460ba8061b000002\&#34;\n    star:5,\n    content:\&#34;This card ...\&#34;\n}&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.post "http://apiary.io/comment/create", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: true,
+    comment: COMMENT_JSON_OBJECT
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Create comment failure!'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                                <h3 class="nameMethod">Card Comments</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/comment/show/{cardId}</h2>
+            <a class="resourcePermalink" href="#get-%2Fcomment%2Fshow%2F%7BcardId%7D" name="get-%2Fcomment%2Fshow%2F%7BcardId%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E2">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript"></code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     "http://apiary.io/comment/show/{cardId}"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/comment/show/{cardId}") as System.Net.HttpWebRequest;
+    request.Method = "GET";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+    request.ContentLength = 0;
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://apiary.io/comment/show/{cardId}");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(null);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://apiary.io/comment/show/{cardId}');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(null);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/comment/show/{cardId}",
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "GET"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/comment/show/{cardId}", headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/comment/show/{cardId}");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.get "http://apiary.io/comment/show/{cardId}", headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">{
+    success: true,
+    comments:[COMMENT_JSON_OBJECT]
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Get comments failure!'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>                                <div class="sameResourceGroup">
+                <h2 class="nameResource">Star Commen</h2>        <div class="descriptionMethod"><p>Star user comment.</p>
+</div>        <h3 class="nameMethod">Star</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>PUT</span></h1>
+            <h2>/comment/star</h2>
+            <a class="resourcePermalink" href="#put-%2Fcomment%2Fstar" name="put-%2Fcomment%2Fstar"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS2E3">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">{
+    commentId: &#34;528c8fa4460ba8061b000002&#34;,
+    star:  5
+}</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request PUT \
+     --data-binary "{
+    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,
+    star:  5
+}" \
+     "http://apiary.io/comment/star"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/comment/star") as System.Net.HttpWebRequest;
+    request.Method = "PUT";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;{\n    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    star:  5\n}&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("PUT", "http://apiary.io/comment/star");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;{\n    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    star:  5\n}&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('PUT', 'http://apiary.io/comment/star');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;{\n    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    star:  5\n}&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/comment/star",
+  body: &#34;{\n    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    star:  5\n}&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "PUT"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps({
+    commentId: &#34;528c8fa4460ba8061b000002&#34;,
+    star:  5
+})
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/comment/star", data=values, headers=headers)
+request.get_method = lambda: 'PUT'
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/comment/star");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;{\n    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    star:  5\n}&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;{\n    commentId: \&#34;528c8fa4460ba8061b000002\&#34;,\n    star:  5\n}&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.put "http://apiary.io/comment/star", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{ 
+    success: true,
+    msg: &#34;Star comment success!&#34;
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: &#34;Star comment failure.&#34;
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          </div>
+        </section>      
+          </div>
+  
+</div>
+
+</div>
+
+
+  </div>
+
+  <script>
+    window.config = {
+      "baseAjaxUrl": "http://apiary.io/"
+    };
+  </script>
+
+  <script>
+    window.jsLoginUrl    = "https://login.apiary.io/login?discussion=1&xhr_login=1";
+    window.jsLoggedIn    = false;
+    window.trafficSecret = "";
+    window.runExampleIframeUrl = "http://apiary.io/___APIARY_INTERNAL___/docs/run-button";
+    window.loginUri      = "https://login.apiary.io/login";
+    window.baseDomain    = "";
+
+    window.config.languages = {"raw":"none (raw data)","curl":"curl","csharp":"C#","javascript":"javascript","nodejs":"node.js","python":"python","php":"php","ruby":"ruby"};
+    window.previewHelpers = window.previewHelpers || {};
+  </script>
+
+  <!-- vitalize documentation -->
+  <script src="https://apiary.a.ssl.fastly.net/assets/js/docs-e7fb0bc843bce16b.js"></script>
+
+
+
+  <!-- inspect traffic w/ ease -->
+  <script src="https://apiary.a.ssl.fastly.net/assets/js/traffic-1622bcfe990b61c8.js" data-multipart-container='.resource .debugger[data-resource-signature="#{method} #{url}"]'></script>
+
+  <script>
+  var uvOptions = {};
+  (function() {
+    var uv = document.createElement('script'); uv.type = 'text/javascript'; uv.async = true;
+    uv.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'widget.uservoice.com/QfFjfKUkAgUNRFdUmuX6A.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(uv, s);
+  })();
+</script><script>
+ var _gaq = [['_setAccount', 'UA-18252923-1'], ['_trackPageview']];
+ (function(d, t) {
+  var g = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+  g.async = true;
+  g.src = ('https:' == location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  s.parentNode.insertBefore(g, s);
+ })(document, 'script');
+</script><!-- Mixpanel -->
+<script type='text/javascript'>
+  (function(e,b){if(!b.__SV){var a,f,i,g;window.mixpanel=b;a=e.createElement('script');a.type='text/javascript';a.async=!0;a.src=('https:'===e.location.protocol?'https:':'http:')+'//cdn.mxpnl.com/libs/mixpanel-2.2.min.js';f=e.getElementsByTagName('script')[0];f.parentNode.insertBefore(a,f);b._i=[];b.init=function(a,e,d){function f(b,h){var a=h.split('.');2==a.length&&(b=b[a[0]],h=a[1]);b[h]=function(){b.push([h].concat(Array.prototype.slice.call(arguments,0)))}}var c=b;'undefined'!==typeof d?c=b[d]=[]:d="mixpanel";c.people=c.people||[];c.toString=function(b){var a='mixpanel';'mixpanel'!==d&&(a+='.'+d);b||(a+=' (stub)');return a};c.people.toString=function(){return c.toString(1)+'.people (stub)'};i='disable track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config people.set people.increment people.append people.track_charge people.clear_charges people.delete_user'.split(' ');for(g=0;g<i.length;g++)f(c,i[g]);b._i.push([a,e,d])};b.__SV=1.2}})(document,window.mixpanel||[]);
+  mixpanel.init('5977dee08127554fce5543794fbafd90');
+  mixpanel.set_config({"cookie_name":"apiaryMixpanel","store_google":false,"verbose":"","track_pageview":false,"debug":false,"upgrade":true});
+  window.mixpanelDomain = "apiary.io"
+</script>
+<!-- /Mixpanel -->
+  <!-- Mixpanel -->
+      <script src="https://apiary.a.ssl.fastly.net/assets/js/mixpanel-9b251c7b80482c96.js"></script>
+    <!-- /Mixpanel -->
+
+</body>
+</html>

@@ -6,8 +6,8 @@ lib-cov
 *.out
 *.pid
 *.gz
-*.html
 .DS_Store
+coverage.html
 *.swp
 *.swo
 

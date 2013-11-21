@@ -21,7 +21,7 @@
       "api": "logout"
     },
     {
-      "url": "/user/info/:name",
+      "url": "/user/info/:userId",
       "method": "GET",
       "api": "showinfo",
       "middleware": "userRequired"

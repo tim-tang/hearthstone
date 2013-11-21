@@ -75,18 +75,18 @@ _.extend(UserHandler.prototype, {
         });
 
         var email = sanitize(req.body.email).trim();
-        email = email.toLowerCase();
-        try {
-            check(email, 'Invalid email address.').isEmail();
-        } catch (e) {
-            res.send({
-                success: false,
-                msg: e.message,
-                name: name,
-                email: email
-            });
-            return;
-        }
+        //try {
+        //    check(email, 'Invalid email address.').isEmail();
+        //} catch (e) {
+        //    res.send({
+        //        success: false,
+        //        msg: e.message,
+        //        name: name,
+        //        email: email
+        //    });
+        //    return;
+        //}
+        //email = email.toLowerCase();
 
 
         var pass = sanitize(req.body.pass).trim();
@@ -102,7 +102,7 @@ _.extend(UserHandler.prototype, {
 
         pass = hsHelper.md5(pass);
         var avatar = sanitize(req.body.avatar).trim();
-        if (_.isEmpty(avatar)) {
+        if (_.isEmpty(avatar) && email) {
             // generate avatar url
             avatar = 'http://www.gravatar.com/avatar/' + hsHelper.md5(email.toLowerCase()) + '?size=48';
         }
@@ -170,9 +170,9 @@ _.extend(UserHandler.prototype, {
     },
 
     showinfo: function(req, res, next) {
-        var name = req.params['name'];
-        name = sanitize(name).trim();
-        userService.getUserByName(name, function(err, user) {
+        var userId = req.params['userId'];
+        userId = sanitize(userId).trim();
+        userService.getUserById(userId, function(err, user) {
             if (err) {
                 return next(err);
             }
@@ -183,7 +183,9 @@ _.extend(UserHandler.prototype, {
     updateUser: function(req, res, next) {
         var userId = sanitize(req.body.userId).trim();
         var name = sanitize(req.body.name).trim();
-        userService.update(userId, name, function(err) {
+        var email = sanitize(req.body.email).trim();
+        var avatar = sanitize(req.body.avatar).trim;
+        userService.update(userId, name, email, avatar, function(err) {
             if (err) {
                 return res.send({
                     success: false,

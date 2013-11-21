@@ -60,8 +60,8 @@ describe('User APIs', function() {
         });
     });
 
-    it('GET /user/:name should return 200', function(done) {
-        var options = testHelper.options(logonUser, 'GET', '/user/info/'+randomName);
+    it('GET /user/info/:userId should return 200', function(done) {
+        var options = testHelper.options(logonUser, 'GET', '/user/info/'+logonUser._id);
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
             result.should.have.property('deviceToken', 'abc123');
@@ -73,7 +73,8 @@ describe('User APIs', function() {
         var options = testHelper.options(logonUser, 'PUT', '/user/update');
         var payload = {
             userId: logonUser._id,
-            name: randomName
+            name: randomName,
+            email: randomEmail
         };
         testHelper.doRequest(options, payload, function(reply){
             var result = JSON.parse(reply);

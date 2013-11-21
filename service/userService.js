@@ -22,7 +22,7 @@ _.extend(UserService.prototype, {
         user.save(callback);
     },
 
-    update: function(id, name, callback) {
+    update: function(id, name, email, avatar, callback) {
         this.getUserById(id, function(err, user) {
             if (err) {
                 return callback(err);
@@ -31,6 +31,8 @@ _.extend(UserService.prototype, {
                 return callback(new Error('User not exists!'));
             }
             user.name = name;
+            user.email = email;
+            user.avatar = avatar;
             user.save(callback);
         });
     },

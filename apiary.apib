@@ -131,7 +131,9 @@ Update user name (Auth token required! ).
 
         {
             userId: "528c8fa4460ba8061b000002",
-            name: "new username"
+            name: "new username",
+            avatar: "http://timtang.me",
+            email: "tang.jilong@gmail.com"
         }
 
 + Response Success (application/json)
@@ -177,12 +179,12 @@ Update user name. (Auth token required!)
             msg: "Favorite card failure."
         }
 
-## Show User Info [/user/info/{name}]
+## Show User Info [/user/info/{userId}]
 Display user Information. (Auth token required!)
 
 ### Retrieve a User [GET]
 + Parameters
-    + name (required, string, `tim`) ... String `name` of the User to perform action with. Has example value.
+    + userId (required, string, `528d9581211ad2072d000004`) ... String `userId` of the User to perform action with. Has example value.
 
 + Request (application/json)
 

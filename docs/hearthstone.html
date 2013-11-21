@@ -981,14 +981,17 @@ puts response</code></pre>
                     <pre class="outgoing outgoingHeaders"><code>200 (OK)
 Content-Type: application/json</code></pre>
                     <pre class="outgoing"><code class="language-javascript">{ 
-    deviceToken: 'abc123',
-    avatar: 'http://www.gravatar.com/avatar/b2c120af3dd18a08a76b30089095acfd?size=48',
-    email: 'tang.jilong@gmail.com',
-    pass: 'd81f9c1be2e08964bf9f24b15f0e4900',
-    name: 'MY4tZhE6',
-    _id: '528b47249b5d2c1e2c000001',
-    __v: 0,
-    update_at: '2013-11-19T11:10:28.621Z' 
+    success: true,
+    user: { 
+        deviceToken: 'abc123',
+        avatar: 'http://www.gravatar.com/avatar/b2c120af3dd18a08a76b30089095acfd?size=48',
+        email: 'tang.jilong@gmail.com',
+        pass: 'd81f9c1be2e08964bf9f24b15f0e4900',
+        name: 'MY4tZhE6',
+        _id: '528b47249b5d2c1e2c000001',
+        __v: 0,
+        update_at: '2013-11-19T11:10:28.621Z' 
+    }
 }</code></pre>
                   </section>
                                                                 </section>
@@ -1832,6 +1835,403 @@ puts response</code></pre>
                       </div>
 
           </div>
+        </section>      
+          </div>
+      <a name="card"></a>
+    <div class="chapterWrapper">
+              <hgroup class="chapter">
+          <h1>Card</h1>          <div class="details"><p>Card related resources of the <strong>Card API</strong></p>
+</div>        </hgroup>
+      
+                                      <div class="sameResourceGroup">
+                <h2 class="nameResource">Import Cards</h2>        <div class="descriptionMethod"><p>Import cards.</p>
+</div>        <h3 class="nameMethod">Import Cards</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodPost"><span>POST</span></h1>
+            <h2>/card/import</h2>
+            <a class="resourcePermalink" href="#post-%2Fcard%2Fimport" name="post-%2Fcard%2Fimport"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS3E1">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript">    {
+    &#34;cards&#34;: [
+        {
+          &#34;title&#34;: &#34;破碎残阳祭司&#34;,
+          &#34;category&#34;: &#34;仆从&#34;,
+          &#34;image_url&#34;: &#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png&#34;,
+          &#34;content&#34;: &#34;战吼：使一个友方随从获得+1/+1。&#34;,
+          &#34;abilities&#34;: [
+            {
+              &#34;name&#34;: &#34;战吼&#34;
+            }
+          ],
+          &#34;attack&#34;: 3,
+          &#34;health_power&#34;: 3,
+          &#34;cost&#34;: 3,
+          &#34;rare&#34;: &#34;普通&#34;,
+          &#34;occupation&#34;: &#34;中立&#34;,
+          &#34;race&#34;: &#34;&#34;,
+          &#34;evaluation&#34;: &#34;实用的平民玩家强化卡。&#34;
+        },
+        ....
+    ]
+    }</code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     --request POST \
+     --data-binary "    {
+    \&#34;cards\&#34;: [
+        {
+          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,
+          \&#34;category\&#34;: \&#34;仆从\&#34;,
+          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,
+          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,
+          \&#34;abilities\&#34;: [
+            {
+              \&#34;name\&#34;: \&#34;战吼\&#34;
+            }
+          ],
+          \&#34;attack\&#34;: 3,
+          \&#34;health_power\&#34;: 3,
+          \&#34;cost\&#34;: 3,
+          \&#34;rare\&#34;: \&#34;普通\&#34;,
+          \&#34;occupation\&#34;: \&#34;中立\&#34;,
+          \&#34;race\&#34;: \&#34;\&#34;,
+          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;
+        },
+        ....
+    ]
+    }" \
+     "http://apiary.io/card/import"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/card/import") as System.Net.HttpWebRequest;
+    request.Method = "POST";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+using (var writer = new System.IO.StreamWriter(request.GetRequestStream())) {
+      byte[] byteArray = System.Text.Encoding.UTF8.GetBytes(&#34;    {\n    \&#34;cards\&#34;: [\n        {\n          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,\n          \&#34;category\&#34;: \&#34;仆从\&#34;,\n          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,\n          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,\n          \&#34;abilities\&#34;: [\n            {\n              \&#34;name\&#34;: \&#34;战吼\&#34;\n            }\n          ],\n          \&#34;attack\&#34;: 3,\n          \&#34;health_power\&#34;: 3,\n          \&#34;cost\&#34;: 3,\n          \&#34;rare\&#34;: \&#34;普通\&#34;,\n          \&#34;occupation\&#34;: \&#34;中立\&#34;,\n          \&#34;race\&#34;: \&#34;\&#34;,\n          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;\n        },\n        ....\n    ]\n    }&#34;);
+      request.ContentLength = byteArray.Length;
+      writer.Write(byteArray);
+      writer.Close();
+    }
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("POST", "http://apiary.io/card/import");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(&#34;    {\n    \&#34;cards\&#34;: [\n        {\n          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,\n          \&#34;category\&#34;: \&#34;仆从\&#34;,\n          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,\n          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,\n          \&#34;abilities\&#34;: [\n            {\n              \&#34;name\&#34;: \&#34;战吼\&#34;\n            }\n          ],\n          \&#34;attack\&#34;: 3,\n          \&#34;health_power\&#34;: 3,\n          \&#34;cost\&#34;: 3,\n          \&#34;rare\&#34;: \&#34;普通\&#34;,\n          \&#34;occupation\&#34;: \&#34;中立\&#34;,\n          \&#34;race\&#34;: \&#34;\&#34;,\n          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;\n        },\n        ....\n    ]\n    }&#34;);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('POST', 'http://apiary.io/card/import');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(&#34;    {\n    \&#34;cards\&#34;: [\n        {\n          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,\n          \&#34;category\&#34;: \&#34;仆从\&#34;,\n          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,\n          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,\n          \&#34;abilities\&#34;: [\n            {\n              \&#34;name\&#34;: \&#34;战吼\&#34;\n            }\n          ],\n          \&#34;attack\&#34;: 3,\n          \&#34;health_power\&#34;: 3,\n          \&#34;cost\&#34;: 3,\n          \&#34;rare\&#34;: \&#34;普通\&#34;,\n          \&#34;occupation\&#34;: \&#34;中立\&#34;,\n          \&#34;race\&#34;: \&#34;\&#34;,\n          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;\n        },\n        ....\n    ]\n    }&#34;);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/card/import",
+  body: &#34;    {\n    \&#34;cards\&#34;: [\n        {\n          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,\n          \&#34;category\&#34;: \&#34;仆从\&#34;,\n          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,\n          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,\n          \&#34;abilities\&#34;: [\n            {\n              \&#34;name\&#34;: \&#34;战吼\&#34;\n            }\n          ],\n          \&#34;attack\&#34;: 3,\n          \&#34;health_power\&#34;: 3,\n          \&#34;cost\&#34;: 3,\n          \&#34;rare\&#34;: \&#34;普通\&#34;,\n          \&#34;occupation\&#34;: \&#34;中立\&#34;,\n          \&#34;race\&#34;: \&#34;\&#34;,\n          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;\n        },\n        ....\n    ]\n    }&#34;,
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "POST"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+values = dumps(    {
+    &#34;cards&#34;: [
+        {
+          &#34;title&#34;: &#34;破碎残阳祭司&#34;,
+          &#34;category&#34;: &#34;仆从&#34;,
+          &#34;image_url&#34;: &#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png&#34;,
+          &#34;content&#34;: &#34;战吼：使一个友方随从获得+1/+1。&#34;,
+          &#34;abilities&#34;: [
+            {
+              &#34;name&#34;: &#34;战吼&#34;
+            }
+          ],
+          &#34;attack&#34;: 3,
+          &#34;health_power&#34;: 3,
+          &#34;cost&#34;: 3,
+          &#34;rare&#34;: &#34;普通&#34;,
+          &#34;occupation&#34;: &#34;中立&#34;,
+          &#34;race&#34;: &#34;&#34;,
+          &#34;evaluation&#34;: &#34;实用的平民玩家强化卡。&#34;
+        },
+        ....
+    ]
+    })
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/card/import", data=values, headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/card/import");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_POST, TRUE);
+curl_setopt($ch, CURLOPT_POSTFIELDS, &#34;    {\n    \&#34;cards\&#34;: [\n        {\n          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,\n          \&#34;category\&#34;: \&#34;仆从\&#34;,\n          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,\n          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,\n          \&#34;abilities\&#34;: [\n            {\n              \&#34;name\&#34;: \&#34;战吼\&#34;\n            }\n          ],\n          \&#34;attack\&#34;: 3,\n          \&#34;health_power\&#34;: 3,\n          \&#34;cost\&#34;: 3,\n          \&#34;rare\&#34;: \&#34;普通\&#34;,\n          \&#34;occupation\&#34;: \&#34;中立\&#34;,\n          \&#34;race\&#34;: \&#34;\&#34;,\n          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;\n        },\n        ....\n    ]\n    }&#34;);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+values   = &#34;    {\n    \&#34;cards\&#34;: [\n        {\n          \&#34;title\&#34;: \&#34;破碎残阳祭司\&#34;,\n          \&#34;category\&#34;: \&#34;仆从\&#34;,\n          \&#34;image_url\&#34;: \&#34;http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png\&#34;,\n          \&#34;content\&#34;: \&#34;战吼：使一个友方随从获得+1/+1。\&#34;,\n          \&#34;abilities\&#34;: [\n            {\n              \&#34;name\&#34;: \&#34;战吼\&#34;\n            }\n          ],\n          \&#34;attack\&#34;: 3,\n          \&#34;health_power\&#34;: 3,\n          \&#34;cost\&#34;: 3,\n          \&#34;rare\&#34;: \&#34;普通\&#34;,\n          \&#34;occupation\&#34;: \&#34;中立\&#34;,\n          \&#34;race\&#34;: \&#34;\&#34;,\n          \&#34;evaluation\&#34;: \&#34;实用的平民玩家强化卡。\&#34;\n        },\n        ....\n    ]\n    }&#34;
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.post "http://apiary.io/card/import", values, headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: true,
+    msg: 'Import cards success!'
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Import cards failure!'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
+        </section>              </div>                                <h3 class="nameMethod">Sync Cards</h3>
+        <section class="resource noActivity">
+          <hgroup>
+            <h1 class="methodGet"><span>GET</span></h1>
+            <h2>/card/sync/{version}</h2>
+            <a class="resourcePermalink" href="#get-%2Fcard%2Fsync%2F%7Bversion%7D" name="get-%2Fcard%2Fsync%2F%7Bversion%7D"><span> </span></a>
+            <div class="toggle"></div>
+                          <div class="commentsCount">
+                <a href="#" class="commentsCountLink">Add Comment</a>
+              </div>
+                      </hgroup>
+                    <div class="content">
+            <nav class="switch">
+              <ul>
+                <a href="#example" class="active"><li><span>Example</span></li></a>
+                                                  <a href="#social"><li><span>Comments</span></li></a>
+                                              </ul>
+            </nav>
+            <section class="example">
+                            <nav class="language">
+                <form name="languageSwitcher">
+                  <p>Show code sample</p>
+                  <select>
+                                          <option value="raw">none (raw data)</option>
+                                          <option value="curl">curl</option>
+                                          <option value="csharp">C#</option>
+                                          <option value="javascript">javascript</option>
+                                          <option value="nodejs">node.js</option>
+                                          <option value="python">python</option>
+                                          <option value="php">php</option>
+                                          <option value="ruby">ruby</option>
+                                      </select>
+                </form>
+              </nav>
+                            <section class="code" id="generatedResourceCodeS3E2">                                                                            <section name="raw" class="raw">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code>Content-Type: application/json
+</code></pre>
+  <pre class="incoming"><code class="language-javascript"></code></pre>
+</section>
+                                          <section name="curl" class="curl">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-bash">curl --include --header &#34;Content-Type: application/json&#34; \
+     "http://apiary.io/card/sync/{version}"</code></pre>
+</section>
+                                          <section name="csharp" class="csharp">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-csharp">var request = System.Net.WebRequest.Create("http://apiary.io/card/sync/{version}") as System.Net.HttpWebRequest;
+    request.Method = "GET";
+    request.ContentType = "application/json";
+    request.Headers.Add(&#34;Content-Type&#34;, &#34;application/json&#34;);
+    request.ContentLength = 0;
+string responseContent;
+using (var response = request.GetResponse() as System.Net.HttpWebResponse) {
+  using (var reader = new System.IO.StreamReader(response.GetResponseStream())) {
+    responseContent = reader.ReadToEnd();
+  }
+}</code></pre></section>                                          <section name="javascript" class="javascript">
+<p class="ioDesc">Request</p>
+<pre class="incoming"><code class="language-javascript">var xhr = new XMLHttpRequest();
+xhr.open("GET", "http://apiary.io/card/sync/{version}");
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+  }
+};
+xhr.send(null);</code></pre>
+<pre class="jsRunCode" style="display: none">
+var xhr = new XMLHttpRequest();
+xhr.open('GET', 'http://apiary.io/card/sync/{version}');
+xhr.setRequestHeader(&#34;Content-Type&#34;, &#34;application/json&#34;);
+xhr.onreadystatechange = function () {
+  if (this.readyState == 4) {
+    if (typeof cb !== "undefined") {
+      cb(this);
+    }
+    else {
+      alert('Status: '+this.status+'\nHeaders: '+JSON.stringify(this.getAllResponseHeaders())+'\nBody: '+this.responseText);
+    }
+  }
+};
+xhr.send(null);
+</pre>
+</section>
+                                          <section name="nodejs" class="nodejs">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-javascript">var request = require("request");
+request({
+  url: "http://apiary.io/card/sync/{version}",
+  headers: {&#34;Content-Type&#34;: &#34;application/json&#34;},
+  method: "GET"
+}, function (error, response, body) {
+  console.log("Status", response.statusCode);
+  console.log("Headers", JSON.stringify(response.headers));
+  console.log("Response received", body);
+});</code></pre>
+</section>
+                                          <section name="python" class="python">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-python">from urllib2 import Request, urlopen
+from json import dumps
+headers = {&#34;Content-Type&#34;: &#34;application/json&#34;}
+request = Request("http://apiary.io/card/sync/{version}", headers=headers)
+response_body = urlopen(request).read()
+print response_body</code></pre>
+</section>
+                                          <section name="php" class="php">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-php">&#60;?php
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_URL, "http://apiary.io/card/sync/{version}");
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+curl_setopt($ch, CURLOPT_HEADER, FALSE);
+curl_setopt($ch, CURLOPT_HTTPHEADER, array(&#34;Content-Type: application/json&#34;));
+$response = curl_exec($ch);
+curl_close($ch);
+
+var_dump($response);</code></pre>
+</section>
+                                          <section name="ruby" class="ruby">
+  <p class="ioDesc">Request</p>
+  <pre class="incoming"><code class="language-ruby">require 'rubygems'
+require 'rest_client'
+
+headers  = {:content_type =&#62; &#34;application/json&#34;}
+response = RestClient.get "http://apiary.io/card/sync/{version}", headers
+puts response</code></pre>
+</section>
+                                                                                                            <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">{
+    success: true,
+    cards:[CARD_JSON_OBJECTS]
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)
+Content-Type: application/json</code></pre>
+                    <pre class="outgoing"><code class="language-javascript">{
+    success: true,
+    cards:'No new cards found!'
+}</code></pre>
+                  </section>
+                                                    <p class="ioDesc">Response</p>
+                  <section class="outgoingCall">
+                    <pre class="outgoing outgoingHeaders"><code>200 (OK)</code></pre>
+                    <pre class="outgoing"><code class="">{
+    success: false,
+    msg: 'Sync cards failure!'
+}</code></pre>
+                  </section>
+                                                                </section>
+            </section>
+                      </div>
+
+          
         </section>      
           </div>
   

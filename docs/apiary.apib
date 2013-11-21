@@ -195,16 +195,18 @@ Display user Information. (Auth token required!)
 + Response 200 (application/json)
 
     + Body
-
         { 
-            deviceToken: 'abc123',
-            avatar: 'http://www.gravatar.com/avatar/b2c120af3dd18a08a76b30089095acfd?size=48',
-            email: 'tang.jilong@gmail.com',
-            pass: 'd81f9c1be2e08964bf9f24b15f0e4900',
-            name: 'MY4tZhE6',
-            _id: '528b47249b5d2c1e2c000001',
-            __v: 0,
-            update_at: '2013-11-19T11:10:28.621Z' 
+            success: true,
+            user: { 
+                deviceToken: 'abc123',
+                avatar: 'http://www.gravatar.com/avatar/b2c120af3dd18a08a76b30089095acfd?size=48',
+                email: 'tang.jilong@gmail.com',
+                pass: 'd81f9c1be2e08964bf9f24b15f0e4900',
+                name: 'MY4tZhE6',
+                _id: '528b47249b5d2c1e2c000001',
+                __v: 0,
+                update_at: '2013-11-19T11:10:28.621Z' 
+            }
         }
 
 ## Show Favorite Cards [/user/favorite/{userId}]
@@ -336,5 +338,83 @@ Star user comment.
         {
             success: false,
             msg: "Star comment failure."
+        }
+
+# Group Card
+Card related resources of the **Card API**
+
+## Import Cards [/card/import]
+Import cards.
+
+### Import Cards [POST]
++ Request (application/json)
+        {
+        "cards": [
+            {
+              "title": "破碎残阳祭司",
+              "category": "仆从",
+              "image_url": "http://img6.cache.netease.com/game/hs/db/cards/20131023_1/zh/EX1_019.png",
+              "content": "战吼：使一个友方随从获得+1/+1。",
+              "abilities": [
+                {
+                  "name": "战吼"
+                }
+              ],
+              "attack": 3,
+              "health_power": 3,
+              "cost": 3,
+              "rare": "普通",
+              "occupation": "中立",
+              "race": "",
+              "evaluation": "实用的平民玩家强化卡。"
+            },
+            ....
+        ]
+        }
+
++ Response Success (application/json)
+
+        {
+            success: true,
+            msg: 'Import cards success!'
+        }
+
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: 'Import cards failure!'
+        }
+
+## Sync Cards [/card/sync/{version}]
+Get Card related comments.
+
+### Sync Cards By Version [GET]
++ Parameters
+    + version(required, number, `1`) ... String `version` of the User to perform action with. Has example value.
+
+### Sync Cards [GET]
++ Request (application/json)
+
++ Response 200 (application/json)
+
+        {
+            success: true,
+            cards:[CARD_JSON_OBJECTS]
+        }
+
++ Response 200 (application/json)
+
+        {
+            success: true,
+            cards:'No new cards found!'
+        }
+
++ Response Failure (application/json)
+
+        {
+            success: false,
+            msg: 'Sync cards failure!'
         }
 

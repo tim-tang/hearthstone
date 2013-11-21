@@ -36,7 +36,7 @@ _.extend(CardHandler.prototype, {
             if (!versions || _.isEmpty(versions)) {
                 return res.send({
                     success: true,
-                    msg: 'No new card found!'
+                    msg: 'No new cards found!'
                 });
             }
             var cardIds = [];

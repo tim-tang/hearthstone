@@ -6,7 +6,6 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    CardId = require('./index').CardId,
     ObjectId = Schema.ObjectId;
 
 var VersionSchema = new Schema({
@@ -15,7 +14,9 @@ var VersionSchema = new Schema({
         type: Number,
         default: 0
     },
-    card_ids: [CardId],
+    card_ids: [{
+        card_id: ObjectId
+    }],
     update_at: {
         type: Date,
         default: Date.now

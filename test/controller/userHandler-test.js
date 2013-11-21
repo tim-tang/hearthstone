@@ -7,6 +7,8 @@
 var should = require('should'),
     testHelper = require('../common/testHelper'),
     hsHelper = require('../../common/hearthstoneHelper'),
+    mongoose = require('mongoose'),
+    cardId = mongoose.Types.ObjectId(),
     randomName = hsHelper.randomString(8),
     randomEmail = randomName + '@gmail.com',
     logonUser,
@@ -64,7 +66,8 @@ describe('User APIs', function() {
         var options = testHelper.options(logonUser, 'GET', '/user/info/'+logonUser._id);
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
-            result.should.have.property('deviceToken', 'abc123');
+            result.should.have.property('success', true);
+            result.user.should.have.property('deviceToken', 'abc123');
             done();
         });
     });
@@ -79,6 +82,30 @@ describe('User APIs', function() {
         testHelper.doRequest(options, payload, function(reply){
             var result = JSON.parse(reply);
             result.should.have.property('success', true);
+            done();
+        });
+    });
+
+    it('POST /user/favorite should return 200', function(done){
+        var options = testHelper.options(logonUser, 'POST', '/user/favorite');
+        var payload = {
+            cardId: cardId,
+            userId: logonUser._id
+        };
+        testHelper.doRequest(options, payload, function(reply){
+            var result = JSON.parse(reply);
+            result.should.have.property('success',true);
+            done();
+        });
+    });
+
+    it('GET /user/favorite/:userId should return 200', function(done){
+        var options = testHelper.options(logonUser, 'GET', '/user/favorite/'+logonUser._id);
+        testHelper.doRequest(options, null, function(reply){
+            var result = JSON.parse(reply);
+            result.should.have.property('success', true);
+            //TODO:
+            result.cards.should.have.length(0);
             done();
         });
     });

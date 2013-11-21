@@ -350,7 +350,10 @@ email = email.toLowerCase();</p>
             <span class="keyword">if</span> (err) {
                 <span class="keyword">return</span> next(err);
             }
-            res.send(user);
+            res.send({
+                success: <span class="literal">true</span>,
+                user: user
+            });
         });
     },
 
@@ -392,7 +395,7 @@ email = email.toLowerCase();</p>
     },
 
     showFavorites: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-        <span class="keyword">var</span> userId = sanitize(req.param[<span class="string">'userId'</span>]).trim();
+        <span class="keyword">var</span> userId = sanitize(req.params[<span class="string">'userId'</span>]).trim();
         userService.getUserById(userId, <span class="function"><span class="keyword">function</span><span class="params">(err, user)</span> {</span>
             <span class="keyword">if</span> (err) {
                 <span class="keyword">return</span> next(err);

@@ -53,6 +53,12 @@
     $ apiary preview  --path docs/apiary.apib  --output docs/hearthstone-api.html
     ```
 
+- Generate JS doc use following command
+
+    ```
+    $ grunt doc
+    ```
+
 ### Preview API doc on-line
 
 - [Heathstone API](http://htmlpreview.github.io/?https://github.com/tim-tang/hearthstone/blob/master/doc/hearthstone-api.html)

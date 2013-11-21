@@ -176,7 +176,10 @@ _.extend(UserHandler.prototype, {
             if (err) {
                 return next(err);
             }
-            res.send(user);
+            res.send({
+                success: true,
+                user: user
+            });
         });
     },
 
@@ -218,7 +221,7 @@ _.extend(UserHandler.prototype, {
     },
 
     showFavorites: function(req, res, next) {
-        var userId = sanitize(req.param['userId']).trim();
+        var userId = sanitize(req.params['userId']).trim();
         userService.getUserById(userId, function(err, user) {
             if (err) {
                 return next(err);

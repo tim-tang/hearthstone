@@ -58,6 +58,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-docco');
 
     // Register tasks
-    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'docco']);
+    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
     grunt.registerTask('doc', ['jshint', 'docco']);
 };

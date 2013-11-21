@@ -6,6 +6,7 @@
 
 var model = require('../model'),
     Card = model.Card,
+    Ability = model.Ability,
     _ = require('underscore');
 
 var CardService = function CardService() {};
@@ -36,9 +37,38 @@ _.extend(CardService.prototype, {
         }, callback);
     },
 
-    saveCard: function(card, callback) {
-
-        card.save(callback);
+    saveOrUpdateCard: function(jcard, callback) {
+        Card.findOne({
+            title: jcard.title
+        }, function(err, card) {
+            if (err) {
+                return callback(err);
+            }
+            if (!card) {
+                card = new Card();
+                card.abilities = [];
+            } else {
+                card.version++;
+            }
+            card.title = jcard.title;
+            card.category = jcard.category;
+            card.image_url = jcard.image_url;
+            card.content = jcard.content;
+            card.abilities = [];
+            _.each(jcard.abilities, function(jability){
+               var ability = new Ability();
+               ability.name =jability.name;
+               card.abilities.push(ability);
+            });
+            card.attack = jcard.attack;
+            card.health_power = jcard.health_power;
+            card.cost = jcard.cost;
+            card.rare = jcard.rare;
+            card.occupation = jcard.occupation;
+            card.race = jcard.race;
+            card.evaluation = jcard.evaluation;
+            card.save(callback(err, card));
+        });
     },
 
     inactiveCard: function(cardId, callback) {

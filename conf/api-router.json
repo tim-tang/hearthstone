@@ -45,11 +45,6 @@
       "middleware": "userRequired"
     },
     {
-      "url": "/card/sync/:version",
-      "method": "GET",
-      "api": "syncCards"
-    },
-    {
       "url": "/comment/show/:cardId",
       "method": "GET",
       "api": "showComments"
@@ -63,6 +58,16 @@
       "url": "/comment/create",
       "method": "POST",
       "api": "createComment"
+    },
+    {
+      "url": "/card/import",
+      "method": "POST",
+      "api": "importCards"
+    },
+    {
+      "url": "/card/sync/:version",
+      "method": "GET",
+      "api": "syncCards"
     }
   ]
 }

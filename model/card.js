@@ -6,11 +6,16 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
+    Ability = require('./index').Ability,
     ObjectId = Schema.ObjectId;
 
 var CardSchema = new Schema({
 
     title: {
+        type: String,
+        unique: true
+    },
+    category: {
         type: String
     },
     image_url: {
@@ -19,9 +24,7 @@ var CardSchema = new Schema({
     content: {
         type: String
     },
-    abilities: [{
-        name: String
-    }],
+    abilities: [Ability],
     attack: {
         type: Number
     },

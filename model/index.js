@@ -14,8 +14,12 @@ require('./user');
 require('./card');
 require('./comment');
 require('./version');
+require('./cardId');
+require('./ability');
 
 exports.User = mongoose.model('User');
 exports.Card = mongoose.model('Card');
 exports.Comment = mongoose.model('Comment');
 exports.Version = mongoose.model('Version');
+exports.CardId = mongoose.model('CardId');
+exports.Ability= mongoose.model('Ability');

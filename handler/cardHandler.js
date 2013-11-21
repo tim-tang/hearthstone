@@ -10,7 +10,7 @@ var cardService = require('../service').CardService,
     check = require('validator').check,
     _ = require('underscore');
 
-var CardHandler = function CardHandler(){};
+var CardHandler = function CardHandler() {};
 
 
 _.extend(CardHandler.prototype, {
@@ -25,9 +25,12 @@ _.extend(CardHandler.prototype, {
                 msg: e.message
             });
         }
-        versionService.checkSychronizable(vnumber, function(err, versions) {
+        versionService.checkSynchronizable(vnumber, function(err, versions) {
             if (err) {
-                return next(err);
+                return res.send({
+                    success: false,
+                    msg: err.message
+                });
             }
 
             if (!versions || _.isEmpty(versions)) {
@@ -36,8 +39,12 @@ _.extend(CardHandler.prototype, {
                     msg: 'No new card found!'
                 });
             }
+            var cardIds = [];
+            _.each(versions, function(version) {
+                cardIds = _.union(cardIds, version.card_ids);
+            });
 
-            cardService.getCardsByVersion(vnumber, function(err, cards) {
+            cardService.getCardsByIds(cardIds, function(err, cards) {
                 res.send({
                     success: true,
                     cards: cards
@@ -46,9 +53,41 @@ _.extend(CardHandler.prototype, {
         });
     },
 
-    importCards: function(req, res, next){
-        //TODO:
-
+    importCards: function(req, res, next) {
+        var cards = req.body.cards;
+        if (!cards || _.isEmpty(cards)) {
+            return res.send({
+                success: false,
+                msg: 'Invalid card JSON.'
+            });
+        }
+        var cardIds = [];
+        _.each(cards, function(card) {
+            cardService.saveOrUpdateCard(card, function(err, rcard) {
+                if (err) {
+                    return res.send({
+                        success: false,
+                        msg: 'Card title: ' + card.title + "import failure!"
+                    });
+                }
+                cardIds.push(rcard._id);
+                //TODO: need to refactor with event proxy handling async.
+                if (_.size(cardIds) === _.size(cards)) {
+                    versionService.updateVersionByNo(cardIds, function(err) {
+                        if (err) {
+                            return res.send({
+                                success: false,
+                                msg: err.message
+                            });
+                        }
+                        res.send({
+                            success: true,
+                            msg: 'Import cards success!'
+                        });
+                    });
+                }
+            });
+        });
     }
 });
 

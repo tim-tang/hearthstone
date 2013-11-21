@@ -19,10 +19,13 @@ var UserHandler = function UserHandler() {};
 _.extend(UserHandler.prototype, {
 
     health: function(req, res) {
-        res.send({
-            success: true,
-            msg: 'I am alive!'
-        });
+        res.send(
+            '   ___ ___          .__   .__            .__                            .__   .__                ._.\n' +
+            '  /   |  \\   ____  |  |  |  |    ____   |__| _____     _____   _____   |  |  |__|___  __  ____  | |\n' +
+            ' /    ~   \\_/ __ \\ |  |  |  |   /  _ \\  |  | \\__  \\   /     \\  \\__  \\  |  |  |  |\\  \\/ /_/ __ \\ | |\n' +
+            ' \\    Y   /\\  ___/ |  |__|  |__(  <_> ) |  |  / __ \\_|  Y Y  \\  / __ \\_|  |__|  | \\   / \\  ___/  \\|\n' +
+            '  \\___|_ /  \\___  >|____/|____/ \\____/  |__| (____  /|__|_|  / (____  /|____/|__|  \\_/   \\___  > __ \n'
+        );
     },
 
     authenticate: function(req, res, next) {

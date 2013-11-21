@@ -25,8 +25,7 @@ describe('User APIs', function() {
     it('GET /health should return 200', function(done) {
         var options = testHelper.options(null, 'GET', '/health');
         testHelper.doRequest(options, null, function(reply) {
-            var result = JSON.parse(reply);
-            result.should.have.property('msg', 'I am alive!');
+            reply.should.be.ok;
             done();
         });
     });

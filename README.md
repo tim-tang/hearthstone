@@ -65,6 +65,8 @@
 
 - [Hearthstone JSDoc](http://hearthstone-srv.herokuapp.com/)
 
+- [Hearthstone Health Check](http://hearthstone-srv.herokuapp.com/health)
+
 ### Issue
 
 - [Hearthstone Issues](https://github.com/tim-tang/hearthstone/issues)

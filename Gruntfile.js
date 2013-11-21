@@ -32,6 +32,14 @@ module.exports = function(grunt) {
                 src: ['test/**/*.js']
             }
         },
+        docco: {
+            debug: {
+                src: ['handler/**/*.js', 'server/**/*.js', 'service/**/*.js', 'model/**/*.js', 'common/**/*.js'],
+                options: {
+                    output: 'docs/'
+                }
+            }
+        },
         jshint: {
             options: {
                 jshintrc: '.jshintrc'
@@ -47,8 +55,9 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-docco');
 
     // Register tasks
     grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
-    //grunt.registerTask('dev', ['watch']);
+    grunt.registerTask('doc', ['jshint', 'docco']);
 };

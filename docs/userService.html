@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>userService.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="constants.html">
+                constants.js
+              </a>
+            
+              
+              <a class="source" href="hearthstoneHelper.html">
+                hearthstoneHelper.js
+              </a>
+            
+              
+              <a class="source" href="cardHandler.html">
+                cardHandler.js
+              </a>
+            
+              
+              <a class="source" href="commentHandler.html">
+                commentHandler.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="userHandler.html">
+                userHandler.js
+              </a>
+            
+              
+              <a class="source" href="ability.html">
+                ability.js
+              </a>
+            
+              
+              <a class="source" href="card.html">
+                card.js
+              </a>
+            
+              
+              <a class="source" href="cardId.html">
+                cardId.js
+              </a>
+            
+              
+              <a class="source" href="comment.html">
+                comment.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="user.html">
+                user.js
+              </a>
+            
+              
+              <a class="source" href="version.html">
+                version.js
+              </a>
+            
+              
+              <a class="source" href="restfulServer.html">
+                restfulServer.js
+              </a>
+            
+              
+              <a class="source" href="cardService.html">
+                cardService.js
+              </a>
+            
+              
+              <a class="source" href="commentService.html">
+                commentService.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="userService.html">
+                userService.js
+              </a>
+            
+              
+              <a class="source" href="versionService.html">
+                versionService.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>userService.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="comment">/**
+ * Class for user mangement service.
+ *
+ * @author tim.tang
+ */</span>
+<span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
+    User = model.User,
+    constants = require(<span class="string">'../common/constants'</span>),
+    _ = require(<span class="string">'underscore'</span>);
+
+<span class="keyword">var</span> UserService = <span class="function"><span class="keyword">function</span> <span class="title">UserService</span><span class="params">()</span> {</span>};
+
+_.extend(UserService.prototype, {
+
+    save: <span class="function"><span class="keyword">function</span><span class="params">(name, pass, email, avatar, deviceToken, callback)</span> {</span>
+        <span class="keyword">var</span> user = <span class="keyword">new</span> User();
+        user.name = name;
+        user.pass = pass;
+        user.email = email;
+        user.avatar = avatar;
+        user.deviceToken = deviceToken;
+        user.save(callback);
+    },
+
+    update: <span class="function"><span class="keyword">function</span><span class="params">(id, name, email, avatar, callback)</span> {</span>
+        <span class="keyword">this</span>.getUserById(id, <span class="function"><span class="keyword">function</span><span class="params">(err, user)</span> {</span>
+            <span class="keyword">if</span> (err) {
+                <span class="keyword">return</span> callback(err);
+            }
+            <span class="keyword">if</span> (!user) {
+                <span class="keyword">return</span> callback(<span class="keyword">new</span> Error(<span class="string">'User not exists!'</span>));
+            }
+            user.name = name;
+            user.email = email;
+            user.avatar = avatar;
+            user.save(callback);
+        });
+    },
+
+    getUserById: <span class="function"><span class="keyword">function</span><span class="params">(id, callback)</span> {</span>
+        User.findOne({
+            _id: id
+        }, callback);
+    },
+
+    getUserByName: <span class="function"><span class="keyword">function</span><span class="params">(name, callback)</span> {</span>
+        User.findOne({
+            name: name
+        }, callback);
+    },
+
+    getUserByEmail: <span class="function"><span class="keyword">function</span><span class="params">(email, callback)</span> {</span>
+        User.findOne({
+            email: email
+        }, callback);
+    },
+
+    favorite: <span class="function"><span class="keyword">function</span><span class="params">(userId, cardId, callback)</span> {</span>
+        <span class="keyword">this</span>.getUserById(userId, <span class="function"><span class="keyword">function</span><span class="params">(err, user)</span> {</span>
+            <span class="keyword">if</span> (err) {
+                callback(err);
+            }
+            <span class="keyword">if</span> (!user) {
+                callback(<span class="keyword">new</span> Error(<span class="string">'User not exists!'</span>));
+            }
+            user.favorites.push(cardId);
+            user.save(callback);
+        });
+    }
+});
+
+
+<span class="keyword">var</span> userService = <span class="keyword">new</span> UserService();
+
+<span class="comment">/** public user service module **/</span>
+module.exports = userService;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

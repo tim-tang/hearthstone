@@ -34,7 +34,8 @@
     "travis-cov": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
-    "grunt-mocha-test": "*"
+    "grunt-mocha-test": "*",
+    "grunt-docco": "*"
   },
   "engines": {
     "node": ">=0.10.0",

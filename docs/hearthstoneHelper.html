@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>hearthstoneHelper.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="constants.html">
+                constants.js
+              </a>
+            
+              
+              <a class="source" href="hearthstoneHelper.html">
+                hearthstoneHelper.js
+              </a>
+            
+              
+              <a class="source" href="cardHandler.html">
+                cardHandler.js
+              </a>
+            
+              
+              <a class="source" href="commentHandler.html">
+                commentHandler.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="userHandler.html">
+                userHandler.js
+              </a>
+            
+              
+              <a class="source" href="ability.html">
+                ability.js
+              </a>
+            
+              
+              <a class="source" href="card.html">
+                card.js
+              </a>
+            
+              
+              <a class="source" href="cardId.html">
+                cardId.js
+              </a>
+            
+              
+              <a class="source" href="comment.html">
+                comment.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="user.html">
+                user.js
+              </a>
+            
+              
+              <a class="source" href="version.html">
+                version.js
+              </a>
+            
+              
+              <a class="source" href="restfulServer.html">
+                restfulServer.js
+              </a>
+            
+              
+              <a class="source" href="cardService.html">
+                cardService.js
+              </a>
+            
+              
+              <a class="source" href="commentService.html">
+                commentService.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="userService.html">
+                userService.js
+              </a>
+            
+              
+              <a class="source" href="versionService.html">
+                versionService.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>hearthstoneHelper.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="comment">/**
+ * Hearthstone common helpers
+ *
+ * @author tim.tang
+ */</span>
+<span class="keyword">var</span> crypto = require(<span class="string">'crypto'</span>),
+    config = require(<span class="string">'../conf/hearthstone-conf'</span>).config,
+    _ = require(<span class="string">'underscore'</span>);
+
+
+<span class="keyword">var</span> HearthstoneHelper = <span class="function"><span class="keyword">function</span> <span class="title">HearthstoneHelper</span><span class="params">()</span> {</span>};
+
+_.extend(HearthstoneHelper.prototype, {
+
+    popSession: <span class="function"><span class="keyword">function</span><span class="params">(user, res)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>cookie valid in 30 days.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        <span class="keyword">var</span> authToken = <span class="keyword">this</span>.genAuthToken(user);
+        res.cookie(config.auth_cookie_name, authToken, {
+            path: <span class="string">'/'</span>,
+            maxAge: <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">30</span>
+        });
+    },
+
+    genAuthToken: <span class="function"><span class="keyword">function</span><span class="params">(user)</span> {</span>
+        <span class="keyword">return</span> <span class="keyword">this</span>.encrypt(user._id + <span class="string">'\t'</span> + user.name + <span class="string">'\t'</span> + user.pass + <span class="string">'\t'</span> + user.email, config.session_secret);
+    },
+
+    clearCookie: <span class="function"><span class="keyword">function</span><span class="params">(res)</span> {</span>
+        res.clearCookie(config.auth_cookie_name, {
+            path: <span class="string">'/'</span>
+        });
+    },
+
+    encrypt: <span class="function"><span class="keyword">function</span><span class="params">(str, secret)</span> {</span>
+        <span class="keyword">var</span> cipher = crypto.createCipher(<span class="string">'aes192'</span>, secret);
+        <span class="keyword">var</span> enc = cipher.update(str, <span class="string">'utf8'</span>, <span class="string">'hex'</span>);
+        enc += cipher.final(<span class="string">'hex'</span>);
+        <span class="keyword">return</span> enc;
+    },
+
+    decrypt: <span class="function"><span class="keyword">function</span><span class="params">(str, secret)</span> {</span>
+        <span class="keyword">var</span> decipher = crypto.createDecipher(<span class="string">'aes192'</span>, secret);
+        <span class="keyword">var</span> dec = decipher.update(str, <span class="string">'hex'</span>, <span class="string">'utf8'</span>);
+        dec += decipher.final(<span class="string">'utf8'</span>);
+        <span class="keyword">return</span> dec;
+    },
+
+    md5: <span class="function"><span class="keyword">function</span><span class="params">(str)</span> {</span>
+        <span class="keyword">var</span> md5sum = crypto.createHash(<span class="string">'md5'</span>);
+        md5sum.update(str);
+        str = md5sum.digest(<span class="string">'hex'</span>);
+        <span class="keyword">return</span> str;
+    },
+
+    randomString: <span class="function"><span class="keyword">function</span><span class="params">(size)</span> {</span>
+        size = size || <span class="number">6</span>;
+        <span class="keyword">var</span> code_string = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'</span>;
+        <span class="keyword">var</span> max_num = code_string.length + <span class="number">1</span>;
+        <span class="keyword">var</span> new_pass = <span class="string">''</span>;
+        <span class="keyword">while</span> (size &gt; <span class="number">0</span>) {
+            new_pass += code_string.charAt(Math.floor(Math.random() * max_num));
+            size--;
+        }
+        <span class="keyword">return</span> new_pass;
+    }
+});
+
+<span class="keyword">var</span> hearthstoneHelper = <span class="keyword">new</span> HearthstoneHelper();
+module.exports = hearthstoneHelper;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

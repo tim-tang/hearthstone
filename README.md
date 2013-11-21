@@ -50,12 +50,12 @@
 - Prewiew api doc, go to {HEARTHSTONE-HOME}/
 
     ```
-    $ apiary preview  --path doc/apiary.apib  --output doc/hearthstone-api.html
+    $ apiary preview  --path docs/apiary.apib  --output docs/hearthstone-api.html
     ```
 
-### Preview API doc online
+### Preview API doc on-line
 
-- [Heathstone API](http://htmlpreview.github.com/?https://github.com/tim-tang/hearthstone/blob/master/doc/hearthstone-api.html)
+- [Heathstone API](http://htmlpreview.github.io/?https://github.com/tim-tang/hearthstone/blob/master/doc/hearthstone-api.html)
 
 ### Issue
 

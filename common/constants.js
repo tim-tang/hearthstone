@@ -21,7 +21,7 @@ function define(key, value) {
 define('EXPRESS_PORT', 5000);
 define('EXPRESS_HOST', '127.0.0.1');
 define('EXPRESS_ENV_DEV', 'dev');
-define('EXPRESS_PUBLIC', 'public');
+define('EXPRESS_PUBLIC', 'docs');
 define('CONTENT_TYPE', 'application/json');
 
 define('HEROKU_PORT', 80);

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <title>restfulServer.js</title>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, target-densitydpi=160dpi, initial-scale=1.0; maximum-scale=1.0; user-scalable=0;">
+  <link rel="stylesheet" media="all" href="docco.css" />
+</head>
+<body>
+  <div id="container">
+    <div id="background"></div>
+    
+      <ul id="jump_to">
+        <li>
+          <a class="large" href="javascript:void(0);">Jump To &hellip;</a>
+          <a class="small" href="javascript:void(0);">+</a>
+          <div id="jump_wrapper">
+          <div id="jump_page">
+            
+              
+              <a class="source" href="constants.html">
+                constants.js
+              </a>
+            
+              
+              <a class="source" href="hearthstoneHelper.html">
+                hearthstoneHelper.js
+              </a>
+            
+              
+              <a class="source" href="cardHandler.html">
+                cardHandler.js
+              </a>
+            
+              
+              <a class="source" href="commentHandler.html">
+                commentHandler.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="userHandler.html">
+                userHandler.js
+              </a>
+            
+              
+              <a class="source" href="ability.html">
+                ability.js
+              </a>
+            
+              
+              <a class="source" href="card.html">
+                card.js
+              </a>
+            
+              
+              <a class="source" href="cardId.html">
+                cardId.js
+              </a>
+            
+              
+              <a class="source" href="comment.html">
+                comment.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="user.html">
+                user.js
+              </a>
+            
+              
+              <a class="source" href="version.html">
+                version.js
+              </a>
+            
+              
+              <a class="source" href="restfulServer.html">
+                restfulServer.js
+              </a>
+            
+              
+              <a class="source" href="cardService.html">
+                cardService.js
+              </a>
+            
+              
+              <a class="source" href="commentService.html">
+                commentService.js
+              </a>
+            
+              
+              <a class="source" href="index.html">
+                index.js
+              </a>
+            
+              
+              <a class="source" href="userService.html">
+                userService.js
+              </a>
+            
+              
+              <a class="source" href="versionService.html">
+                versionService.js
+              </a>
+            
+          </div>
+        </li>
+      </ul>
+    
+    <ul class="sections">
+        
+          <li id="title">
+              <div class="annotation">
+                  <h1>restfulServer.js</h1>
+              </div>
+          </li>
+        
+        
+        
+        <li id="section-1">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-1">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="comment">/**
+ * Express server wrapper.
+ *
+ * @author tim.tang
+ */</span>
+
+<span class="keyword">var</span> _ = require(<span class="string">'underscore'</span>),
+    fs = require(<span class="string">'fs'</span>),
+    path = require(<span class="string">'path'</span>),
+    application_root = path.resolve(__dirname, <span class="string">'..'</span>),
+    constants = require(<span class="string">'../common/constants'</span>),
+    config = require(<span class="string">'../conf/hearthstone-conf'</span>).config,
+    express = require(<span class="string">'express'</span>),
+    auth = require(<span class="string">'../middleware/authenticator'</span>),
+    handlers = require(<span class="string">'../handler'</span>),
+    userHandler = require(<span class="string">'../handler/userHandler'</span>),
+    app = express(),
+    restAPI;
+
+<span class="comment">/**
+ * Express router constructor.
+ */</span>
+<span class="keyword">var</span> RESTfulServer = <span class="function"><span class="keyword">function</span> <span class="title">RESTfulServer</span><span class="params">()</span> {</span>
+        restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, <span class="string">'../conf/api-router.json'</span>), <span class="string">'UTF-8'</span>));
+    };
+
+
+<span class="comment">/**
+ * Do Express server configuration.
+ *
+ */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">doConf</span><span class="params">()</span> {</span>
+    app.use(express.favicon());
+    app.use(express.logger(constants.EXPRESS_ENV_DEV));
+    app.use(express.bodyParser());
+    app.use(express.methodOverride());
+    app.use(express.cookieParser());
+    app.use(express.session({
+        secret: config.session_secret
+    }));
+    app.use(userHandler.authenticate);
+    app.use(app.router);
+    app.use(express.static(path.join(application_root, constants.EXPRESS_PUBLIC)));
+    app.use(express.errorHandler({
+        dumpExceptions: <span class="literal">true</span>,
+        showStack: <span class="literal">true</span>
+    }));
+}
+
+<span class="comment">/**
+ *
+ * Register RESTful API routes.
+ *
+ * @param {URLOption} options for rest api configuration.
+ *
+ */</span>
+<span class="function"><span class="keyword">function</span> <span class="title">registerAPI</span><span class="params">(routers)</span> {</span>
+    _.each(routers, <span class="function"><span class="keyword">function</span><span class="params">(router)</span> {</span>
+        _.each(handlers, <span class="function"><span class="keyword">function</span><span class="params">(handler)</span> {</span>
+            <span class="keyword">if</span> (_.isFunction(handler[router.api]) &amp;&amp; _.isString(router.url)) {
+                console.log(<span class="string">'Registering API-[%s] URL-[%s] METHOD-[%s]'</span>, router.api, router.url, router.method);
+                <span class="keyword">var</span> middlewares = [];
+                <span class="keyword">if</span>(router.middleware || _.isFunction(auth[router.middleware])){
+                    middlewares.push(auth[router.middleware]);
+                }
+                <span class="keyword">switch</span> (router.method) {
+
+                <span class="keyword">case</span> constants.ROUTER_METHOD_POST:
+                    app.post(router.url, middlewares, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+                        res.contentType(constants.CONTENT_TYPE);
+                        handler[router.api](req, res, next);
+                    });
+                    <span class="keyword">break</span>;
+
+                <span class="keyword">case</span> constants.ROUTER_METHOD_PUT:
+                    app.put(router.url, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+                        res.contentType(constants.CONTENT_TYPE);
+                        handler[router.api](req, res, next);
+                    });
+                    <span class="keyword">break</span>;
+
+                <span class="keyword">case</span> constants.ROUTER_METHOD_GET:
+                    app.get(router.url, middlewares, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+                        res.contentType(constants.CONTENT_TYPE);
+                        handler[router.api](req, res, next);
+                    });
+                    <span class="keyword">break</span>;
+
+                <span class="keyword">case</span> constants.ROUTER_METHOD_DELETE:
+                    app.del(router.url, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+                        res.contentType(constants.CONTENT_TYPE);
+                        handler[router.api](req, res, next);
+                    });
+                    <span class="keyword">break</span>;
+
+                <span class="keyword">default</span>:
+                    console.log(<span class="string">'The METHOD-[%s] not supported!'</span>, router.method);
+                }
+            } <span class="keyword">else</span> {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <p>console.log(&#39;Invalid API-[%s] or URL-[%s] in api-router.json!&#39;, router.api, router.url);</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            }
+        });
+    });
+}
+
+_.extend(RESTfulServer.prototype, {
+
+    startup: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+        doConf();
+        registerAPI(restAPI.routers);
+        <span class="keyword">var</span> port = process.env.PORT || constants.EXPRESS_PORT;
+        app.listen(port, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            console.log(<span class="string">'Hearthstone server listening on port::%s'</span>, port);
+        });
+    }
+});
+
+<span class="keyword">var</span> restfulServer = <span class="keyword">new</span> RESTfulServer();
+
+restfulServer.startup();
+
+<span class="comment">/* Public RESTful Server */</span>
+module.exports = restfulServer;</pre></div></div>
+            
+        </li>
+        
+    </ul>
+  </div>
+</body>
+</html>

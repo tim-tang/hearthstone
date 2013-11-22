@@ -5,7 +5,6 @@
  */
 var model = require('../model'),
     User = model.User,
-    constants = require('../common/constants'),
     _ = require('underscore');
 
 var UserService = function UserService() {};

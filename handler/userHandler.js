@@ -4,8 +4,7 @@
  * @author tim.tang
  */
 
-var constants = require('../common/constants'),
-    _ = require('underscore'),
+var  _ = require('underscore'),
     sanitize = require('validator').sanitize,
     check = require('validator').check,
     hsHelper = require('../common/hearthstoneHelper'),
@@ -41,6 +40,9 @@ _.extend(UserHandler.prototype, {
                 return next(err);
             }
             if (user) {
+               if(config.admins[user.name]){
+                    user.is_admin = true;
+               }
                 req.session.user = user;
                 return next();
             }

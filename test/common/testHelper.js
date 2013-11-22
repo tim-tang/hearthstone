@@ -4,7 +4,6 @@
  * @author tim.tang
  */
 var _ = require('underscore'),
-    constants = require('../../common/constants'),
     hsHelper = require('../../common/hearthstoneHelper'),
     config = require('../../conf/hearthstone-conf').config,
     http = require('http');
@@ -23,14 +22,14 @@ _.extend(TestHelper.prototype, {
         }
         var cookie = config.auth_cookie_name + '=' + authToken;
         var options = {
-            hostname: constants.EXPRESS_HOST,
-            port: constants.EXPRESS_PORT,
+            hostname: config.DEV_HEARTHSTONE_HOST,
+            port: config.DEV_HEARTHSTONE_PORT,
             path: url,
             method: method,
             headers: {
                 'Cookie': cookie,
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                'Content-Type': config.CONTENT_TYPE,
+                'Accept': config.CONTENT_TYPE
             }
         };
         return options;

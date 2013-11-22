@@ -8,7 +8,6 @@ var _ = require('underscore'),
     fs = require('fs'),
     path = require('path'),
     application_root = path.resolve(__dirname, '..'),
-    constants = require('../common/constants'),
     config = require('../conf/hearthstone-conf').config,
     express = require('express'),
     auth = require('../middleware/authenticator'),
@@ -31,7 +30,7 @@ var RESTfulServer = function RESTfulServer() {
  */
 function doConf() {
     app.use(express.favicon());
-    app.use(express.logger(constants.EXPRESS_ENV_DEV));
+    app.use(express.logger(config.HEARTHSTONE_ENV));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
@@ -40,7 +39,7 @@ function doConf() {
     }));
     app.use(userHandler.authenticate);
     app.use(app.router);
-    app.use(express.static(path.join(application_root, constants.EXPRESS_PUBLIC)));
+    app.use(express.static(path.join(application_root, config.HEARTHSTONE_PUBLIC_FOLDER)));
     app.use(express.errorHandler({
         dumpExceptions: true,
         showStack: true
@@ -65,30 +64,30 @@ function registerAPI(routers) {
                 }
                 switch (router.method) {
 
-                case constants.ROUTER_METHOD_POST:
+                case config.ROUTER_METHOD_POST:
                     app.post(router.url, middlewares, function(req, res, next) {
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     break;
 
-                case constants.ROUTER_METHOD_PUT:
+                case config.ROUTER_METHOD_PUT:
                     app.put(router.url, function(req, res, next) {
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     break;
 
-                case constants.ROUTER_METHOD_GET:
+                case config.ROUTER_METHOD_GET:
                     app.get(router.url, middlewares, function(req, res, next) {
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     break;
 
-                case constants.ROUTER_METHOD_DELETE:
+                case config.ROUTER_METHOD_DELETE:
                     app.del(router.url, function(req, res, next) {
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     break;
@@ -108,7 +107,7 @@ _.extend(RESTfulServer.prototype, {
     startup: function() {
         doConf();
         registerAPI(restAPI.routers);
-        var port = process.env.PORT || constants.EXPRESS_PORT;
+        var port = process.env.PORT || config.DEV_HEARTHSTONE_PORT;
         app.listen(port, function() {
             console.log('Hearthstone server listening on port::%s', port);
         });

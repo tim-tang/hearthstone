@@ -157,63 +157,65 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> mongoose = require(<span class="string">'mongoose'</span>),
-    Schema = mongoose.Schema,
-    Ability = require(<span class="string">'./index'</span>).Ability,
-    ObjectId = Schema.ObjectId;
+            <div class="content"><div class='highlight'><pre>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
 
-<span class="keyword">var</span> CardSchema = <span class="keyword">new</span> Schema({
+    <span class="keyword">var</span> Schema = mongoose.Schema;
+    <span class="keyword">var</span> Ability = require(<span class="string">'./index'</span>).Ability;
 
-    title: {
-        type: String,
-        unique: <span class="literal">true</span>
-    },
-    category: {
-        type: String
-    },
-    image_url: {
-        type: String
-    },
-    content: {
-        type: String
-    },
-    abilities: [Ability],
-    attack: {
-        type: Number
-    },
-    health_power: {
-        type: Number
-    },
-    cost: {
-        type: Number
-    },
-    rare: {
-        type: String
-    },
-    occupation: {
-        type: String
-    },
-    race: {
-        type: String
-    },
-    evaluation: {
-        type: String
-    },
-    is_active: {
-        type: Boolean,
-        <span class="keyword">default</span>: <span class="literal">true</span>
-    },
-    version: {
-        type: Number,
-        <span class="keyword">default</span>: <span class="number">0</span>
-    },
-    update_at: {
-        type: Date,
-        <span class="keyword">default</span>: Date.now
-    }
-});
+    <span class="keyword">var</span> cardSchema = <span class="keyword">new</span> Schema({
 
-mongoose.model(<span class="string">'Card'</span>, CardSchema);</pre></div></div>
+        title: {
+            type: String,
+            unique: <span class="literal">true</span>
+        },
+        category: {
+            type: String
+        },
+        image_url: {
+            type: String
+        },
+        content: {
+            type: String
+        },
+        abilities: {
+            type: Array
+        },
+        attack: {
+            type: Number
+        },
+        health_power: {
+            type: Number
+        },
+        cost: {
+            type: Number
+        },
+        rare: {
+            type: String
+        },
+        occupation: {
+            type: String
+        },
+        race: {
+            type: String
+        },
+        evaluation: {
+            type: String
+        },
+        is_active: {
+            type: Boolean,
+            <span class="keyword">default</span>: <span class="literal">true</span>
+        },
+        version: {
+            type: Number,
+            <span class="keyword">default</span>: <span class="number">0</span>
+        },
+        update_at: {
+            type: Date,
+            <span class="keyword">default</span>: Date.now
+        }
+    });
+    <span class="keyword">return</span> cardSchema;
+};</pre></div></div>
             
         </li>
         

@@ -141,7 +141,6 @@
             
             <div class="content"><div class='highlight'><pre><span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
     Card = model.Card,
-    Ability = model.Ability,
     _ = require(<span class="string">'underscore'</span>);
 
 <span class="keyword">var</span> CardService = <span class="function"><span class="keyword">function</span> <span class="title">CardService</span><span class="params">()</span> {</span>};
@@ -157,6 +156,23 @@ _.extend(CardService.prototype, {</pre></div></div>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Retrieve all cards.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getAllCards: <span class="function"><span class="keyword">function</span><span class="params">(callback)</span>{</span>
+        Card.find({},callback);
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>Retrieve cards by version.</p>
 
@@ -174,11 +190,11 @@ _.extend(CardService.prototype, {</pre></div></div>
         </li>
         
         
-        <li id="section-4">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Retrieve card by card id.</p>
 
@@ -193,11 +209,11 @@ _.extend(CardService.prototype, {</pre></div></div>
         </li>
         
         
-        <li id="section-5">
+        <li id="section-6">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
+                <a class="pilcrow" href="#section-6">&#182;</a>
               </div>
               <p>Retrieve cards by card ids.</p>
 
@@ -214,11 +230,11 @@ _.extend(CardService.prototype, {</pre></div></div>
         </li>
         
         
-        <li id="section-6">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>Save or update card.</p>
 
@@ -243,9 +259,7 @@ _.extend(CardService.prototype, {</pre></div></div>
             card.content = jcard.content;
             card.abilities = [];
             _.each(jcard.abilities, <span class="function"><span class="keyword">function</span><span class="params">(jability)</span>{</span>
-               <span class="keyword">var</span> ability = <span class="keyword">new</span> Ability();
-               ability.name =jability.name;
-               card.abilities.push(ability);
+               card.abilities.push(jability.name);
             });
             card.attack = jcard.attack;
             card.health_power = jcard.health_power;
@@ -261,11 +275,11 @@ _.extend(CardService.prototype, {</pre></div></div>
         </li>
         
         
-        <li id="section-7">
+        <li id="section-8">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-7">&#182;</a>
+                <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
               <p>Disable one card.</p>
 

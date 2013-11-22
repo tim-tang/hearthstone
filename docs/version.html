@@ -157,9 +157,10 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> mongoose = require(<span class="string">'mongoose'</span>),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;</pre></div></div>
+            <div class="content"><div class='highlight'><pre>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
+
+    <span class="keyword">var</span> Schema = mongoose.Schema,
+        ObjectId = Schema.ObjectId;</pre></div></div>
             
         </li>
         
@@ -174,23 +175,22 @@
 
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> VersionSchema = <span class="keyword">new</span> Schema({
+            <div class="content"><div class='highlight'><pre>    <span class="keyword">var</span> versionSchema = <span class="keyword">new</span> Schema({
 
-    version_no: {
-        type: Number,
-        <span class="keyword">default</span>: <span class="number">0</span>
-    },
-    card_ids: [{
-        card_id: ObjectId
-    }],
-    update_at: {
-        type: Date,
-        <span class="keyword">default</span>: Date.now
-    }
-});
-
-
-mongoose.model(<span class="string">'Version'</span>, VersionSchema);</pre></div></div>
+        version_no: {
+            type: Number,
+            <span class="keyword">default</span>: <span class="number">0</span>
+        },
+        card_ids: [{
+            card_id: ObjectId
+        }],
+        update_at: {
+            type: Date,
+            <span class="keyword">default</span>: Date.now
+        }
+    });
+    <span class="keyword">return</span> versionSchema;
+};</pre></div></div>
             
         </li>
         

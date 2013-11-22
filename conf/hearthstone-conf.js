@@ -33,6 +33,6 @@ exports.config = {
 
     // Administrator user configuration.
     admins: {
-        admin: true
+        tim: true
     }
 };

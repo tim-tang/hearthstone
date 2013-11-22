@@ -7,31 +7,32 @@
 // Model for Comment.
 // --------------
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+module.exports = function(mongoose) {
 
-var CommentSchema = new Schema({
+    var Schema = mongoose.Schema;
+    var ObjectId = Schema.ObjectId;
 
-    user_id: {
-        type: ObjectId,
-        index: true
-    },
-    card_id: {
-        type: ObjectId,
-        index: true
-    },
-    star: {
-        type: Number,
-        default: 0
-    },
-    content: {
-        type: String
-    },
-    update_at: {
-        type: Date,
-        default: Date.now
-    }
-});
+    var commentSchema = new Schema({
 
-mongoose.model('Comment', CommentSchema);
+        user_id: {
+            type: ObjectId,
+            index: true
+        },
+        card_id: {
+            type: ObjectId,
+            index: true
+        },
+        star: {
+            type: Number,
+            default: 0
+        },
+        content: {
+            type: String
+        },
+        update_at: {
+            type: Date,
+            default: Date.now
+        }
+    });
+    return commentSchema;
+};

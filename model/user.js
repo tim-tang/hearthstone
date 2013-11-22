@@ -6,36 +6,35 @@
 
 // Model for User.
 // --------------
+module.exports = function(mongoose) {
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+    var Schema = mongoose.Schema;
+    var ObjectId = Schema.ObjectId;
 
-var UserSchema = new Schema({
-    name: {
-        type: String,
-        index: true
-    },
-    email: {
-        type: String,
-        unique: true
-    },
-    pass: {
-        type: String
-    },
-    avatar: {
-        type: String
-    },
-    deviceToken: {
-        type: String
-    },
-    favorites: [{
-        card_id: ObjectId
-    }],
-    update_at: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-mongoose.model('User', UserSchema);
+    var userSchema = new Schema({
+        name: {
+            type: String,
+            index: true
+        },
+        email: {
+            type: String
+        },
+        pass: {
+            type: String
+        },
+        avatar: {
+            type: String
+        },
+        deviceToken: {
+            type: String
+        },
+        favorites: [{
+            card_id: ObjectId
+        }],
+        update_at: {
+            type: Date,
+            default: Date.now
+        }
+    });
+    return userSchema;
+};

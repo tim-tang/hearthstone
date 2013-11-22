@@ -6,61 +6,62 @@
 
 // Model for Card.
 // --------------
+module.exports = function(mongoose) {
 
-var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    Ability = require('./index').Ability,
-    ObjectId = Schema.ObjectId;
+    var Schema = mongoose.Schema;
+    var Ability = require('./index').Ability;
 
-var CardSchema = new Schema({
+    var cardSchema = new Schema({
 
-    title: {
-        type: String,
-        unique: true
-    },
-    category: {
-        type: String
-    },
-    image_url: {
-        type: String
-    },
-    content: {
-        type: String
-    },
-    abilities: [Ability],
-    attack: {
-        type: Number
-    },
-    health_power: {
-        type: Number
-    },
-    cost: {
-        type: Number
-    },
-    rare: {
-        type: String
-    },
-    occupation: {
-        type: String
-    },
-    race: {
-        type: String
-    },
-    evaluation: {
-        type: String
-    },
-    is_active: {
-        type: Boolean,
-        default: true
-    },
-    version: {
-        type: Number,
-        default: 0
-    },
-    update_at: {
-        type: Date,
-        default: Date.now
-    }
-});
-
-mongoose.model('Card', CardSchema);
+        title: {
+            type: String,
+            unique: true
+        },
+        category: {
+            type: String
+        },
+        image_url: {
+            type: String
+        },
+        content: {
+            type: String
+        },
+        abilities: {
+            type: Array
+        },
+        attack: {
+            type: Number
+        },
+        health_power: {
+            type: Number
+        },
+        cost: {
+            type: Number
+        },
+        rare: {
+            type: String
+        },
+        occupation: {
+            type: String
+        },
+        race: {
+            type: String
+        },
+        evaluation: {
+            type: String
+        },
+        is_active: {
+            type: Boolean,
+            default: true
+        },
+        version: {
+            type: Number,
+            default: 0
+        },
+        update_at: {
+            type: Date,
+            default: Date.now
+        }
+    });
+    return cardSchema;
+};

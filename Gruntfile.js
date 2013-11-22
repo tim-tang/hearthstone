@@ -46,6 +46,18 @@ module.exports = function(grunt) {
             },
             all: ['Gruntfile.js', '**/*.js', '!node_modules/**/*.js', '!test/**/*.js']
         },
+        shell: {
+            multiple: {
+                options: {
+                    stdout: true,
+                    failOnError: true
+                },
+                command: [
+                    'mongoose-fixture --fixture=init --remove',
+                    'mongoose-fixture --fixture=init --add'
+                ].join('&&')
+            }
+        },
         clean: {
             dist: ['docs/public', 'docs/*.html']
         }
@@ -56,8 +68,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
     grunt.loadNpmTasks('grunt-docco');
+    grunt.loadNpmTasks('grunt-shell');
 
     // Register tasks
     grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
     grunt.registerTask('doc', ['docco']);
+    grunt.registerTask('migrate', ['shell']);
 };

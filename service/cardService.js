@@ -3,13 +3,17 @@
 
 var model = require('../model'),
     Card = model.Card,
-    Ability = model.Ability,
     _ = require('underscore');
 
 var CardService = function CardService() {};
 
 
 _.extend(CardService.prototype, {
+
+    // Retrieve all cards.
+    getAllCards: function(callback){
+        Card.find({},callback);
+    },
 
     // Retrieve cards by version.
     getCardsByVersion: function(vnumber, callback) {
@@ -57,9 +61,7 @@ _.extend(CardService.prototype, {
             card.content = jcard.content;
             card.abilities = [];
             _.each(jcard.abilities, function(jability){
-               var ability = new Ability();
-               ability.name =jability.name;
-               card.abilities.push(ability);
+               card.abilities.push(jability.name);
             });
             card.attack = jcard.attack;
             card.health_power = jcard.health_power;

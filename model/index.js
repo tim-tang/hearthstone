@@ -19,14 +19,14 @@ mongoose.connect(mongoUrl, function(err) {
 });
 
 // Link all required mongoose models together.
-require('./user');
-require('./card');
-require('./comment');
-require('./version');
+var userSchema = require('./user');
+var cardSchema = require('./card');
+var commentSchema = require('./comment');
+var versionScehma = require('./version');
 require('./ability');
 
-exports.User = mongoose.model('User');
-exports.Card = mongoose.model('Card');
-exports.Comment = mongoose.model('Comment');
-exports.Version = mongoose.model('Version');
+exports.User = mongoose.model('User',userSchema(mongoose));
+exports.Card = mongoose.model('Card', cardSchema(mongoose));
+exports.Comment = mongoose.model('Comment', commentSchema(mongoose));
+exports.Version = mongoose.model('Version', versionScehma(mongoose));
 exports.Ability= mongoose.model('Ability');

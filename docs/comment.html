@@ -157,34 +157,35 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> mongoose = require(<span class="string">'mongoose'</span>),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+            <div class="content"><div class='highlight'><pre>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
 
-<span class="keyword">var</span> CommentSchema = <span class="keyword">new</span> Schema({
+    <span class="keyword">var</span> Schema = mongoose.Schema;
+    <span class="keyword">var</span> ObjectId = Schema.ObjectId;
 
-    user_id: {
-        type: ObjectId,
-        index: <span class="literal">true</span>
-    },
-    card_id: {
-        type: ObjectId,
-        index: <span class="literal">true</span>
-    },
-    star: {
-        type: Number,
-        <span class="keyword">default</span>: <span class="number">0</span>
-    },
-    content: {
-        type: String
-    },
-    update_at: {
-        type: Date,
-        <span class="keyword">default</span>: Date.now
-    }
-});
+    <span class="keyword">var</span> commentSchema = <span class="keyword">new</span> Schema({
 
-mongoose.model(<span class="string">'Comment'</span>, CommentSchema);</pre></div></div>
+        user_id: {
+            type: ObjectId,
+            index: <span class="literal">true</span>
+        },
+        card_id: {
+            type: ObjectId,
+            index: <span class="literal">true</span>
+        },
+        star: {
+            type: Number,
+            <span class="keyword">default</span>: <span class="number">0</span>
+        },
+        content: {
+            type: String
+        },
+        update_at: {
+            type: Date,
+            <span class="keyword">default</span>: Date.now
+        }
+    });
+    <span class="keyword">return</span> commentSchema;
+};</pre></div></div>
             
         </li>
         

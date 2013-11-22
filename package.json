@@ -32,6 +32,8 @@
     "grunt": "*",
     "blanket": "*",
     "travis-cov": "*",
+    "mongoose-fixture": "*",
+    "grunt-shell": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
     "grunt-mocha-test": "*",

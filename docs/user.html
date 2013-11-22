@@ -157,38 +157,38 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> mongoose = require(<span class="string">'mongoose'</span>),
-    Schema = mongoose.Schema,
-    ObjectId = Schema.ObjectId;
+            <div class="content"><div class='highlight'><pre>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
 
-<span class="keyword">var</span> UserSchema = <span class="keyword">new</span> Schema({
-    name: {
-        type: String,
-        index: <span class="literal">true</span>
-    },
-    email: {
-        type: String,
-        unique: <span class="literal">true</span>
-    },
-    pass: {
-        type: String
-    },
-    avatar: {
-        type: String
-    },
-    deviceToken: {
-        type: String
-    },
-    favorites: [{
-        card_id: ObjectId
-    }],
-    update_at: {
-        type: Date,
-        <span class="keyword">default</span>: Date.now
-    }
-});
+    <span class="keyword">var</span> Schema = mongoose.Schema;
+    <span class="keyword">var</span> ObjectId = Schema.ObjectId;
 
-mongoose.model(<span class="string">'User'</span>, UserSchema);</pre></div></div>
+    <span class="keyword">var</span> userSchema = <span class="keyword">new</span> Schema({
+        name: {
+            type: String,
+            index: <span class="literal">true</span>
+        },
+        email: {
+            type: String
+        },
+        pass: {
+            type: String
+        },
+        avatar: {
+            type: String
+        },
+        deviceToken: {
+            type: String
+        },
+        favorites: [{
+            card_id: ObjectId
+        }],
+        update_at: {
+            type: Date,
+            <span class="keyword">default</span>: Date.now
+        }
+    });
+    <span class="keyword">return</span> userSchema;
+};</pre></div></div>
             
         </li>
         

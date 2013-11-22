@@ -130,9 +130,34 @@
  * Card handler for rest api.
  *
  * @author tim.tang
- */</span>
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="hearthstone-card-handler-">Hearthstone Card Handler.</h2>
 
-<span class="keyword">var</span> cardService = require(<span class="string">'../service'</span>).CardService,
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> cardService = require(<span class="string">'../service'</span>).CardService,
     versionService = require(<span class="string">'../service'</span>).VersionService,
     sanitize = require(<span class="string">'validator'</span>).sanitize,
     check = require(<span class="string">'validator'</span>).check,
@@ -141,9 +166,22 @@
 <span class="keyword">var</span> CardHandler = <span class="function"><span class="keyword">function</span> <span class="title">CardHandler</span><span class="params">()</span> {</span>};
 
 
-_.extend(CardHandler.prototype, {
+_.extend(CardHandler.prototype, {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Synchronize cards with iOS app.</p>
 
-    syncCards: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    syncCards: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
         <span class="keyword">var</span> vnumber = sanitize(req.params[<span class="string">'version'</span>]).trim();
         <span class="keyword">try</span> {
             check(vnumber, <span class="string">'Version param must be a number!'</span>).isInt();
@@ -152,8 +190,22 @@ _.extend(CardHandler.prototype, {
                 success: <span class="literal">false</span>,
                 msg: e.message
             });
-        }
-        versionService.checkSynchronizable(vnumber, <span class="function"><span class="keyword">function</span><span class="params">(err, versions)</span> {</span>
+        }</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Check iOS latest or not.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>        versionService.checkSynchronizable(vnumber, <span class="function"><span class="keyword">function</span><span class="params">(err, versions)</span> {</span>
             <span class="keyword">if</span> (err) {
                 <span class="keyword">return</span> res.send({
                     success: <span class="literal">false</span>,
@@ -170,18 +222,44 @@ _.extend(CardHandler.prototype, {
             <span class="keyword">var</span> cardIds = [];
             _.each(versions, <span class="function"><span class="keyword">function</span><span class="params">(version)</span> {</span>
                 cardIds = _.union(cardIds, version.card_ids);
-            });
+            });</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Retrieve latest cards and return to iOS app.</p>
 
-            cardService.getCardsByIds(cardIds, <span class="function"><span class="keyword">function</span><span class="params">(err, cards)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            cardService.getCardsByIds(cardIds, <span class="function"><span class="keyword">function</span><span class="params">(err, cards)</span> {</span>
                 res.send({
                     success: <span class="literal">true</span>,
                     cards: cards
                 });
             });
         });
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Batch import cards into Hearthstone server.</p>
 
-    importCards: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    importCards: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
         <span class="keyword">var</span> cards = req.body.cards;
         <span class="keyword">if</span> (!cards || _.isEmpty(cards)) {
             <span class="keyword">return</span> res.send({
@@ -190,8 +268,22 @@ _.extend(CardHandler.prototype, {
             });
         }
         <span class="keyword">var</span> cardIds = [];
-        _.each(cards, <span class="function"><span class="keyword">function</span><span class="params">(card)</span> {</span>
-            cardService.saveOrUpdateCard(card, <span class="function"><span class="keyword">function</span><span class="params">(err, rcard)</span> {</span>
+        _.each(cards, <span class="function"><span class="keyword">function</span><span class="params">(card)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Do save and update cards.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            cardService.saveOrUpdateCard(card, <span class="function"><span class="keyword">function</span><span class="params">(err, rcard)</span> {</span>
                 <span class="keyword">if</span> (err) {
                     <span class="keyword">return</span> res.send({
                         success: <span class="literal">false</span>,
@@ -203,13 +295,13 @@ _.extend(CardHandler.prototype, {
         </li>
         
         
-        <li id="section-2">
+        <li id="section-9">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
+                <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>TODO: need to refactor with event proxy handling async.</p>
+              <p>need to refactor with event proxy handling async.</p>
 
             </div>
             

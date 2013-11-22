@@ -4,6 +4,10 @@
  * @author tim.tang
  */
 
+// Middleware for authentication user.
+// --------------
+
+// Require user logon.
 exports.userRequired = function(req, res, next) {
     if (!req.session || !req.session.user) {
         return res.send({
@@ -14,6 +18,7 @@ exports.userRequired = function(req, res, next) {
     next();
 };
 
+// Require admin role.
 exports.adminRequired = function(req, res, next) {
     if (!req.session || !req.session.user || !req.session.user.is_admin) {
         return res.send({

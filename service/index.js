@@ -1,8 +1,10 @@
-/**
- * Indexing required services.
- *
- * @author tim.tang
- */
+//     Hearthstone Server
+//     http://timtang.me
+//     (c) 2013 Tim Tang
+//     Hearthstone may be freely distributed under the GPL v3 license.
+
+// Indexing required services.
+// --------------
 
 exports.UserService = require('./userService');
 exports.CardService = require('./cardService');

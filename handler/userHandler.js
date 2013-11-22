@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Hearthstone User Handler.
+// --------------
+
 var  _ = require('underscore'),
     sanitize = require('validator').sanitize,
     check = require('validator').check,
@@ -17,6 +20,7 @@ var UserHandler = function UserHandler() {};
 
 _.extend(UserHandler.prototype, {
 
+    // Do health check on Hearthstone server.
     health: function(req, res) {
         res.send(
             '   ___ ___          .__   .__            .__                            .__   .__                ._.\n' +
@@ -27,6 +31,7 @@ _.extend(UserHandler.prototype, {
         );
     },
 
+    // Authenticate user logon or not/ is admin.
     authenticate: function(req, res, next) {
         var cookie = req.cookies[config.auth_cookie_name];
         if (_.isEmpty(cookie)) {
@@ -49,6 +54,7 @@ _.extend(UserHandler.prototype, {
         });
     },
 
+    // Signup a user.
     signup: function(req, res, next) {
         var name = sanitize(req.body.name).trim();
         try {
@@ -124,6 +130,7 @@ _.extend(UserHandler.prototype, {
         });
     },
 
+    // Handling user login operation.
     login: function(req, res, next) {
         var name = sanitize(req.body.name).trim();
         var pass = sanitize(req.body.pass).trim();
@@ -188,6 +195,7 @@ _.extend(UserHandler.prototype, {
         });
     },
 
+    // Handling update user.
     updateUser: function(req, res, next) {
         var userId = sanitize(req.body.userId).trim();
         var name = sanitize(req.body.name).trim();
@@ -208,6 +216,7 @@ _.extend(UserHandler.prototype, {
         });
     },
 
+    // Favorite a card.
     favorite: function(req, res, next) {
         var cardId = sanitize(req.body.cardId).trim();
         var userId = sanitize(req.body.userId).trim();
@@ -225,6 +234,7 @@ _.extend(UserHandler.prototype, {
         });
     },
 
+    // Retrieve user favorite cards.
     showFavorites: function(req, res, next) {
         var userId = sanitize(req.params['userId']).trim();
         userService.getUserById(userId, function(err, user) {

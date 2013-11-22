@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Hearthstone Comment Handler.
+// --------------
+
 var sanitize = require('validator').sanitize,
     check = require('validator').check,
     commentService = require('../service/commentService'),
@@ -14,6 +17,7 @@ var CommentHandler = function CommentHandler() {};
 
 _.extend(CommentHandler.prototype, {
 
+    // Retrieve card related comments.
     showComments: function(req, res, next) {
         var cardId = sanitize(req.params['cardId']).trim();
         commentService.getCommentsByCardId(cardId, function(err, comments) {
@@ -30,6 +34,7 @@ _.extend(CommentHandler.prototype, {
         });
     },
 
+    // Star comments.
     star: function(req, res, next) {
         var commentId = sanitize(req.body.commentId).trim();
         var star = sanitize(req.body.star).trim();
@@ -47,6 +52,7 @@ _.extend(CommentHandler.prototype, {
         });
     },
 
+    // Create a comment on related card.
     createComment: function(req, res, next) {
         var userId = sanitize(req.body.userId).trim();
         var cardId = sanitize(req.body.cardId).trim();

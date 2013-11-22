@@ -1,8 +1,5 @@
-/**
- * Manage version service.
- *
- * @author tim.tang
- */
+// Manage version service.
+// --------------
 
 var model = require('../model'),
     Version = model.Version,
@@ -12,6 +9,7 @@ var VersionService = function VersionService() {};
 
 _.extend(VersionService.prototype, {
 
+    // Check is there new version exists.
     checkSynchronizable: function(vnumber, callback) {
         Version.find({
             version_no: {
@@ -20,6 +18,7 @@ _.extend(VersionService.prototype, {
         }, callback);
     },
 
+    // Update version by version no.
     updateVersionByNo: function(cardIds, callback) {
         Version.findOne({}, {}, {
             sort: {

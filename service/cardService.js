@@ -1,8 +1,5 @@
-/**
- * Card manage service.
- *
- * @author tim.tang
- */
+// Card manage service.
+// --------------
 
 var model = require('../model'),
     Card = model.Card,
@@ -14,6 +11,7 @@ var CardService = function CardService() {};
 
 _.extend(CardService.prototype, {
 
+    // Retrieve cards by version.
     getCardsByVersion: function(vnumber, callback) {
         Card.find({
             is_active: true,
@@ -23,12 +21,14 @@ _.extend(CardService.prototype, {
         }, callback);
     },
 
+    // Retrieve card by card id.
     getCardById: function(id, callback) {
         Card.findOne({
             _id: id
         }, callback);
     },
 
+    // Retrieve cards by card ids.
     getCardsByIds: function(ids, callback) {
         Card.find({
             '_id': {
@@ -37,6 +37,7 @@ _.extend(CardService.prototype, {
         }, callback);
     },
 
+    // Save or update card.
     saveOrUpdateCard: function(jcard, callback) {
         Card.findOne({
             title: jcard.title
@@ -71,6 +72,7 @@ _.extend(CardService.prototype, {
         });
     },
 
+    // Disable one card.
     inactiveCard: function(cardId, callback) {
         this.getCardById(cardId, function(err, card) {
             if (err) {

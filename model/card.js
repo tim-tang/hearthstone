@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Model for Card.
+// --------------
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     Ability = require('./index').Ability,

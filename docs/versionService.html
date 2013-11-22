@@ -123,32 +123,65 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
+              <h2 id="manage-version-service-">Manage version service.</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="comment">/**
- * Manage version service.
- *
- * @author tim.tang
- */</span>
-
-<span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
     Version = model.Version,
     _ = require(<span class="string">'underscore'</span>);
 
 <span class="keyword">var</span> VersionService = <span class="function"><span class="keyword">function</span> <span class="title">VersionService</span><span class="params">()</span> {</span>};
 
-_.extend(VersionService.prototype, {
+_.extend(VersionService.prototype, {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Check is there new version exists.</p>
 
-    checkSynchronizable: <span class="function"><span class="keyword">function</span><span class="params">(vnumber, callback)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    checkSynchronizable: <span class="function"><span class="keyword">function</span><span class="params">(vnumber, callback)</span> {</span>
         Version.find({
             version_no: {
                 $gt: vnumber
             }
         }, callback);
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Update version by version no.</p>
 
-    updateVersionByNo: <span class="function"><span class="keyword">function</span><span class="params">(cardIds, callback)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    updateVersionByNo: <span class="function"><span class="keyword">function</span><span class="params">(cardIds, callback)</span> {</span>
         Version.findOne({}, {}, {
             sort: {
                 <span class="string">'update_at'</span>: -<span class="number">1</span>

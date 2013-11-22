@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Model for User.
+// --------------
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;

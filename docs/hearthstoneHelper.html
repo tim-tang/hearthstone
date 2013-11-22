@@ -130,17 +130,7 @@
  * Hearthstone common helpers
  *
  * @author tim.tang
- */</span>
-<span class="keyword">var</span> crypto = require(<span class="string">'crypto'</span>),
-    config = require(<span class="string">'../conf/hearthstone-conf'</span>).config,
-    _ = require(<span class="string">'underscore'</span>);
-
-
-<span class="keyword">var</span> HearthstoneHelper = <span class="function"><span class="keyword">function</span> <span class="title">HearthstoneHelper</span><span class="params">()</span> {</span>};
-
-_.extend(HearthstoneHelper.prototype, {
-
-    popSession: <span class="function"><span class="keyword">function</span><span class="params">(user, res)</span> {</span></pre></div></div>
+ */</span></pre></div></div>
             
         </li>
         
@@ -151,6 +141,58 @@ _.extend(HearthstoneHelper.prototype, {
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
+              <h2 id="hearthstone-helper-">Hearthstone Helper.</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> crypto = require(<span class="string">'crypto'</span>),
+    config = require(<span class="string">'../conf/hearthstone-conf'</span>).config,
+    _ = require(<span class="string">'underscore'</span>);
+
+<span class="keyword">var</span> HearthstoneHelper = <span class="function"><span class="keyword">function</span> <span class="title">HearthstoneHelper</span><span class="params">()</span> {</span>};
+
+_.extend(HearthstoneHelper.prototype, {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Populate user session and cookies. By following attributes:
+<code>user._id</code>
+<code>user.name</code>
+<code>user.pass</code>
+<code>user.email</code>.</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    popSession: <span class="function"><span class="keyword">function</span><span class="params">(user, res)</span> {</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
               <p>cookie valid in 30 days.</p>
 
             </div>
@@ -160,40 +202,118 @@ _.extend(HearthstoneHelper.prototype, {
             path: <span class="string">'/'</span>,
             maxAge: <span class="number">1000</span> * <span class="number">60</span> * <span class="number">60</span> * <span class="number">24</span> * <span class="number">30</span>
         });
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Generate authentication token.</p>
 
-    genAuthToken: <span class="function"><span class="keyword">function</span><span class="params">(user)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    genAuthToken: <span class="function"><span class="keyword">function</span><span class="params">(user)</span> {</span>
         <span class="keyword">return</span> <span class="keyword">this</span>.encrypt(user._id + <span class="string">'\t'</span> + user.name + <span class="string">'\t'</span> + user.pass + <span class="string">'\t'</span> + user.email, config.session_secret);
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-7">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-7">&#182;</a>
+              </div>
+              <p>Clear http response cookies.</p>
 
-    clearCookie: <span class="function"><span class="keyword">function</span><span class="params">(res)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    clearCookie: <span class="function"><span class="keyword">function</span><span class="params">(res)</span> {</span>
         res.clearCookie(config.auth_cookie_name, {
             path: <span class="string">'/'</span>
         });
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Encrypt string with AES192.</p>
 
-    encrypt: <span class="function"><span class="keyword">function</span><span class="params">(str, secret)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    encrypt: <span class="function"><span class="keyword">function</span><span class="params">(str, secret)</span> {</span>
         <span class="keyword">var</span> cipher = crypto.createCipher(<span class="string">'aes192'</span>, secret);
         <span class="keyword">var</span> enc = cipher.update(str, <span class="string">'utf8'</span>, <span class="string">'hex'</span>);
         enc += cipher.final(<span class="string">'hex'</span>);
         <span class="keyword">return</span> enc;
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Decrypt string with AES192.</p>
 
-    decrypt: <span class="function"><span class="keyword">function</span><span class="params">(str, secret)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    decrypt: <span class="function"><span class="keyword">function</span><span class="params">(str, secret)</span> {</span>
         <span class="keyword">var</span> decipher = crypto.createDecipher(<span class="string">'aes192'</span>, secret);
         <span class="keyword">var</span> dec = decipher.update(str, <span class="string">'hex'</span>, <span class="string">'utf8'</span>);
         dec += decipher.final(<span class="string">'utf8'</span>);
         <span class="keyword">return</span> dec;
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-10">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-10">&#182;</a>
+              </div>
+              <p>Encrypt string with MD5.</p>
 
-    md5: <span class="function"><span class="keyword">function</span><span class="params">(str)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    md5: <span class="function"><span class="keyword">function</span><span class="params">(str)</span> {</span>
         <span class="keyword">var</span> md5sum = crypto.createHash(<span class="string">'md5'</span>);
         md5sum.update(str);
         str = md5sum.digest(<span class="string">'hex'</span>);
         <span class="keyword">return</span> str;
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-11">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-11">&#182;</a>
+              </div>
+              <p>Generate random string.</p>
 
-    randomString: <span class="function"><span class="keyword">function</span><span class="params">(size)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    randomString: <span class="function"><span class="keyword">function</span><span class="params">(size)</span> {</span>
         size = size || <span class="number">6</span>;
         <span class="keyword">var</span> code_string = <span class="string">'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'</span>;
         <span class="keyword">var</span> max_num = code_string.length + <span class="number">1</span>;

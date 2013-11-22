@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Hearthstone Card Handler.
+// --------------
+
 var cardService = require('../service').CardService,
     versionService = require('../service').VersionService,
     sanitize = require('validator').sanitize,
@@ -15,6 +18,7 @@ var CardHandler = function CardHandler() {};
 
 _.extend(CardHandler.prototype, {
 
+    // Synchronize cards with iOS app.
     syncCards: function(req, res, next) {
         var vnumber = sanitize(req.params['version']).trim();
         try {
@@ -25,6 +29,7 @@ _.extend(CardHandler.prototype, {
                 msg: e.message
             });
         }
+        // Check iOS latest or not.
         versionService.checkSynchronizable(vnumber, function(err, versions) {
             if (err) {
                 return res.send({
@@ -43,7 +48,7 @@ _.extend(CardHandler.prototype, {
             _.each(versions, function(version) {
                 cardIds = _.union(cardIds, version.card_ids);
             });
-
+            // Retrieve latest cards and return to iOS app.
             cardService.getCardsByIds(cardIds, function(err, cards) {
                 res.send({
                     success: true,
@@ -53,6 +58,7 @@ _.extend(CardHandler.prototype, {
         });
     },
 
+    // Batch import cards into Hearthstone server.
     importCards: function(req, res, next) {
         var cards = req.body.cards;
         if (!cards || _.isEmpty(cards)) {
@@ -63,6 +69,7 @@ _.extend(CardHandler.prototype, {
         }
         var cardIds = [];
         _.each(cards, function(card) {
+            // Do save and update cards.
             cardService.saveOrUpdateCard(card, function(err, rcard) {
                 if (err) {
                     return res.send({
@@ -71,7 +78,7 @@ _.extend(CardHandler.prototype, {
                     });
                 }
                 cardIds.push(rcard._id);
-                //TODO: need to refactor with event proxy handling async.
+                // need to refactor with event proxy handling async.
                 if (_.size(cardIds) === _.size(cards)) {
                     versionService.updateVersionByNo(cardIds, function(err) {
                         if (err) {

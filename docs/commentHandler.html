@@ -130,9 +130,34 @@
  * Manage comment apis.
  *
  * @author tim.tang
- */</span>
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="hearthstone-comment-handler-">Hearthstone Comment Handler.</h2>
 
-<span class="keyword">var</span> sanitize = require(<span class="string">'validator'</span>).sanitize,
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> sanitize = require(<span class="string">'validator'</span>).sanitize,
     check = require(<span class="string">'validator'</span>).check,
     commentService = require(<span class="string">'../service/commentService'</span>),
     _ = require(<span class="string">'underscore'</span>);
@@ -140,9 +165,22 @@
 
 <span class="keyword">var</span> CommentHandler = <span class="function"><span class="keyword">function</span> <span class="title">CommentHandler</span><span class="params">()</span> {</span>};
 
-_.extend(CommentHandler.prototype, {
+_.extend(CommentHandler.prototype, {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Retrieve card related comments.</p>
 
-    showComments: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    showComments: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
         <span class="keyword">var</span> cardId = sanitize(req.params[<span class="string">'cardId'</span>]).trim();
         commentService.getCommentsByCardId(cardId, <span class="function"><span class="keyword">function</span><span class="params">(err, comments)</span> {</span>
             <span class="keyword">if</span> (err) {
@@ -156,9 +194,22 @@ _.extend(CommentHandler.prototype, {
                 comments: comments
             });
         });
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Star comments.</p>
 
-    star: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    star: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
         <span class="keyword">var</span> commentId = sanitize(req.body.commentId).trim();
         <span class="keyword">var</span> star = sanitize(req.body.star).trim();
         commentService.star(commentId, star, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
@@ -173,9 +224,22 @@ _.extend(CommentHandler.prototype, {
                 msg: <span class="string">'Star comment success!'</span>
             });
         });
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Create a comment on related card.</p>
 
-    createComment: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    createComment: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
         <span class="keyword">var</span> userId = sanitize(req.body.userId).trim();
         <span class="keyword">var</span> cardId = sanitize(req.body.cardId).trim();
         <span class="keyword">var</span> content = sanitize(req.body.content).trim();

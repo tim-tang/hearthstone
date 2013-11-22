@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Hearthstone main configruation.
+// --------------
+
 exports.config = {
     // MongoDB configuration
     mongo: 'mongodb://127.0.0.1/hearthstone_dev',
@@ -20,7 +23,7 @@ exports.config = {
     HEARTHSTONE_ENV: 'dev',
     HEARTHSTONE_PUBLIC_FOLDER: 'docs',
 
-    // Http  methods and heards
+    // Http methods and heards
     CONTENT_TYPE: 'application/json',
     ROUTER_METHOD_POST: 'POST',
     ROUTER_METHOD_GET: 'GET',
@@ -28,7 +31,7 @@ exports.config = {
     ROUTER_METHOD_PUT: 'PUT',
 
 
-    // Administrator user configuration
+    // Administrator user configuration.
     admins: {
         admin: true
     }

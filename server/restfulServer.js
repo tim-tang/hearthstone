@@ -4,6 +4,9 @@
  * @author tim.tang
  */
 
+// Hearthstone Rest Server Wrapper.
+// --------------
+
 var _ = require('underscore'),
     fs = require('fs'),
     path = require('path'),
@@ -16,18 +19,13 @@ var _ = require('underscore'),
     app = express(),
     restAPI;
 
-/**
- * Express router constructor.
- */
+// Express router constructor.
 var RESTfulServer = function RESTfulServer() {
         restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/hearthstone-router.json'), 'UTF-8'));
     };
 
 
-/**
- * Do Express server configuration.
- *
- */
+// Do express server configuration.
 function doConf() {
     app.use(express.favicon());
     app.use(express.logger(config.HEARTHSTONE_ENV));
@@ -46,13 +44,7 @@ function doConf() {
     }));
 }
 
-/**
- *
- * Register RESTful API routes.
- *
- * @param {URLOption} options for rest api configuration.
- *
- */
+// Register RESTful API routes.
 function registerAPI(routers) {
     _.each(routers, function(router) {
         _.each(handlers, function(handler) {
@@ -103,7 +95,7 @@ function registerAPI(routers) {
 }
 
 _.extend(RESTfulServer.prototype, {
-
+    // Start server option.
     startup: function() {
         doConf();
         registerAPI(restAPI.routers);
@@ -118,5 +110,5 @@ var restfulServer = new RESTfulServer();
 
 restfulServer.startup();
 
-/* Public RESTful Server */
+// Public RESTful Server
 module.exports = restfulServer;

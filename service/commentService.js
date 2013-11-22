@@ -1,8 +1,5 @@
-/**
- * Comment manage service.
- *
- * @author tim.tang
- */
+// Comment manage service.
+// --------------
 
 var model = require('../model'),
     Comment = model.Comment,
@@ -13,12 +10,14 @@ var CommentService = function CommentSerice() {};
 
 _.extend(CommentService.prototype, {
 
+    // Retrieve comments by card id.
     getCommentsByCardId: function(cardId, callback) {
         Comment.find({
             card_id: cardId
         }, callback);
     },
 
+    // Star one comment.
     star: function(id, star, callback) {
         Comment.findOne({
             _id: id
@@ -34,6 +33,7 @@ _.extend(CommentService.prototype, {
         });
     },
 
+    // Save one comment.
     saveComment: function(userId, cardId, content, callback) {
         var comment = new Comment();
         comment.user_id = userId;

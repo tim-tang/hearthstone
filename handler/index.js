@@ -1,8 +1,5 @@
-/**
- * Indexing required handlers.
- *
- * @author tim.tang
- */
+// Index Required Handlers.
+// --------------
 
 exports.UserHandler= require('./userHandler');
 exports.CardHandler= require('./cardHandler');

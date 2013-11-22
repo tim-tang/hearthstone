@@ -123,31 +123,64 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-1">&#182;</a>
               </div>
+              <h2 id="comment-manage-service-">Comment manage service.</h2>
+
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="comment">/**
- * Comment manage service.
- *
- * @author tim.tang
- */</span>
-
-<span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
     Comment = model.Comment,
     _ = require(<span class="string">'underscore'</span>);
 
 
 <span class="keyword">var</span> CommentService = <span class="function"><span class="keyword">function</span> <span class="title">CommentSerice</span><span class="params">()</span> {</span>};
 
-_.extend(CommentService.prototype, {
+_.extend(CommentService.prototype, {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              <p>Retrieve comments by card id.</p>
 
-    getCommentsByCardId: <span class="function"><span class="keyword">function</span><span class="params">(cardId, callback)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    getCommentsByCardId: <span class="function"><span class="keyword">function</span><span class="params">(cardId, callback)</span> {</span>
         Comment.find({
             card_id: cardId
         }, callback);
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Star one comment.</p>
 
-    star: <span class="function"><span class="keyword">function</span><span class="params">(id, star, callback)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    star: <span class="function"><span class="keyword">function</span><span class="params">(id, star, callback)</span> {</span>
         Comment.findOne({
             _id: id
         }, <span class="function"><span class="keyword">function</span><span class="params">(err, comment)</span> {</span>
@@ -160,9 +193,22 @@ _.extend(CommentService.prototype, {
             comment.star = star;
             comment.save(callback);
         });
-    },
+    },</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Save one comment.</p>
 
-    saveComment: <span class="function"><span class="keyword">function</span><span class="params">(userId, cardId, content, callback)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    saveComment: <span class="function"><span class="keyword">function</span><span class="params">(userId, cardId, content, callback)</span> {</span>
         <span class="keyword">var</span> comment = <span class="keyword">new</span> Comment();
         comment.user_id = userId;
         comment.card_id = cardId;

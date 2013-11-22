@@ -130,9 +130,34 @@
  * Express server wrapper.
  *
  * @author tim.tang
- */</span>
+ */</span></pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-2">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-2">&#182;</a>
+              </div>
+              <h2 id="hearthstone-rest-server-wrapper-">Hearthstone Rest Server Wrapper.</h2>
 
-<span class="keyword">var</span> _ = require(<span class="string">'underscore'</span>),
+            </div>
+            
+        </li>
+        
+        
+        <li id="section-3">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-3">&#182;</a>
+              </div>
+              
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> _ = require(<span class="string">'underscore'</span>),
     fs = require(<span class="string">'fs'</span>),
     path = require(<span class="string">'path'</span>),
     application_root = path.resolve(__dirname, <span class="string">'..'</span>),
@@ -142,21 +167,39 @@
     handlers = require(<span class="string">'../handler'</span>),
     userHandler = require(<span class="string">'../handler/userHandler'</span>),
     app = express(),
-    restAPI;
+    restAPI;</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>Express router constructor.</p>
 
-<span class="comment">/**
- * Express router constructor.
- */</span>
-<span class="keyword">var</span> RESTfulServer = <span class="function"><span class="keyword">function</span> <span class="title">RESTfulServer</span><span class="params">()</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> RESTfulServer = <span class="function"><span class="keyword">function</span> <span class="title">RESTfulServer</span><span class="params">()</span> {</span>
         restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, <span class="string">'../conf/hearthstone-router.json'</span>), <span class="string">'UTF-8'</span>));
-    };
+    };</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-5">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-5">&#182;</a>
+              </div>
+              <p>Do express server configuration.</p>
 
-
-<span class="comment">/**
- * Do Express server configuration.
- *
- */</span>
-<span class="function"><span class="keyword">function</span> <span class="title">doConf</span><span class="params">()</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">doConf</span><span class="params">()</span> {</span>
     app.use(express.favicon());
     app.use(express.logger(config.HEARTHSTONE_ENV));
     app.use(express.bodyParser());
@@ -172,16 +215,22 @@
         dumpExceptions: <span class="literal">true</span>,
         showStack: <span class="literal">true</span>
     }));
-}
+}</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-6">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-6">&#182;</a>
+              </div>
+              <p>Register RESTful API routes.</p>
 
-<span class="comment">/**
- *
- * Register RESTful API routes.
- *
- * @param {URLOption} options for rest api configuration.
- *
- */</span>
-<span class="function"><span class="keyword">function</span> <span class="title">registerAPI</span><span class="params">(routers)</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre><span class="function"><span class="keyword">function</span> <span class="title">registerAPI</span><span class="params">(routers)</span> {</span>
     _.each(routers, <span class="function"><span class="keyword">function</span><span class="params">(router)</span> {</span>
         _.each(handlers, <span class="function"><span class="keyword">function</span><span class="params">(handler)</span> {</span>
             <span class="keyword">if</span> (_.isFunction(handler[router.api]) &amp;&amp; _.isString(router.url)) {
@@ -228,11 +277,11 @@
         </li>
         
         
-        <li id="section-2">
+        <li id="section-7">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-2">&#182;</a>
+                <a class="pilcrow" href="#section-7">&#182;</a>
               </div>
               <p>console.log(&#39;Invalid API-[%s] or URL-[%s] in api-router.json!&#39;, router.api, router.url);</p>
 
@@ -243,9 +292,22 @@
     });
 }
 
-_.extend(RESTfulServer.prototype, {
+_.extend(RESTfulServer.prototype, {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-8">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-8">&#182;</a>
+              </div>
+              <p>Start server option.</p>
 
-    startup: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>    startup: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
         doConf();
         registerAPI(restAPI.routers);
         <span class="keyword">var</span> port = process.env.PORT || config.DEV_HEARTHSTONE_PORT;
@@ -257,10 +319,22 @@ _.extend(RESTfulServer.prototype, {
 
 <span class="keyword">var</span> restfulServer = <span class="keyword">new</span> RESTfulServer();
 
-restfulServer.startup();
+restfulServer.startup();</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-9">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-9">&#182;</a>
+              </div>
+              <p>Public RESTful Server</p>
 
-<span class="comment">/* Public RESTful Server */</span>
-module.exports = restfulServer;</pre></div></div>
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>module.exports = restfulServer;</pre></div></div>
             
         </li>
         

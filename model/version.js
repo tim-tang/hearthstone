@@ -4,10 +4,14 @@
  * @author tim.tang
  */
 
+// Model for version.
+// --------------
+
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     ObjectId = Schema.ObjectId;
 
+// Version to control cards sync and import.
 var VersionSchema = new Schema({
 
     version_no: {

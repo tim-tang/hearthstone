@@ -35,6 +35,11 @@
     ```
     $ npm install -g grunt-cli
     ```
+- Install mongoose fixture cli
+
+    ```
+    $ npm install -g mongoose-fixture
+    ```
 
 ### Running Node build|test|jslint|clean
 
@@ -58,6 +63,10 @@
     ```
     $ grunt doc
     ```
+
+### Generate initial data.
+
+    $ grunt migrate
 
 ### Preview API/JS doc on-line
 

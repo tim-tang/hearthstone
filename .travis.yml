@@ -9,6 +9,8 @@ services:
   - mongodb
 before_script:
   - npm install -g grunt-cli
+after_scipt:
+  - grunt doc
 branches:
   only:
     - master

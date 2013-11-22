@@ -19,11 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="constants.html">
-                constants.js
-              </a>
-            
-              
               <a class="source" href="hearthstoneHelper.html">
                 hearthstoneHelper.js
               </a>
@@ -56,11 +51,6 @@
               
               <a class="source" href="card.html">
                 card.js
-              </a>
-            
-              
-              <a class="source" href="cardId.html">
-                cardId.js
               </a>
             
               
@@ -142,8 +132,7 @@
  * @author tim.tang
  */</span>
 
-<span class="keyword">var</span> constants = require(<span class="string">'../common/constants'</span>),
-    _ = require(<span class="string">'underscore'</span>),
+<span class="keyword">var</span>  _ = require(<span class="string">'underscore'</span>),
     sanitize = require(<span class="string">'validator'</span>).sanitize,
     check = require(<span class="string">'validator'</span>).check,
     hsHelper = require(<span class="string">'../common/hearthstoneHelper'</span>),
@@ -157,10 +146,13 @@
 _.extend(UserHandler.prototype, {
 
     health: <span class="function"><span class="keyword">function</span><span class="params">(req, res)</span> {</span>
-        res.send({
-            success: <span class="literal">true</span>,
-            msg: <span class="string">'I am alive!'</span>
-        });
+        res.send(
+            <span class="string">'   ___ ___          .__   .__            .__                            .__   .__                ._.\n'</span> +
+            <span class="string">'  /   |  \\   ____  |  |  |  |    ____   |__| _____     _____   _____   |  |  |__|___  __  ____  | |\n'</span> +
+            <span class="string">' /    ~   \\_/ __ \\ |  |  |  |   /  _ \\  |  | \\__  \\   /     \\  \\__  \\  |  |  |  |\\  \\/ /_/ __ \\ | |\n'</span> +
+            <span class="string">' \\    Y   /\\  ___/ |  |__|  |__(  &lt;_&gt; ) |  |  / __ \\_|  Y Y  \\  / __ \\_|  |__|  | \\   / \\  ___/  \\|\n'</span> +
+            <span class="string">'  \\___|_ /  \\___  &gt;|____/|____/ \\____/  |__| (____  /|__|_|  / (____  /|____/|__|  \\_/   \\___  &gt; __ \n'</span>
+        );
     },
 
     authenticate: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
@@ -176,6 +168,9 @@ _.extend(UserHandler.prototype, {
                 <span class="keyword">return</span> next(err);
             }
             <span class="keyword">if</span> (user) {
+               <span class="keyword">if</span>(config.admins[user.name]){
+                    user.is_admin = <span class="literal">true</span>;
+               }
                 req.session.user = user;
                 <span class="keyword">return</span> next();
             }

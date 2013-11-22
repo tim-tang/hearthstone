@@ -19,11 +19,6 @@
           <div id="jump_page">
             
               
-              <a class="source" href="constants.html">
-                constants.js
-              </a>
-            
-              
               <a class="source" href="hearthstoneHelper.html">
                 hearthstoneHelper.js
               </a>
@@ -56,11 +51,6 @@
               
               <a class="source" href="card.html">
                 card.js
-              </a>
-            
-              
-              <a class="source" href="cardId.html">
-                cardId.js
               </a>
             
               
@@ -146,7 +136,6 @@
     fs = require(<span class="string">'fs'</span>),
     path = require(<span class="string">'path'</span>),
     application_root = path.resolve(__dirname, <span class="string">'..'</span>),
-    constants = require(<span class="string">'../common/constants'</span>),
     config = require(<span class="string">'../conf/hearthstone-conf'</span>).config,
     express = require(<span class="string">'express'</span>),
     auth = require(<span class="string">'../middleware/authenticator'</span>),
@@ -159,7 +148,7 @@
  * Express router constructor.
  */</span>
 <span class="keyword">var</span> RESTfulServer = <span class="function"><span class="keyword">function</span> <span class="title">RESTfulServer</span><span class="params">()</span> {</span>
-        restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, <span class="string">'../conf/api-router.json'</span>), <span class="string">'UTF-8'</span>));
+        restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, <span class="string">'../conf/hearthstone-router.json'</span>), <span class="string">'UTF-8'</span>));
     };
 
 
@@ -169,7 +158,7 @@
  */</span>
 <span class="function"><span class="keyword">function</span> <span class="title">doConf</span><span class="params">()</span> {</span>
     app.use(express.favicon());
-    app.use(express.logger(constants.EXPRESS_ENV_DEV));
+    app.use(express.logger(config.HEARTHSTONE_ENV));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
     app.use(express.cookieParser());
@@ -178,7 +167,7 @@
     }));
     app.use(userHandler.authenticate);
     app.use(app.router);
-    app.use(express.static(path.join(application_root, constants.EXPRESS_PUBLIC)));
+    app.use(express.static(path.join(application_root, config.HEARTHSTONE_PUBLIC_FOLDER)));
     app.use(express.errorHandler({
         dumpExceptions: <span class="literal">true</span>,
         showStack: <span class="literal">true</span>
@@ -203,30 +192,30 @@
                 }
                 <span class="keyword">switch</span> (router.method) {
 
-                <span class="keyword">case</span> constants.ROUTER_METHOD_POST:
+                <span class="keyword">case</span> config.ROUTER_METHOD_POST:
                     app.post(router.url, middlewares, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     <span class="keyword">break</span>;
 
-                <span class="keyword">case</span> constants.ROUTER_METHOD_PUT:
+                <span class="keyword">case</span> config.ROUTER_METHOD_PUT:
                     app.put(router.url, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     <span class="keyword">break</span>;
 
-                <span class="keyword">case</span> constants.ROUTER_METHOD_GET:
+                <span class="keyword">case</span> config.ROUTER_METHOD_GET:
                     app.get(router.url, middlewares, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     <span class="keyword">break</span>;
 
-                <span class="keyword">case</span> constants.ROUTER_METHOD_DELETE:
+                <span class="keyword">case</span> config.ROUTER_METHOD_DELETE:
                     app.del(router.url, <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-                        res.contentType(constants.CONTENT_TYPE);
+                        res.contentType(config.CONTENT_TYPE);
                         handler[router.api](req, res, next);
                     });
                     <span class="keyword">break</span>;
@@ -259,7 +248,7 @@ _.extend(RESTfulServer.prototype, {
     startup: <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
         doConf();
         registerAPI(restAPI.routers);
-        <span class="keyword">var</span> port = process.env.PORT || constants.EXPRESS_PORT;
+        <span class="keyword">var</span> port = process.env.PORT || config.DEV_HEARTHSTONE_PORT;
         app.listen(port, <span class="function"><span class="keyword">function</span><span class="params">()</span> {</span>
             console.log(<span class="string">'Hearthstone server listening on port::%s'</span>, port);
         });

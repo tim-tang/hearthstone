@@ -20,7 +20,7 @@ var _ = require('underscore'),
  * Express router constructor.
  */
 var RESTfulServer = function RESTfulServer() {
-        restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/api-router.json'), 'UTF-8'));
+        restAPI = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../conf/hearthstone-router.json'), 'UTF-8'));
     };
 
 

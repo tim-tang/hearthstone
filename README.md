@@ -65,6 +65,8 @@
 
 - [Hearthstone JSDoc](http://hearthstone-srv.herokuapp.com/)
 
+- [Hearthstone Code Coverage](http://hearthstone-srv.herokuapp.com/coverage.html)
+
 - [Hearthstone Health Check](http://hearthstone-srv.herokuapp.com/health)
 
 ### Issue

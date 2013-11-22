@@ -19,7 +19,7 @@ module.exports = function(grunt) {
                     quiet: true,
                     // specify a destination file to capture the mocha
                     // output (the quiet option does not suppress this)
-                    captureFile: 'coverage.html'
+                    captureFile: 'docs/coverage.html'
                 },
                 src: ['test/**/*-test.js']
             },
@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             all: ['Gruntfile.js', '**/*.js', '!node_modules/**/*.js', '!test/**/*.js']
         },
         clean: {
-            dist: ['coverage.html', 'docs/public', 'docs/*.html']
+            dist: ['docs/public', 'docs/*.html']
         }
     });
 

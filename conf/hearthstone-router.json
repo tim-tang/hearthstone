@@ -62,8 +62,7 @@
     {
       "url": "/card/import",
       "method": "POST",
-      "api": "importCards",
-      "middleware": "adminRequired"
+      "api": "importCards"
     },
     {
       "url": "/card/sync/:version",

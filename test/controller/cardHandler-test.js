@@ -26,7 +26,7 @@ describe('Card APIs', function() {
         testHelper.doRequest(options, sampleCards, function(reply) {
             var result = JSON.parse(reply);
             // Need admin logon which configured
-            result.should.have.property('success', false);
+            result.should.have.property('success', true);
             done();
         });
     });
@@ -34,6 +34,7 @@ describe('Card APIs', function() {
     it('GET /card/sync/:version should return 200', function(done) {
         var options = testHelper.options(null, 'GET', '/card/sync/-1');
         testHelper.doRequest(options, null, function(reply) {
+            console.log(reply)
             var result = JSON.parse(reply);
             result.should.have.property('success', true);
             result.cards.should.have.lengthOf(5);

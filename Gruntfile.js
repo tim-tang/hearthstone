@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             all: ['Gruntfile.js', '**/*.js', '!node_modules/**/*.js', '!test/**/*.js']
         },
         clean: {
-            dist: ['coverage.html']
+            dist: ['coverage.html', 'docs/public', 'docs/*.html']
         }
     });
 
@@ -58,6 +58,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-docco');
 
     // Register tasks
-    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
-    grunt.registerTask('doc', ['jshint', 'docco']);
+    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest', 'docco']);
+    grunt.registerTask('doc', ['clean', 'jshint', 'docco']);
 };

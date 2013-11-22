@@ -50,7 +50,7 @@
 - Prewiew api doc, go to {HEARTHSTONE-HOME}/
 
     ```
-    $ apiary preview  --path docs/apiary.apib  --output docs/hearthstone.html
+    $ apiary preview  --path docs/api/apiary.apib  --output docs/api/hearthstone.html
     ```
 
 - Generate JS doc use following command
@@ -61,7 +61,7 @@
 
 ### Preview API/JS doc on-line
 
-- [Heathstone APIs](http://hearthstone-srv.herokuapp.com/hearthstone.html)
+- [Heathstone APIs](http://hearthstone-srv.herokuapp.com/api/hearthstone.html)
 
 - [Hearthstone JSDoc](http://hearthstone-srv.herokuapp.com/)
 

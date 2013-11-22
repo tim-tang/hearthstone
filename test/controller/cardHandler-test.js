@@ -34,7 +34,6 @@ describe('Card APIs', function() {
     it('GET /card/sync/:version should return 200', function(done) {
         var options = testHelper.options(null, 'GET', '/card/sync/-1');
         testHelper.doRequest(options, null, function(reply) {
-            console.log(reply)
             var result = JSON.parse(reply);
             result.should.have.property('success', true);
             result.cards.should.have.lengthOf(5);

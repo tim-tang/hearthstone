@@ -22,7 +22,7 @@ module.exports = function(mongoose, conn, callback) {
     _.each(initCards.cards, function(jcard) {
         var abilities = [];
         _.each(jcard.abilities, function(jability) {
-            abilities.push(jability.name);
+            abilities.push(jability);
         });
 
         fixture.push({

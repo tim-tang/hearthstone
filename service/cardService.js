@@ -61,7 +61,7 @@ _.extend(CardService.prototype, {
             card.content = jcard.content;
             card.abilities = [];
             _.each(jcard.abilities, function(jability){
-               card.abilities.push(jability.name);
+               card.abilities.push(jability);
             });
             card.attack = jcard.attack;
             card.health_power = jcard.health_power;

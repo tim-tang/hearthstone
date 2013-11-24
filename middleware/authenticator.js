@@ -7,6 +7,7 @@
 // Middleware for authentication user.
 // --------------
 
+"use strict";
 // Require user logon.
 exports.userRequired = function(req, res, next) {
     if (!req.session || !req.session.user) {

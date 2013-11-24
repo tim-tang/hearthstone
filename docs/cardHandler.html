@@ -157,7 +157,9 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span> cardService = require(<span class="string">'../service'</span>).CardService,
+            <div class="content"><div class='highlight'><pre><span class="string">"use strict"</span>;
+
+<span class="keyword">var</span> cardService = require(<span class="string">'../service'</span>).CardService,
     versionService = require(<span class="string">'../service'</span>).VersionService,
     sanitize = require(<span class="string">'validator'</span>).sanitize,
     check = require(<span class="string">'validator'</span>).check,

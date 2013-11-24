@@ -1,6 +1,7 @@
 // Class for user mangement service.
 // --------------
 
+"use strict";
 var model = require('../model'),
     User = model.User,
     _ = require('underscore');

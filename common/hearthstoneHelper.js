@@ -4,6 +4,8 @@
  * @author tim.tang
  */
 
+"use strict";
+
 // Hearthstone Helper.
 // --------------
 

@@ -7,6 +7,7 @@
 // Hearthstone User Handler.
 // --------------
 
+"use strict";
 var  _ = require('underscore'),
     sanitize = require('validator').sanitize,
     check = require('validator').check,
@@ -86,6 +87,7 @@ _.extend(UserHandler.prototype, {
         });
 
         var email = sanitize(req.body.email).trim();
+        // Eamil can be empty.
         //try {
         //    check(email, 'Invalid email address.').isEmail();
         //} catch (e) {

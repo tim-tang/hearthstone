@@ -6,6 +6,8 @@
 
 // Model for Card.
 // --------------
+
+"use strict";
 module.exports = function(mongoose) {
 
     var Schema = mongoose.Schema;

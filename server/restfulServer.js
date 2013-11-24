@@ -7,6 +7,7 @@
 // Hearthstone Rest Server Wrapper.
 // --------------
 
+"use strict";
 var _ = require('underscore'),
     fs = require('fs'),
     path = require('path'),

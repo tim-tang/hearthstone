@@ -7,6 +7,8 @@
 // Hearthstone Card Handler.
 // --------------
 
+"use strict";
+
 var cardService = require('../service').CardService,
     versionService = require('../service').VersionService,
     sanitize = require('validator').sanitize,

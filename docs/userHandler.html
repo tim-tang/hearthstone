@@ -157,7 +157,8 @@
               
             </div>
             
-            <div class="content"><div class='highlight'><pre><span class="keyword">var</span>  _ = require(<span class="string">'underscore'</span>),
+            <div class="content"><div class='highlight'><pre><span class="string">"use strict"</span>;
+<span class="keyword">var</span>  _ = require(<span class="string">'underscore'</span>),
     sanitize = require(<span class="string">'validator'</span>).sanitize,
     check = require(<span class="string">'validator'</span>).check,
     hsHelper = require(<span class="string">'../common/hearthstoneHelper'</span>),
@@ -294,7 +295,8 @@ _.extend(UserHandler.prototype, {</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-8">&#182;</a>
               </div>
-              <p>try {
+              <p>Eamil can be empty.
+try {
    check(email, &#39;Invalid email address.&#39;).isEmail();
 } catch (e) {
    res.send({

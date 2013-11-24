@@ -6,6 +6,7 @@
 // Indexing required models.
 // --------------
 
+"use strict";
 var mongoose = require('mongoose'),
     config = require('../conf/hearthstone-conf').config,
     mongoUrl = process.env.MONGOHQ_URL || config.mongo;

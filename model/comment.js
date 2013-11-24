@@ -6,7 +6,7 @@
 
 // Model for Comment.
 // --------------
-
+"use strict";
 module.exports = function(mongoose) {
 
     var Schema = mongoose.Schema;

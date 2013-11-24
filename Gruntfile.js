@@ -52,10 +52,7 @@ module.exports = function(grunt) {
                     stdout: true,
                     failOnError: true
                 },
-                command: [
-                    'mongoose-fixture --fixture=init --remove',
-                    'mongoose-fixture --fixture=init --add'
-                ].join('&&')
+                command: ['mongoose-fixture --fixture=init --remove', 'mongoose-fixture --fixture=init --add'].join('&&')
             }
         },
         clean: {

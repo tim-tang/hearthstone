@@ -1,6 +1,7 @@
 // Card manage service.
 // --------------
 
+"use strict";
 var model = require('../model'),
     Card = model.Card,
     _ = require('underscore');

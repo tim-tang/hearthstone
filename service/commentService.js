@@ -1,6 +1,7 @@
 // Comment manage service.
 // --------------
 
+"use strict";
 var model = require('../model'),
     Comment = model.Comment,
     _ = require('underscore');

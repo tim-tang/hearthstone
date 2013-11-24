@@ -7,6 +7,8 @@
 // Hearthstone Comment Handler.
 // --------------
 
+"use strict";
+
 var sanitize = require('validator').sanitize,
     check = require('validator').check,
     commentService = require('../service/commentService'),

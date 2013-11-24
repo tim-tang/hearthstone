@@ -1,6 +1,7 @@
 // Manage version service.
 // --------------
 
+"use strict";
 var model = require('../model'),
     Version = model.Version,
     _ = require('underscore');

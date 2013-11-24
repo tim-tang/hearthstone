@@ -5,4 +5,5 @@
  */
 
 "use strict";
+require('newrelic');
 var restfulServer = require('./server/restfulServer');

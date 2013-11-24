@@ -24,6 +24,7 @@
     "mongoose": ">=3.6.13",
     "validator": ">=2.0.0",
     "eventproxy": ">=0.2.6",
+    "newrelic": ">=1.1.1",
     "underscore": ">=1.5.2"
   },
   "devDependencies": {

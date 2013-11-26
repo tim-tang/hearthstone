@@ -68,6 +68,10 @@
 
     $ grunt migrate
 
+### Import card by shell script
+
+    $ ./card-import.sh -u tim -p 123 -H http://localhost:5000 -d fixtures/cards-dump.json 
+
 ### Preview API/JS doc on-line
 
 - [Heathstone APIs](http://hearthstone-srv.herokuapp.com/api/hearthstone.html)

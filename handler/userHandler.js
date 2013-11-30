@@ -220,8 +220,8 @@ _.extend(UserHandler.prototype, {
 
     // Favorite a card.
     favorite: function(req, res, next) {
-        var cardId = sanitize(req.body.cardId).trim();
-        var userId = sanitize(req.body.userId).trim();
+        var cardId = sanitize(req.params.cardId).trim();
+        var userId = sanitize(req.params.userId).trim();
         userService.favorite(userId, cardId, function(err) {
             if (err) {
                 return res.send({

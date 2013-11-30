@@ -478,8 +478,8 @@ email = email.toLowerCase();</p>
             </div>
             
             <div class="content"><div class='highlight'><pre>    favorite: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-        <span class="keyword">var</span> cardId = sanitize(req.body.cardId).trim();
-        <span class="keyword">var</span> userId = sanitize(req.body.userId).trim();
+        <span class="keyword">var</span> cardId = sanitize(req.params.cardId).trim();
+        <span class="keyword">var</span> userId = sanitize(req.params.userId).trim();
         userService.favorite(userId, cardId, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
             <span class="keyword">if</span> (err) {
                 <span class="keyword">return</span> res.send({

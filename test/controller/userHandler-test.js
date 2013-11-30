@@ -85,13 +85,9 @@ describe('User APIs', function() {
         });
     });
 
-    it('POST /user/favorite should return 200', function(done){
-        var options = testHelper.options(logonUser, 'POST', '/user/favorite');
-        var payload = {
-            cardId: cardId,
-            userId: logonUser._id
-        };
-        testHelper.doRequest(options, payload, function(reply){
+    it('GET /user/:userId/card/:cardId should return 200', function(done){
+        var options = testHelper.options(logonUser, 'GET', '/user/'+logonUser._id+'/card/'+cardId);
+        testHelper.doRequest(options, null, function(reply){
             var result = JSON.parse(reply);
             result.should.have.property('success',true);
             done();

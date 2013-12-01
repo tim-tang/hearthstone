@@ -4,6 +4,7 @@
 "use strict";
 var model = require('../model'),
     Comment = model.Comment,
+    userService = require('../service').UserService,
     _ = require('underscore');
 
 
@@ -13,9 +14,23 @@ _.extend(CommentService.prototype, {
 
     // Retrieve comments by card id.
     getCommentsByCardId: function(cardId, callback) {
+        var counter = 0;
         Comment.find({
             card_id: cardId
-        }, callback);
+        }, function(err, comments){
+            _.each(comments, function(comment){
+                counter++;
+                if(comment.user_id){
+                    userService.getUserById(comment.user_id, function(err, user){
+                        comment.user = user;
+                    });
+                    //TODO: need refactor with event proxy.
+                    if(_.size(comments) === counter){
+                       return callback(err, comments);
+                    }
+                }
+            });
+        });
     },
 
     // Star one comment.

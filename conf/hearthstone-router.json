@@ -50,8 +50,8 @@
       "api": "showComments"
     },
     {
-      "url": "/comment/star",
-      "method": "PUT",
+      "url": "/comment/:commentId/star/:star",
+      "method": "GET",
       "api": "star"
     },
     {

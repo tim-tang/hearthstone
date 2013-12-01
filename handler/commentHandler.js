@@ -38,8 +38,8 @@ _.extend(CommentHandler.prototype, {
 
     // Star comments.
     star: function(req, res, next) {
-        var commentId = sanitize(req.body.commentId).trim();
-        var star = sanitize(req.body.star).trim();
+        var commentId = sanitize(req.params.commentId).trim();
+        var star = sanitize(req.params.star).trim();
         commentService.star(commentId, star, function(err) {
             if (err) {
                 return res.send({

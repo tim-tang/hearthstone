@@ -212,8 +212,8 @@ _.extend(CommentHandler.prototype, {</pre></div></div>
             </div>
             
             <div class="content"><div class='highlight'><pre>    star: <span class="function"><span class="keyword">function</span><span class="params">(req, res, next)</span> {</span>
-        <span class="keyword">var</span> commentId = sanitize(req.body.commentId).trim();
-        <span class="keyword">var</span> star = sanitize(req.body.star).trim();
+        <span class="keyword">var</span> commentId = sanitize(req.params.commentId).trim();
+        <span class="keyword">var</span> star = sanitize(req.params.star).trim();
         commentService.star(commentId, star, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
             <span class="keyword">if</span> (err) {
                 <span class="keyword">return</span> res.send({

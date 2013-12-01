@@ -45,14 +45,9 @@ describe('Comment APIs', function() {
         });
     });
 
-    it('PUT /comment/star should return 200', function(done) {
-        var options = testHelper.options(null, 'PUT', '/comment/star');
-        var payload = {
-            commentId: comment._id,
-            star: 5
-        };
-
-        testHelper.doRequest(options, payload, function(reply){
+    it('GET /comment/:commentId/star/:star should return 200', function(done) {
+        var options = testHelper.options(null, 'GET', '/comment/'+comment._id+'/star/5');
+        testHelper.doRequest(options, null, function(reply){
             var result = JSON.parse(reply);
             result.should.have.property('success', true);
             done();

@@ -5,6 +5,7 @@
 var model = require('../model'),
     Comment = model.Comment,
     userService = require('../service').UserService,
+    EventProxy = require('eventproxy'),
     _ = require('underscore');
 
 
@@ -14,20 +15,25 @@ _.extend(CommentService.prototype, {
 
     // Retrieve comments by card id.
     getCommentsByCardId: function(cardId, callback) {
-        var counter = 0;
         Comment.find({
             card_id: cardId
         }, function(err, comments){
+            if(err){
+                callback(err);
+            }
+            var ep = new EventProxy();
+            ep.after('user_retrieved', comments.length, function(replies){
+                return callback(err, replies);
+            });
             _.each(comments, function(comment){
-                counter++;
                 if(comment.user_id){
                     userService.getUserById(comment.user_id, function(err, user){
+                        if(err){
+                            return callback(err);
+                        }
                         comment.user = user;
+                        ep.emit('user_retrieved', comment);
                     });
-                    //TODO: need refactor with event proxy.
-                    if(_.size(comments) === counter){
-                       return callback(err, comments);
-                    }
                 }
             });
         });

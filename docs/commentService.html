@@ -143,6 +143,7 @@
 <span class="keyword">var</span> model = require(<span class="string">'../model'</span>),
     Comment = model.Comment,
     userService = require(<span class="string">'../service'</span>).UserService,
+    EventProxy = require(<span class="string">'eventproxy'</span>),
     _ = require(<span class="string">'underscore'</span>);
 
 
@@ -164,16 +165,29 @@ _.extend(CommentService.prototype, {</pre></div></div>
             </div>
             
             <div class="content"><div class='highlight'><pre>    getCommentsByCardId: <span class="function"><span class="keyword">function</span><span class="params">(cardId, callback)</span> {</span>
-        <span class="keyword">var</span> counter = <span class="number">0</span>;
         Comment.find({
             card_id: cardId
         }, <span class="function"><span class="keyword">function</span><span class="params">(err, comments)</span>{</span>
+            <span class="keyword">if</span>(err){
+                callback(err);
+            }
+            <span class="keyword">var</span> ep = <span class="keyword">new</span> EventProxy();
+            ep.after(<span class="string">'user_retrieved'</span>, comments.length, <span class="function"><span class="keyword">function</span><span class="params">(replies)</span>{</span>
+                <span class="keyword">return</span> callback(err, replies);
+            });
             _.each(comments, <span class="function"><span class="keyword">function</span><span class="params">(comment)</span>{</span>
-                counter++;
                 <span class="keyword">if</span>(comment.user_id){
                     userService.getUserById(comment.user_id, <span class="function"><span class="keyword">function</span><span class="params">(err, user)</span>{</span>
+                        <span class="keyword">if</span>(err){
+                            <span class="keyword">return</span> callback(err);
+                        }
                         comment.user = user;
-                    });</pre></div></div>
+                        ep.emit(<span class="string">'user_retrieved'</span>, comment);
+                    });
+                }
+            });
+        });
+    },</pre></div></div>
             
         </li>
         
@@ -183,27 +197,6 @@ _.extend(CommentService.prototype, {</pre></div></div>
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-4">&#182;</a>
-              </div>
-              <p>TODO: need refactor with event proxy.</p>
-
-            </div>
-            
-            <div class="content"><div class='highlight'><pre>                    <span class="keyword">if</span>(_.size(comments) === counter){
-                       <span class="keyword">return</span> callback(err, comments);
-                    }
-                }
-            });
-        });
-    },</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-5">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Star one comment.</p>
 
@@ -227,11 +220,11 @@ _.extend(CommentService.prototype, {</pre></div></div>
         </li>
         
         
-        <li id="section-6">
+        <li id="section-5">
             <div class="annotation">
               
               <div class="pilwrap ">
-                <a class="pilcrow" href="#section-6">&#182;</a>
+                <a class="pilcrow" href="#section-5">&#182;</a>
               </div>
               <p>Save one comment.</p>
 

@@ -158,11 +158,11 @@
             </div>
             
             <div class="content"><div class='highlight'><pre><span class="string">"use strict"</span>;
-
 <span class="keyword">var</span> cardService = require(<span class="string">'../service'</span>).CardService,
     versionService = require(<span class="string">'../service'</span>).VersionService,
     sanitize = require(<span class="string">'validator'</span>).sanitize,
     check = require(<span class="string">'validator'</span>).check,
+    EventProxy = require(<span class="string">'eventproxy'</span>),
     _ = require(<span class="string">'underscore'</span>);
 
 <span class="keyword">var</span> CardHandler = <span class="function"><span class="keyword">function</span> <span class="title">CardHandler</span><span class="params">()</span> {</span>};
@@ -269,7 +269,21 @@ _.extend(CardHandler.prototype, {</pre></div></div>
                 msg: <span class="string">'Invalid card JSON.'</span>
             });
         }
-        <span class="keyword">var</span> cardIds = [];
+        <span class="keyword">var</span> ep = <span class="keyword">new</span> EventProxy();
+        ep.after(<span class="string">'card_save_complete'</span>, cards.length, <span class="function"><span class="keyword">function</span><span class="params">(cardIds)</span> {</span>
+            versionService.updateVersionByNo(cardIds, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
+                <span class="keyword">if</span> (err) {
+                    <span class="keyword">return</span> res.send({
+                        success: <span class="literal">false</span>,
+                        msg: err.message
+                    });
+                }
+                res.send({
+                    success: <span class="literal">true</span>,
+                    msg: <span class="string">'Import cards success!'</span>
+                });
+            });
+        });
         _.each(cards, <span class="function"><span class="keyword">function</span><span class="params">(card)</span> {</span></pre></div></div>
             
         </li>
@@ -291,8 +305,7 @@ _.extend(CardHandler.prototype, {</pre></div></div>
                         success: <span class="literal">false</span>,
                         msg: <span class="string">'Card title: '</span> + card.title + <span class="string">"import failure!"</span>
                     });
-                }
-                cardIds.push(rcard._id);</pre></div></div>
+                }</pre></div></div>
             
         </li>
         
@@ -303,24 +316,11 @@ _.extend(CardHandler.prototype, {</pre></div></div>
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-9">&#182;</a>
               </div>
-              <p>need to refactor with event proxy handling async.</p>
+              <p>cardIds.push(rcard._id);</p>
 
             </div>
             
-            <div class="content"><div class='highlight'><pre>                <span class="keyword">if</span> (_.size(cardIds) === _.size(cards)) {
-                    versionService.updateVersionByNo(cardIds, <span class="function"><span class="keyword">function</span><span class="params">(err)</span> {</span>
-                        <span class="keyword">if</span> (err) {
-                            <span class="keyword">return</span> res.send({
-                                success: <span class="literal">false</span>,
-                                msg: err.message
-                            });
-                        }
-                        res.send({
-                            success: <span class="literal">true</span>,
-                            msg: <span class="string">'Import cards success!'</span>
-                        });
-                    });
-                }
+            <div class="content"><div class='highlight'><pre>                ep.emit(<span class="string">'card_save_complete'</span>, rcard._id);
             });
         });
     }

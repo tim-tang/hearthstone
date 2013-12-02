@@ -8,11 +8,11 @@
 // --------------
 
 "use strict";
-
 var cardService = require('../service').CardService,
     versionService = require('../service').VersionService,
     sanitize = require('validator').sanitize,
     check = require('validator').check,
+    EventProxy = require('eventproxy'),
     _ = require('underscore');
 
 var CardHandler = function CardHandler() {};
@@ -69,7 +69,21 @@ _.extend(CardHandler.prototype, {
                 msg: 'Invalid card JSON.'
             });
         }
-        var cardIds = [];
+        var ep = new EventProxy();
+        ep.after('card_save_complete', cards.length, function(cardIds) {
+            versionService.updateVersionByNo(cardIds, function(err) {
+                if (err) {
+                    return res.send({
+                        success: false,
+                        msg: err.message
+                    });
+                }
+                res.send({
+                    success: true,
+                    msg: 'Import cards success!'
+                });
+            });
+        });
         _.each(cards, function(card) {
             // Do save and update cards.
             cardService.saveOrUpdateCard(card, function(err, rcard) {
@@ -79,22 +93,8 @@ _.extend(CardHandler.prototype, {
                         msg: 'Card title: ' + card.title + "import failure!"
                     });
                 }
-                cardIds.push(rcard._id);
-                // need to refactor with event proxy handling async.
-                if (_.size(cardIds) === _.size(cards)) {
-                    versionService.updateVersionByNo(cardIds, function(err) {
-                        if (err) {
-                            return res.send({
-                                success: false,
-                                msg: err.message
-                            });
-                        }
-                        res.send({
-                            success: true,
-                            msg: 'Import cards success!'
-                        });
-                    });
-                }
+                //cardIds.push(rcard._id);
+                ep.emit('card_save_complete', rcard._id);
             });
         });
     }

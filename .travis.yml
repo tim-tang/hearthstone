@@ -1,22 +1,26 @@
 language: node_js
 node_js:
-  - "0.10"
+- '0.10'
 notifications:
-  email: 
-    - evan.huang@xplusz.com
-    - tang.jilong@gmail.com
-    - kkiiiu@gmail.com
+  email:
+  - evan.huang@xplusz.com
+  - tang.jilong@gmail.com
+  - kkiiiu@gmail.com
 services:
-  - mongodb
+- mongodb
 before_script:
-  - npm install -g grunt-cli
+- npm install -g grunt-cli
 after_scipt:
-  - grunt doc
+- grunt doc
 branches:
   only:
-    - master
+  - master
 deploy:
   provider: heroku
-  api_key: c073b681-3e57-41bc-b3e2-8bf270ff80a3 
-  app: hearthstone-srv 
-
+  buildpack: nodejs
+  api_key:
+    secure: QsRIyY5JLWe8TI4JuWCcuwNqRetAqRZAr5D786zl3mf1uNYZPeffd7AK9iNoT7SlI5sPbJsV9DXnY8vF5D5e/lHbqET18mQWB2bVKb3K79qhze37/wKoRbS7HrL0SgdKKhL+YGprwwdlnfZ9TcuYWi5J4qWpl3it9p0bTIV8uGA=
+  app: hearthstone-srv
+  strategy: git
+  on:
+    repo: tim-tang/hearthstone

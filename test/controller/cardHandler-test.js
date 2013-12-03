@@ -35,7 +35,6 @@ describe('Card APIs', function() {
         var options = testHelper.options(null, 'GET', '/card/sync/-1');
         testHelper.doRequest(options, null, function(reply) {
             var result = JSON.parse(reply);
-            console.log(result);
             result.should.have.property('success', true);
             result.cards.should.have.lengthOf(2);
             done();

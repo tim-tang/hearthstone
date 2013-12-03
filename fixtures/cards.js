@@ -20,10 +20,6 @@ module.exports = function(mongoose, conn, callback) {
     var fixture = [];
 
     _.each(initCards.cards, function(jcard) {
-        //var abilities = [];
-        //_.each(jcard.abilities, function(jability) {
-        //    abilities.push(jability);
-        //});
 
         fixture.push({
             card_name: jcard.card_name,

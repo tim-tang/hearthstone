@@ -44,7 +44,6 @@ module.exports = function(mongoose) {
             type: String
         },
         abilities: {
-            //type: Array
             type: String
         },
         artist_name: {

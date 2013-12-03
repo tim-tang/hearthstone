@@ -66,10 +66,6 @@ _.extend(CardService.prototype, {
             card.health_power = jcard.health_power;
             card.content = jcard.content;
             card.abilities = jcard.abilities;
-            //card.abilities = [];
-            //_.each(jcard.abilities, function(jability){
-            //   card.abilities.push(jability);
-            //});
             card.artist_name = jcard.artist_name;
             card.flavor_text = jcard.flavor_text;
             card.big_icon = jcard.big_icon;

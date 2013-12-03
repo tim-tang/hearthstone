@@ -90,7 +90,7 @@ _.extend(CardHandler.prototype, {
                 if (err) {
                     return res.send({
                         success: false,
-                        msg: 'Card title: ' + card.title + "import failure!"
+                        msg: 'Card Name: ' + card.card_name + "import failure!"
                     });
                 }
                 //cardIds.push(rcard._id);

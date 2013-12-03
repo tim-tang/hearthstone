@@ -15,21 +15,24 @@ module.exports = function(mongoose) {
 
     var cardSchema = new Schema({
 
-        title: {
+        card_name: {
             type: String,
             unique: true
         },
-        category: {
+        card_type: {
             type: String
         },
-        image_url: {
+        occupation: {
             type: String
         },
-        content: {
+        rarity: {
             type: String
         },
-        abilities: {
-            type: Array
+        race: {
+            type: String
+        },
+        cost: {
+            type: Number
         },
         attack: {
             type: Number
@@ -37,16 +40,26 @@ module.exports = function(mongoose) {
         health_power: {
             type: Number
         },
-        cost: {
-            type: Number
-        },
-        rare: {
+        content: {
             type: String
         },
-        occupation: {
+        abilities: {
+            //type: Array
             type: String
         },
-        race: {
+        artist_name: {
+            type: String
+        },
+        flavor_text: {
+            type: String
+        },
+        big_icon: {
+            type: String
+        },
+        small_icon: {
+            type: String
+        },
+        premium_icon: {
             type: String
         },
         evaluation: {

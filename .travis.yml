@@ -5,6 +5,7 @@ notifications:
   email: 
     - evan.huang@xplusz.com
     - tang.jilong@gmail.com
+    - kkiiiu@gmail.com
 services:
   - mongodb
 before_script:

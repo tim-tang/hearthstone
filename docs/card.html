@@ -165,21 +165,24 @@ module.exports = <span class="function"><span class="keyword">function</span><sp
 
     <span class="keyword">var</span> cardSchema = <span class="keyword">new</span> Schema({
 
-        title: {
+        card_name: {
             type: String,
             unique: <span class="literal">true</span>
         },
-        category: {
+        card_type: {
             type: String
         },
-        image_url: {
+        occupation: {
             type: String
         },
-        content: {
+        rarity: {
             type: String
         },
-        abilities: {
-            type: Array
+        race: {
+            type: String
+        },
+        cost: {
+            type: Number
         },
         attack: {
             type: Number
@@ -187,16 +190,39 @@ module.exports = <span class="function"><span class="keyword">function</span><sp
         health_power: {
             type: Number
         },
-        cost: {
-            type: Number
-        },
-        rare: {
+        content: {
             type: String
         },
-        occupation: {
+        abilities: {</pre></div></div>
+            
+        </li>
+        
+        
+        <li id="section-4">
+            <div class="annotation">
+              
+              <div class="pilwrap ">
+                <a class="pilcrow" href="#section-4">&#182;</a>
+              </div>
+              <p>type: Array</p>
+
+            </div>
+            
+            <div class="content"><div class='highlight'><pre>            type: String
+        },
+        artist_name: {
             type: String
         },
-        race: {
+        flavor_text: {
+            type: String
+        },
+        big_icon: {
+            type: String
+        },
+        small_icon: {
+            type: String
+        },
+        premium_icon: {
             type: String
         },
         evaluation: {

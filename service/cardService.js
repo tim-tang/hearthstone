@@ -45,31 +45,36 @@ _.extend(CardService.prototype, {
     // Save or update card.
     saveOrUpdateCard: function(jcard, callback) {
         Card.findOne({
-            title: jcard.title
+            card_name: jcard.card_name
         }, function(err, card) {
             if (err) {
                 return callback(err);
             }
             if (!card) {
                 card = new Card();
-                card.abilities = [];
+                //card.abilities = [];
             } else {
                 card.version++;
             }
-            card.title = jcard.title;
-            card.category = jcard.category;
-            card.image_url = jcard.image_url;
-            card.content = jcard.content;
-            card.abilities = [];
-            _.each(jcard.abilities, function(jability){
-               card.abilities.push(jability);
-            });
+            card.card_name = jcard.card_name;
+            card.card_type = jcard.card_type;
+            card.occupation = jcard.occupation;
+            card.rarity = jcard.rarity;
+            card.race = jcard.race;
+            card.cost = jcard.cost;
             card.attack = jcard.attack;
             card.health_power = jcard.health_power;
-            card.cost = jcard.cost;
-            card.rare = jcard.rare;
-            card.occupation = jcard.occupation;
-            card.race = jcard.race;
+            card.content = jcard.content;
+            card.abilities = jcard.abilities;
+            //card.abilities = [];
+            //_.each(jcard.abilities, function(jability){
+            //   card.abilities.push(jability);
+            //});
+            card.artist_name = jcard.artist_name;
+            card.flavor_text = jcard.flavor_text;
+            card.big_icon = jcard.big_icon;
+            card.small_icon = jcard.small_icon;
+            card.premium_icon = jcard.premium_icon;
             card.evaluation = jcard.evaluation;
             card.save(callback(err, card));
         });

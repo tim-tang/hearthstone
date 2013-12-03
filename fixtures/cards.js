@@ -11,7 +11,7 @@ var fs = require('fs'),
 
 module.exports = function(mongoose, conn, callback) {
 
-    var initCards = JSON.parse(fs.readFileSync(path.resolve(__dirname, './cards-dump.json'), 'UTF-8'));
+    var initCards = JSON.parse(fs.readFileSync(path.resolve(__dirname, './total_cards_v1.json'), 'UTF-8'));
 
     // standard callback error
     var error = null;
@@ -20,23 +20,27 @@ module.exports = function(mongoose, conn, callback) {
     var fixture = [];
 
     _.each(initCards.cards, function(jcard) {
-        var abilities = [];
-        _.each(jcard.abilities, function(jability) {
-            abilities.push(jability);
-        });
+        //var abilities = [];
+        //_.each(jcard.abilities, function(jability) {
+        //    abilities.push(jability);
+        //});
 
         fixture.push({
-            title: jcard.title,
-            category: jcard.category,
-            image_url: jcard.image_url,
-            content: jcard.content,
-            abilities: abilities,
+            card_name: jcard.card_name,
+            card_type: jcard.card_type,
+            occupation: jcard.occupation,
+            rarity: jcard.rarity,
+            race: jcard.race,
+            cost: jcard.cost,
             attack: jcard.attack,
             health_power: jcard.health_power,
-            cost: jcard.cost,
-            rare: jcard.rare,
-            occupation: jcard.occupation,
-            race: jcard.race,
+            content: jcard.content,
+            abilities: jcard.abilities,
+            artist_name: jcard.artist_name,
+            flavor_text: jcard.flavor_text,
+            big_icon: jcard.big_icon,
+            small_icon: jcard.small_icon,
+            premium_icon: jcard.premium_icon,
             evaluation: jcard.evaluation
         });
     });

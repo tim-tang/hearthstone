@@ -20,7 +20,6 @@ var url = require('url'),
     dbname;
 
 if(mongoUrl){
-    console.log("################## %s", mongoUrl);
     var mongoProdConf = url.parse(mongoUrl);
     host = mongoProdConf.auth+'@'+mongoProdConf.hostname;
     port = mongoProdConf.port;

@@ -18,9 +18,10 @@ module.exports = function(mongoose, conn, callback) {
     cardService.getAllCards(function(err, cards) {
         var cardIds = [];
         _.each(cards, function(card) {
+            console.log('####');
             cardIds.push(card._id);
         });
-
+        console.log('======================');
         fixture.push({
             version_no: 0,
             card_ids: cardIds

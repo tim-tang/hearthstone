@@ -25,5 +25,5 @@ deploy:
   on:
     repo: tim-tang/hearthstone
   run:
-    - "npm installl -g grunt-cli"
+    - "npm install -g grunt-cli"
     - "grunt migrate"

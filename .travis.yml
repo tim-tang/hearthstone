@@ -1,20 +1,20 @@
 language: node_js
 node_js:
-- '0.10'
+  - '0.10'
 notifications:
   email:
-  - evan.huang@xplusz.com
-  - tang.jilong@gmail.com
-  - kkiiiu@gmail.com
+    - evan.huang@xplusz.com
+    - tang.jilong@gmail.com
+    - kkiiiu@gmail.com
 services:
-- mongodb
+  - mongodb
 before_script:
-- npm install -g grunt-cli
+  - npm install -g grunt-cli
 after_scipt:
-- grunt doc
+  - grunt doc
 branches:
   only:
-  - master
+    - master
 deploy:
   provider: heroku
   buildpack: nodejs
@@ -25,4 +25,5 @@ deploy:
   on:
     repo: tim-tang/hearthstone
   run:
-  - grunt migrate
+    - "npm installl -g grunt-cli"
+    - "grunt migrate"

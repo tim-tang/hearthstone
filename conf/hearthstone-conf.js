@@ -26,7 +26,7 @@ exports.config = {
     HEARTHSTONE_PUBLIC_FOLDER: 'docs',
 
     // Http methods and heards
-    CONTENT_TYPE: 'application/json',
+    CONTENT_TYPE: 'application/json; charset=UTF-8',
     ROUTER_METHOD_POST: 'POST',
     ROUTER_METHOD_GET: 'GET',
     ROUTER_METHOD_DELETE: 'DELETE',

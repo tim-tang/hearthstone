@@ -5,9 +5,7 @@
  */
 
 // Model for version.
-// --------------
-
-"use strict";
+// --------------"use strict";
 module.exports = function(mongoose) {
 
     var Schema = mongoose.Schema,
@@ -20,9 +18,7 @@ module.exports = function(mongoose) {
             type: Number,
             default: 0
         },
-        card_ids: [{
-            card_id: ObjectId
-        }],
+        card_ids: [ObjectId],
         update_at: {
             type: Date,
             default: Date.now

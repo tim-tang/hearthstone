@@ -141,9 +141,15 @@
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-2">&#182;</a>
               </div>
-              <h2 id="model-for-version-">Model for version.</h2>
+              <p>Model for version.
+--------------&quot;use strict&quot;;</p>
 
             </div>
+            
+            <div class="content"><div class='highlight'><pre>module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
+
+    <span class="keyword">var</span> Schema = mongoose.Schema,
+        ObjectId = Schema.ObjectId;</pre></div></div>
             
         </li>
         
@@ -153,24 +159,6 @@
               
               <div class="pilwrap ">
                 <a class="pilcrow" href="#section-3">&#182;</a>
-              </div>
-              
-            </div>
-            
-            <div class="content"><div class='highlight'><pre><span class="string">"use strict"</span>;
-module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
-
-    <span class="keyword">var</span> Schema = mongoose.Schema,
-        ObjectId = Schema.ObjectId;</pre></div></div>
-            
-        </li>
-        
-        
-        <li id="section-4">
-            <div class="annotation">
-              
-              <div class="pilwrap ">
-                <a class="pilcrow" href="#section-4">&#182;</a>
               </div>
               <p>Version to control cards sync and import.</p>
 
@@ -182,9 +170,7 @@ module.exports = <span class="function"><span class="keyword">function</span><sp
             type: Number,
             <span class="keyword">default</span>: <span class="number">0</span>
         },
-        card_ids: [{
-            card_id: ObjectId
-        }],
+        card_ids: [ObjectId],
         update_at: {
             type: Date,
             <span class="keyword">default</span>: Date.now

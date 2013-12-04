@@ -27,3 +27,4 @@ deploy:
   run:
     - "mongoose-fixture --fixture=init --remove"
     - "mongoose-fixture --fixture=init --add"
+    - "ps -ef|grep -ie 'mongoose-fixture'|awk '{print $2}' |xargs kill -9"

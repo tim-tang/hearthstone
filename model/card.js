@@ -17,7 +17,6 @@ module.exports = function(mongoose) {
 
         card_name: {
             type: String,
-            unique: true
         },
         card_type: {
             type: String

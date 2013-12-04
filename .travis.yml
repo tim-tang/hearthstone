@@ -26,5 +26,6 @@ deploy:
     repo: tim-tang/hearthstone
   run:
     - "mongoose-fixture --fixture=init --remove"
-    - "mongoose-fixture --fixture=init --add &"
+    - "nohup mongoose-fixture --fixture=init --add &"
+    - "sleep 5"
     #- "ps -ef|grep -ie 'mongoose-fixture'|awk '{print $2}' |xargs kill -9"

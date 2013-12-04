@@ -26,4 +26,6 @@ deploy:
     repo: tim-tang/hearthstone
   run:
     - "npm install -g grunt-cli"
+    - "npm install -g mongoose-fixture"
+    - "pwd"
     - "grunt migrate"

@@ -13,11 +13,24 @@ var FixtureConfig = require('mongoose-fixture').FixtureConfig;
 
 // Create our fixture config with defined
 // mongo-connection and file paths
+var url = require('url'),
+    mongoUrl = process.env.MONGOHQ_URL,
+    host,
+    port,
+    dbname;
+
+if(mongoUrl){
+    var mongoProdConf = url.parse(mongoUrl);
+    host = mongoProdConf.auth+'@'+mongoProdConf.hostname;
+    port = mongoProdConf.port;
+    dbname = mongoProdConf.path;
+}
+
 var fixtureConfig = new FixtureConfig({
     mongoConnection: {
-        'host': 'localhost',
-        'port': '27017',
-        'dbname': 'hearthstone_dev'
+        'host': host || 'localhost',
+        'port': port || '27017',
+        'dbname': dbname || 'hearthstone_dev'
     },
     paths: {
         schemaPath: __dirname + '/model/',

@@ -47,7 +47,7 @@ module.exports = function(grunt) {
             all: ['Gruntfile.js', '**/*.js', '!node_modules/**/*.js', '!test/**/*.js']
         },
         shell: {
-            multiple: {
+            migrate: {
                 options: {
                     stdout: true,
                     failOnError: true
@@ -77,7 +77,7 @@ module.exports = function(grunt) {
     // Register tasks
     grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
     grunt.registerTask('doc', ['docco']);
-    grunt.registerTask('migrate', ['shell']);
+    grunt.registerTask('migrate', ['shell:migrate']);
     grunt.registerTask('purge', ['shell:purge']);
-    
+
 };

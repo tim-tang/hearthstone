@@ -26,7 +26,7 @@ module.exports = function(mongoose, conn, callback){
      */
     fixture.push({
         name:'tim',
-        pass: 270f8b9d8bdf7210230d4f9af1dcfede,
+        pass: '270f8b9d8bdf7210230d4f9af1dcfede',
         email: 'tang.jilong@gmail.com',
         avatar: 'http://timtang.me',
         deviceToken: '00000000'

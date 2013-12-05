@@ -75,7 +75,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-shell');
 
     // Register tasks
-    grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
+    grunt.registerTask('default', ['clean', 'jshint', 'shell:purge', 'mochaTest']);
     grunt.registerTask('doc', ['docco']);
     grunt.registerTask('migrate', ['shell:migrate']);
     grunt.registerTask('purge', ['shell:purge']);

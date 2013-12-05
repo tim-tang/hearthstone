@@ -32,6 +32,10 @@ exports.config = {
     ROUTER_METHOD_DELETE: 'DELETE',
     ROUTER_METHOD_PUT: 'PUT',
 
+    // Mongoose fixtures settings
+    FIXTURE_HOST: 'localhost',
+    FIXTURE_PORT: 27017,
+    FIXTURE_DB: 'hearthstone_dev',
 
     // Administrator user configuration.
     admins: {

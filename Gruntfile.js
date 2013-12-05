@@ -32,6 +32,16 @@ module.exports = function(grunt) {
                 src: ['test/**/*.js']
             }
         },
+        api_benchmark: {
+            default_options: {
+                options: {
+                    output: 'generated'
+                },
+                files: {
+                    'report.html': 'test/benchmark/card1.json'
+                }
+            }
+        },
         docco: {
             debug: {
                 src: ['handler/**/*.js', 'server/**/*.js', 'service/**/*.js', 'model/**/*.js', 'common/**/*.js'],
@@ -71,11 +81,13 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
     grunt.loadNpmTasks('grunt-mocha-test');
+    grunt.loadNpmTasks('grunt-api-benchmark');
     grunt.loadNpmTasks('grunt-docco');
     grunt.loadNpmTasks('grunt-shell');
 
     // Register tasks
     grunt.registerTask('default', ['clean', 'jshint', 'shell:purge', 'mochaTest']);
+    grunt.registerTask('benchmark', ['api_benchmark']);
     grunt.registerTask('doc', ['docco']);
     grunt.registerTask('migrate', ['shell:migrate']);
     grunt.registerTask('purge', ['shell:purge']);

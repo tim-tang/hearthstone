@@ -1,0 +1,19 @@
+{
+  "service": {
+    "server": "http://hearthstone-srv.herokuapp.com"
+  },
+  "endpoints": {
+    "getRoute": {
+      "route": "/card/sync/-1",
+      "method": "get",
+      "data": {
+        "test": true,
+        "someData": "someStrings"
+      }
+    }
+  },
+  "options": {
+    "maxTime": 0.5,
+    "minSamples": 15
+  }
+}

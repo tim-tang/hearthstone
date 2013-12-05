@@ -38,7 +38,8 @@
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",
     "grunt-mocha-test": "*",
-    "grunt-docco": "*"
+    "grunt-docco": "*",
+    "grunt-api-benchmark": "*"
   },
   "engines": {
     "node": ">=0.10.0",

@@ -26,10 +26,10 @@ module.exports = function(mongoose, conn, callback){
      */
     fixture.push({
         name:'tim',
-        pass: hsHelper.md5('123'),
+        pass: 270f8b9d8bdf7210230d4f9af1dcfede,
         email: 'tang.jilong@gmail.com',
         avatar: 'http://timtang.me',
-        deviceToken: '12345678'
+        deviceToken: '00000000'
     });
 
     // mongoose-fixture expects implementor to return

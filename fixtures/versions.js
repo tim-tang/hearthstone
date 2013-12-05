@@ -1,3 +1,4 @@
+
 /*
  *  File: versions.js
  *  Type: DataFixture
@@ -5,8 +6,8 @@
  *
  */
 
-var cardService = require('../service').CardService,
-    _ = require('underscore');
+var _ = require('underscore'),
+cardSchema = require('../model/card');
 
 module.exports = function(mongoose, conn, callback) {
 
@@ -15,11 +16,13 @@ module.exports = function(mongoose, conn, callback) {
 
     // create your data documents using object-literals
     var fixture = [];
-    cardService.getAllCards(function(err, cards) {
+    var Card = conn.model('Card', cardSchema(mongoose));
+    Card.find({},function(err, cards){
         var cardIds = [];
         _.each(cards, function(card) {
             cardIds.push(card._id);
         });
+
         fixture.push({
             version_no: 0,
             card_ids: cardIds

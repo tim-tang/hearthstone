@@ -53,6 +53,13 @@ module.exports = function(grunt) {
                     failOnError: true
                 },
                 command: ['mongoose-fixture --fixture=init --remove', 'mongoose-fixture --fixture=init --add'].join('&&')
+            },
+            purge: {
+                options: {
+                    stdout: true,
+                    failOnError: true
+                },
+                command: 'mongoose-fixture --fixture=init --remove'
             }
         },
         clean: {
@@ -71,4 +78,6 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['clean', 'jshint', 'mochaTest']);
     grunt.registerTask('doc', ['docco']);
     grunt.registerTask('migrate', ['shell']);
+    grunt.registerTask('purge', ['shell:purge']);
+    
 };

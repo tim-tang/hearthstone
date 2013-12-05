@@ -11,7 +11,6 @@
 module.exports = function(mongoose) {
 
     var Schema = mongoose.Schema;
-    var Ability = require('./index').Ability;
 
     var cardSchema = new Schema({
 

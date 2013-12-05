@@ -44,11 +44,6 @@
               </a>
             
               
-              <a class="source" href="ability.html">
-                ability.js
-              </a>
-            
-              
               <a class="source" href="card.html">
                 card.js
               </a>
@@ -161,13 +156,11 @@
 module.exports = <span class="function"><span class="keyword">function</span><span class="params">(mongoose)</span> {</span>
 
     <span class="keyword">var</span> Schema = mongoose.Schema;
-    <span class="keyword">var</span> Ability = require(<span class="string">'./index'</span>).Ability;
 
     <span class="keyword">var</span> cardSchema = <span class="keyword">new</span> Schema({
 
         card_name: {
             type: String,
-            unique: <span class="literal">true</span>
         },
         card_type: {
             type: String

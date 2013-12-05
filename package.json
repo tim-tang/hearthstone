@@ -25,7 +25,6 @@
     "validator": ">=2.0.0",
     "eventproxy": ">=0.2.6",
     "newrelic": ">=1.1.1",
-    "grunt": "*",
     "mongoose-fixture": "*",
     "underscore": ">=1.5.2"
   },
@@ -34,6 +33,7 @@
     "should": "*",
     "blanket": "*",
     "travis-cov": "*",
+    "grunt": "*",
     "grunt-shell": "*",
     "grunt-contrib-clean": "*",
     "grunt-contrib-jshint": "*",

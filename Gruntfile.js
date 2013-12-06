@@ -35,10 +35,10 @@ module.exports = function(grunt) {
         api_benchmark: {
             default_options: {
                 options: {
-                    output: 'generated'
+                    output: 'docs/benchmark'
                 },
                 files: {
-                    'report.html': 'test/benchmark/card1.json'
+                    'report.html': 'test/benchmark/api-benchmarks.json'
                 }
             }
         },

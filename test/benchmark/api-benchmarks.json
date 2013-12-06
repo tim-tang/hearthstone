@@ -3,6 +3,91 @@
     "server": "http://hearthstone-srv.herokuapp.com"
   },
   "endpoints": {
+    "userSignup": {
+      "route": "/user/signup",
+      "method": "post",
+      "data": {
+        "test": true,
+        "user": {
+            "name": "johnny",
+            "pass": "123",
+            "email": "kkiiiu@gmail.com",
+            "avatar": "",
+            "deviceToken": "abc123"
+        }
+      }
+    },
+    "userLogin": {
+      "route": "/user/login",
+      "method": "post",
+      "data": {
+        "name": "johnny",
+        "pass": "123"
+      }
+    },
+    "userUpdate": {
+      "route": "/user/update",
+      "method": "post",
+      "hearders": {
+        "cookie": "hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a",
+        "accept": "application/json"
+      },
+      "data": {
+        "test": true,
+        "user": {
+            "userId": "528c8fa4460ba8061b000002",
+            "name": "johnny",
+            "pass": "123",
+            "avatar": "test here",
+            "deviceToken": "abc123"
+        }
+      }
+    },
+    "userFavorite": {
+      "route": "/user/favorite",
+      "method": "post",
+      "hearders": {
+        "cookie": "hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a",
+        "accept": "application/json"
+      },
+      "data": {
+        "cardId": "528c8fa4460ba8061b000002",
+        "userId": "528c8fa4460ba8061b000002"
+      }
+    },
+    "userInfo": {
+      "route": "/user/info/tim",
+      "method": "get",
+      "hearders": {
+        "cookie": "hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a",
+        "accept": "application/json"
+      }
+    },
+    "showFavorite": {
+      "route": "/user/favorite/528c8fa4460ba8061b000002",
+      "method": "get",
+      "hearders": {
+        "cookie": "hearthstone_srv=d77961ede0dc4c7e7fd5ada36c4b75f2d0017472f95cc772e7611740c52495c61b52ef8029d7b67af84f7f8ad573798077d74a",
+        "accept": "application/json"
+        }
+    },
+    "userLogout": {
+      "route": "/user/logout",
+      "method": "get"
+    },
+    "createComment": {
+      "route": "/comment/create",
+      "method": "post",
+      "data": {
+        "test": true,
+        "comment": {
+            "userId": "528c8fa4460ba8061b000002",
+            "cardId": "528c8fa4460ba8061b000002",
+            "star": "5",
+            "content": "This is..."
+        }
+      }
+    },
     "syncCards": {
       "route": "/card/sync/-1",
       "method": "get"

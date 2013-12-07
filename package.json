@@ -6,12 +6,13 @@
   "private": true,
   "maintainers": [
     {
-      "name": "Tim Tang",
+      "name": "Tim.Tang",
+      "email": "tang.jilong@gmail.com",
       "url": "http://timtang.me"
     },
     {
-      "name": "Evan Huang",
-      "email": "xiemotongye@gmail.com"
+      "name": "Johnny.Lv",
+      "email": "kkiiiu@gmail.com"
     }
   ],
   "repository": {

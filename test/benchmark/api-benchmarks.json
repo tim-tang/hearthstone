@@ -1,6 +1,6 @@
 {
   "service": {
-    "server": "http://hearthstone-srv.herokuapp.com"
+    "server": "http://localhost:5000"
   },
   "endpoints": {
     "userLogin": {
@@ -53,12 +53,7 @@
       "hearders": {
         "cookie": "hearthstone_srv=5082566c5700a7e811e2c8645db94a54f2539e9119429136a76b1e599241b69b5d2af053c9d035cfa86992366391860b058d0c35c9be1ee784bbc3a50f2f7d70c43ae2b1af3d219fae7c76cd7e55112b3ad4babf336b9da6ff22411d4e5d67c4",
         "accept": "application/json"
-        }
-    },
-    "userLogout": {
-      "route": "/user/logout",
-      "method": "get",
-      "expectedStatusCode": 200
+      }
     },
     "createComment": {
       "route": "/comment/create",
@@ -76,15 +71,10 @@
       "method": "get",
       "expectedStatusCode": 200
     },
-    "starComment": {
-      "route": "/comment/star",
-      "method": "post",
-      "expectedStatusCode": 200,
-      "data": {
-        "test": true,
-        "commentId": "528c8fa4460ba8061b000002",
-        "star": "5"
-      }
+    "userLogout": {
+      "route": "/user/logout",
+      "method": "get",
+      "expectedStatusCode": 200
     },
     "syncCards": {
       "route": "/card/sync/-1",

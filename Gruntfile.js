@@ -87,7 +87,7 @@ module.exports = function(grunt) {
 
     // Register tasks
     grunt.registerTask('default', ['clean', 'jshint', 'shell:purge', 'mochaTest']);
-    grunt.registerTask('benchmark', ['api_benchmark']);
+    grunt.registerTask('benchmark', ['shell:migrate', 'api_benchmark']);
     grunt.registerTask('doc', ['docco']);
     grunt.registerTask('migrate', ['shell:migrate']);
     grunt.registerTask('purge', ['shell:purge']);
